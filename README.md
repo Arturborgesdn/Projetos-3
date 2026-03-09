@@ -1,4 +1,3 @@
-# Projetos-3
 # Projeto – Calculadora de Impacto Ambiental para Pagamentos Digitais
 
 ## Contexto
