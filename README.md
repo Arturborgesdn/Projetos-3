@@ -1,5 +1,7 @@
 # Projeto – Calculadora de Impacto Ambiental para Pagamentos Digitais
-
+## 📚 Documentação Adicional
+- [Histórias de usuário do Projeto]([Histórias de usuário - Projetos 3.pdf](https://github.com/user-attachments/files/25920748/Historias.de.usuario.-.Projetos.3.pdf)
+) 
 ## Contexto
 
 A **Edenred** é uma multinacional francesa presente em mais de **45 países**, líder global no mercado de **benefícios corporativos e soluções de mobilidade**. A empresa atua fortemente em iniciativas de sustentabilidade por meio do pilar estratégico **Ideal Planet**, que tem como meta atingir **Net Zero Carbon até 2050**.
