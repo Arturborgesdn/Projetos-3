@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <h1>Calcule seu impacto</h1>
-            <p>Configure os dados da sua operação para mensurar sua pegada de carbono.</p>
+            <p>Configure os dados da sua empresa para mensurar sua pegada de carbono.</p>
         </div>
 
         <form id="calculadoraForm" class="cards-wrapper">
@@ -19,11 +19,17 @@
                 <h3>📦 Materiais</h3>
                 
                 <div class="form-group">
+                    <label>Quantidade de cartões ativos</label>
+                    <input type="number" name="qtd_cartoes" placeholder="Ex: 5000">
+                    <small>Levando em consideração que cada funcionário de sua equipe utiliza um cartão</small>
+                </div>
+
+                <div class="form-group">
                     <label>Material do cartão</label>
                     <div class="radio-group vertical">
                         <label class="radio-card active">
                             <input type="radio" name="material" value="pvc_virgem" checked>
-                            <span>💳 PVC Virgem</span>
+                            <span>💳 PVC</span>
                         </label>
                         <label class="radio-card">
                             <input type="radio" name="material" value="pvc_reciclado">
@@ -34,85 +40,55 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Embalagem e Kit de Boas-Vindas</label>
+                    <select name="tipo_embalagem">
+                        <option value="" disabled selected>Selecione a embalagem...</option>
+                        <option value="envelope_simples">Envelope Simples</option>
+                        <option value="kit_padrao">Kit Padrão (Carta + Berço plástico)</option>
+                        <option value="kit_premium">Kit Premium (Caixa + Manuais impressos)</option>
+                    </select>
+                    <small>Embalagens maiores aumentam a emissão de CO2 no transporte</small>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🚚 Uso e Entrega</h3>
+                <div class="form-group">
+                    <label>Frequência de uso de cada empregado</label>
+                    <select name="frequencia">
+                        <option value="mensal">Diário</option>
+                        <option value="trimestral">Semanal</option>
+                        <option value="anual">Mensal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Taxa anual de reemissão (%)</label>
+                    <input type="number" name="taxa_reemissao" min="0" max="100" placeholder="Ex: 15">
+                    <small>Cartões reemitidos por perda, roubo ou dano físico</small>
+                </div>
+
+                <div class="form-group">
                     <label>Destino final dos cartões</label>
                     <select name="destino">
                         <option value="descarte_comum">Descarte Comum</option>
                         <option value="reciclagem">Reciclagem Especializada</option>
+                        <option value="nao_sei">Não sei</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Quantidade de cartões ativos</label>
-                    <input type="number" name="qtd_cartoes" placeholder="Ex: 5000">
-                    <small>Total de cartões em circulação</small>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>🚚 Logística</h3>
-
-                <div class="form-group">
-                    <label>Tipo de Entrega</label>
-                    <div class="segmented-control">
-                        <label class="segment active">
-                            <input type="radio" name="entrega" value="standard" checked>
-                            Standard
-                        </label>
-                        <label class="segment">
-                            <input type="radio" name="entrega" value="express">
-                            Express
-                        </label>
-                        <label class="segment">
-                            <input type="radio" name="entrega" value="eco">
-                            Eco-friendly
-                        </label>
-                    </div>
-                    <small>Eco-friendly usa veículos elétricos ou bicicletas</small>
-                </div>
-
-                <div class="form-group">
-                    <label>Frequência de envio</label>
-                    <select name="frequencia">
-                        <option value="mensal">Mensal</option>
-                        <option value="trimestral">Trimestral</option>
-                        <option value="anual">Anual</option>
+                    <label>Multiplicidade de Benefícios 💳💳💳</label>
+                    <select name="multiplicidade_cartoes" id="multiplicidadeInput" class="select-alert">
+                        <option value="1">1 cartão (Benefícios já unificados)</option>
+                        <option value="2" selected>2 cartões (Ex: Alimentação + Refeição)</option>
+                        <option value="3">3 cartões (Ex: VR + VA + Mobilidade)</option>
+                        <option value="4">4 ou mais cartões (Totalmente fragmentado)</option>
                     </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Distância média de entrega (km)</label>
-                    <input type="number" name="distancia" placeholder="Ex: 250">
-                    <small>Distância do centro de distribuição</small>
+                    <small>Ter múltiplos cartões físicos por funcionário multiplica o consumo de plástico. O app unifica todos os saldos.</small>
                 </div>
             </div>
 
-            <div class="card">
-                <h3>📱 Transição Digital</h3>
-
-                <div class="form-group">
-                    <label>Uso de Faturas</label>
-                    <div class="slider-labels">
-                        <span>100% Papel</span>
-                        <span id="sliderValue" class="badge">50%</span>
-                        <span>100% Digital</span>
-                    </div>
-                    <input type="range" name="uso_faturas" id="faturasRange" min="0" max="100" value="50">
-                    <small>Faturas digitais eliminam emissões de papel</small>
-                </div>
-
-                <div class="form-group">
-                    <label>Usuários de App/Apple Pay (%)</label>
-                    <input type="number" name="usuarios_app" placeholder="Ex: 45">
-                    <small>Percentual atual de uso digital</small>
-                </div>
-
-                <div class="form-group">
-                    <label>Volume mensal de transações</label>
-                    <input type="number" name="vol_transacoes" placeholder="Ex: 15000">
-                    <small>Média de transações processadas</small>
-                </div>
-            </div>
-
+        
         </form>
 
         <button type="button" id="btnCalcular" class="btn-primary">
