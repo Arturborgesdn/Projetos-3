@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Impacto - Edenred</title>
+    <link rel="stylesheet" href="/demo/src/main/resources/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Calcule seu impacto</h1>
+            <p>Configure os dados da sua operação para mensurar sua pegada de carbono.</p>
+        </div>
+
+        <form id="calculadoraForm" class="cards-wrapper">
+            
+            <div class="card">
+                <h3>📦 Materiais</h3>
+                
+                <div class="form-group">
+                    <label>Material do cartão</label>
+                    <div class="radio-group vertical">
+                        <label class="radio-card active">
+                            <input type="radio" name="material" value="pvc_virgem" checked>
+                            <span>💳 PVC Virgem</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="material" value="pvc_reciclado">
+                            <span>♻️ PVC Reciclado</span>
+                        </label>
+                    </div>
+                    <small>Sabia que a Edenred já utiliza 85% de PVC reciclado em sua produção?</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Destino final dos cartões</label>
+                    <select name="destino">
+                        <option value="descarte_comum">Descarte Comum</option>
+                        <option value="reciclagem">Reciclagem Especializada</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Quantidade de cartões ativos</label>
+                    <input type="number" name="qtd_cartoes" placeholder="Ex: 5000">
+                    <small>Total de cartões em circulação</small>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🚚 Logística</h3>
+
+                <div class="form-group">
+                    <label>Tipo de Entrega</label>
+                    <div class="segmented-control">
+                        <label class="segment active">
+                            <input type="radio" name="entrega" value="standard" checked>
+                            Standard
+                        </label>
+                        <label class="segment">
+                            <input type="radio" name="entrega" value="express">
+                            Express
+                        </label>
+                        <label class="segment">
+                            <input type="radio" name="entrega" value="eco">
+                            Eco-friendly
+                        </label>
+                    </div>
+                    <small>Eco-friendly usa veículos elétricos ou bicicletas</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Frequência de envio</label>
+                    <select name="frequencia">
+                        <option value="mensal">Mensal</option>
+                        <option value="trimestral">Trimestral</option>
+                        <option value="anual">Anual</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Distância média de entrega (km)</label>
+                    <input type="number" name="distancia" placeholder="Ex: 250">
+                    <small>Distância do centro de distribuição</small>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📱 Transição Digital</h3>
+
+                <div class="form-group">
+                    <label>Uso de Faturas</label>
+                    <div class="slider-labels">
+                        <span>100% Papel</span>
+                        <span id="sliderValue" class="badge">50%</span>
+                        <span>100% Digital</span>
+                    </div>
+                    <input type="range" name="uso_faturas" id="faturasRange" min="0" max="100" value="50">
+                    <small>Faturas digitais eliminam emissões de papel</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Usuários de App/Apple Pay (%)</label>
+                    <input type="number" name="usuarios_app" placeholder="Ex: 45">
+                    <small>Percentual atual de uso digital</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Volume mensal de transações</label>
+                    <input type="number" name="vol_transacoes" placeholder="Ex: 15000">
+                    <small>Média de transações processadas</small>
+                </div>
+            </div>
+
+        </form>
+
+        <button type="button" id="btnCalcular" class="btn-primary">
+            CALCULAR MEU ECOBALANCE 📈
+        </button>
+    </div>
+    <script src="/demo/src/main/resources/static/scripts/main.js"></script>
+</body>
+</html>
