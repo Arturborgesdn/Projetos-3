@@ -22,9 +22,9 @@ public class modelSimulacao {
     private String materialCartao;
 
     // Resultados
-    private Double co2Economizado;
-    private Double aguaEconomizada;
-    private Double plasticoEconomizado;
+    private Double emissoesCo2;
+    private Double consumoAgua;
+    private Double residuosPlasticos;
 
     private LocalDateTime dataCriacao;
 
@@ -49,14 +49,14 @@ public class modelSimulacao {
     public String getMaterialCartao() { return materialCartao; }
     public void setMaterialCartao(String m) { this.materialCartao = m; }
 
-    public Double getCo2Economizado() { return co2Economizado; }
-    public void setCo2Economizado(Double c) { this.co2Economizado = c; }
+    public Double getEmissoesCo2() { return emissoesCo2; }
+    public void setEmissoesCo2(Double e) { this.emissoesCo2 = e; }
 
-    public Double getAguaEconomizada() { return aguaEconomizada; }
-    public void setAguaEconomizada(Double a) { this.aguaEconomizada = a; }
+    public Double getConsumoAgua() { return consumoAgua; }
+    public void setConsumoAgua(Double a) { this.consumoAgua = a; }
 
-    public Double getPlasticoEconomizado() { return plasticoEconomizado; }
-    public void setPlasticoEconomizado(Double p) { this.plasticoEconomizado = p; }
+    public Double getResiduosPlasticos() { return residuosPlasticos; }
+    public void setResiduosPlasticos(Double p) { this.residuosPlasticos = p; }
 
     public LocalDateTime getDataCriacao() { return dataCriacao; }
     public void setDataCriacao(LocalDateTime d) { this.dataCriacao = d; }
