@@ -21,7 +21,11 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
         body: JSON.stringify(data)
     });
 
-    const resultado = await response.json();
+    const resultado = await response.text();
+    const valor = parseFloat(resultado).toFixed(2);
 
-    alert("Impacto total de CO2: " + resultado.toFixed(2) + " kg");
+    // pega o primeiro card (CO2)
+    document.querySelector(".card-number").textContent = valor;
+
+    
 });
