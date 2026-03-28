@@ -54,4 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Erro:', error));
         */
     });
+
+    // Espera a página carregar completamente
+    document.addEventListener('DOMContentLoaded', () => {
+    
+    // Captura o botão e a seção de resultados
+    const btnCalcular = document.getElementById('btnCalcular');
+    const secaoResultados = document.getElementById('secaoResultados');
+
+    // Cria a ação do clique
+    btnCalcular.addEventListener('click', () => {
+        
+        // 1. Torna os cards visíveis
+        secaoResultados.style.display = 'block';
+
+        // 2. Toque de Mestre (UX): Faz a tela rolar suavemente para baixo até os resultados!
+        secaoResultados.scrollIntoView({ behavior: 'smooth' });
+        
+    });
+    
+});
 });
