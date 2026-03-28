@@ -4,7 +4,7 @@ import com.edenredsustentavel.demo.dto.SimulacaoRequestDTO;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServiceEdenred {
+public class serviceEdenred {
 
     public double calcularImpacto(SimulacaoRequestDTO req) {
 
