@@ -185,6 +185,8 @@ input[type="range"] {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de tamanho igual */
     gap: 25px; /* Espaço entre os cartões */
+    margin-top: 30px;
+
 }
 
 /* Estilização Geral do Cartão de Resultado */
@@ -292,4 +294,22 @@ h2 {
     .card-number {
         font-size: 3em;
     }
+}
+
+.bottao{
+    margin-bottom: 50px;
+    cursor: pointer;
+    
+}
+
+.bottao:hover{
+    background-color: #031824;
+}
+
+.radio-card:hover {
+    background-color: #f0f7fb;
+}
+
+.radio-card:active {
+    background-color: #e0f0f5;
 }

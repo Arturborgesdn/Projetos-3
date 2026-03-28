@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label>Material do cartão</label>
                     <div class="radio-group vertical">
-                        <label class="radio-card active">
+                        <label class="radio-card">
                             <input type="radio" name="material" value="pvc_virgem" checked>
                             <span>💳 PVC</span>
                         </label>
@@ -57,6 +57,7 @@
                 <div class="form-group">
                     <label>Frequência de uso de cada empregado</label>
                     <select name="frequencia">
+                        <option value="" disabled selected>Selecione a frequência...</option>
                         <option value="mensal">Diário</option>
                         <option value="trimestral">Semanal</option>
                         <option value="anual">Mensal</option>
@@ -71,6 +72,7 @@
                 <div class="form-group">
                     <label>Destino final dos cartões</label>
                     <select name="destino">
+                        <option value="" disabled selected>Selecione o destino...</option>
                         <option value="descarte_comum">Descarte Comum</option>
                         <option value="reciclagem">Reciclagem Especializada</option>
                         <option value="nao_sei">Não sei</option>
@@ -80,8 +82,9 @@
                 <div class="form-group">
                     <label>Multiplicidade de Benefícios 💳💳💳</label>
                     <select name="multiplicidade_cartoes" id="multiplicidadeInput" class="select-alert">
+                        <option value="" disabled selected>Selecione a multiplicidade...</option>
                         <option value="1">1 cartão (Benefícios já unificados)</option>
-                        <option value="2" selected>2 cartões (Ex: Alimentação + Refeição)</option>
+                        <option value="2">2 cartões (Ex: Alimentação + Refeição)</option>
                         <option value="3">3 cartões (Ex: VR + VA + Mobilidade)</option>
                         <option value="4">4 ou mais cartões (Totalmente fragmentado)</option>
                     </select>
@@ -89,15 +92,16 @@
                 </div>
             </div>
         
-        </form
-        <button type="button" id="btnCalcular">
+        </form>
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <button class="bottao" style="border-radius: 15px; padding: 30px; margin-top: 10px; margin-bottom: 50px; box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);background-color: var(--primary-blue); border: transparent; color: aliceblue; cursor: pointer;" type="button" id="btnCalcular">
             CALCULAR MEU IMPACTO
-        </button>
+            </button>  
+        </div>
 
 
         <div class="results-container">
-        <h1>Resultado do seu impacto</h1>
-        <p class="results-subtitle">Estes são os resultados calculados a partir das informações.</p>
+        <h1 style="display: flex; justify-content: center; margin-bottom: 20px;">Seu Resultado</h1>
 
         <div class="cards-grid">
             
