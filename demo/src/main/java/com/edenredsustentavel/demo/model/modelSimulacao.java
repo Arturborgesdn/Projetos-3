@@ -28,6 +28,14 @@ public class modelSimulacao {
 
     private LocalDateTime dataCriacao;
 
+
+    private String tipoEmbalagem;
+    private String frequenciaUso;
+    private Double taxareemissao;
+    private String destinoFinal;
+    private Integer multiplicidadeCartoes; 
+
+
     @PrePersist
     public void prePersist() {
         this.dataCriacao = LocalDateTime.now();
@@ -60,4 +68,39 @@ public class modelSimulacao {
 
     public LocalDateTime getDataCriacao() { return dataCriacao; }
     public void setDataCriacao(LocalDateTime d) { this.dataCriacao = d; }
+
+    public String getTipoEmbalagem() { 
+        return tipoEmbalagem; 
+    }
+    public void setTipoEmbalagem(String tipoEmbalagem) { 
+        this.tipoEmbalagem = tipoEmbalagem; 
+    }
+
+    public String getFrequenciaUso() {
+         return frequenciaUso; 
+        }
+    public void setFrequenciaUso(String frequenciaUso) { 
+        this.frequenciaUso = frequenciaUso; 
+    }
+
+    public Double getTaxaReemissao() {
+         return taxaReemissao; 
+        }
+    public void setTaxaReemissao(Double taxaReemissao) { 
+        this.taxaReemissao = taxaReemissao; 
+    }
+
+    public String getDestinoFinal() { 
+        return destinoFinal; 
+    }
+    public void setDestinoFinal(String destinoFinal) { 
+        this.destinoFinal = destinoFinal; 
+    }
+
+    public Integer getMultiplicidadeCartoes() { 
+        return multiplicidadeCartoes; 
+    }
+    public void setMultiplicidadeCartoes(Integer multiplicidadeCartoes) { 
+        this.multiplicidadeCartoes = multiplicidadeCartoes; 
+    }
 }
