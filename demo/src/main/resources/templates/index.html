@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Impacto - Edenred</title>
     <link rel="stylesheet" href="/demo/src/main/resources/static/styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
     <div class="container">
@@ -87,13 +88,70 @@
                     <small>Ter múltiplos cartões físicos por funcionário multiplica o consumo de plástico. O app unifica todos os saldos.</small>
                 </div>
             </div>
-
         
         </form>
-
         <button type="button" id="btnCalcular" class="btn-primary">
             CALCULAR MEU IMPACTO
         </button>
+
+
+        <div class="results-container">
+        <h1>Resultado do seu impacto</h1>
+        <p class="results-subtitle">Estes são os resultados calculados a partir das informações.</p>
+
+        <div class="cards-grid">
+            
+            <div class="result-card top-card">
+                <div class="card-header">
+                    <i style="padding: 10px; height: 30px; width: 30px;" class="ph ph-cloud card-icon"></i>
+                    <h2>Emissão de CO₂</h2>
+                </div>
+                <div class="card-number-wrapper">
+                    <span class="card-number">100.000</span>
+                    <span class="card-unit">kg</span>
+                </div>
+                <hr class="card-divider">
+            </div>
+
+            <div class="result-card top-card">
+                <div class="card-header">
+                    <i style="padding: 10px; height: 30px; width: 30px;" class="ph ph-drop card-icon"></i>
+                    <h2>Consumo de Água</h2>
+                </div>
+                <div class="card-number-wrapper">
+                    <span class="card-number">500.000</span>
+                    <span class="card-unit">litros</span>
+                </div>
+                <hr class="card-divider">
+            </div>
+
+            <div class="result-card bottom-card">
+                <div class="card-header">
+                    <i style="padding: 10px; height: 30px; width: 30px;" class="ph ph-trash card-icon"></i>
+                    <h2>Resíduos Plásticos</h2>
+                </div>
+                <div class="card-number-wrapper">
+                    <span class="card-number">50</span>
+                    <span class="card-unit">kg</span>
+                </div>
+                <hr class="card-divider">
+                </div>
+
+            <div class="result-card bottom-card">
+                <div class="card-header">
+                    <i style="padding: 10px; height: 30px; width: 30px;" class="ph ph-lightning card-icon"></i>
+                    <h2>Consumo de Energia</h2>
+                </div>
+                <div class="card-number-wrapper">
+                    <span class="card-number">0,3</span>
+                    <span class="card-unit">kWh</span>
+                </div>
+                <hr class="card-divider">
+                </div>
+
+        </div>
+    </div>
+
     </div>
     <script src="/demo/src/main/resources/static/scripts/main.js"></script>
 </body>

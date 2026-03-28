@@ -180,3 +180,116 @@ input[type="range"] {
 @media (max-width: 900px) {
     .cards-wrapper { flex-direction: column; }
 }
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de tamanho igual */
+    gap: 25px; /* Espaço entre os cartões */
+}
+
+/* Estilização Geral do Cartão de Resultado */
+.result-card {
+    background-color: #FFFFFF; /* Fundo branco para os cartões */
+    border-radius: 12px; /* Cantos arredondados */
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Uma sombra leve para o efeito de flutuação */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza todos os elementos dentro do cartão */
+    text-align: center;
+}
+
+/* Cabeçalho do Cartão (Ícone + Título) */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre o ícone e o título */
+    margin-bottom: 25px;
+}
+
+.card-icon {
+    width: 30px;
+    height: 30px;
+    /* Adicione estilos de cor aqui se usar ícones SVG/fonte */
+}
+
+h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #444;
+    margin: 0;
+}
+
+/* Área do Número e Unidade */
+.card-number-wrapper {
+    display: flex;
+    align-items: flex-end; /* Alinha o número e a unidade à linha de base */
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card-number {
+    font-size: 4em; /* Número grande e em destaque */
+    font-weight: 800;
+    color: #111;
+    line-height: 1;
+}
+
+.card-unit {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #111;
+    margin-left: 5px; /* Pequeno espaço entre o número e a unidade */
+    padding-bottom: 10px; /* Ajuste para alinhar verticalmente */
+}
+
+/* Divisor do Cartão */
+.card-divider {
+    border: 0;
+    border-top: 2px solid #EEEEEE; /* Uma linha fina e cinza claro */
+    width: 60%; /* Não ocupa toda a largura */
+    margin-bottom: 25px;
+}
+
+/* Descrição do Cartão (para os cartões superiores) */
+.card-description {
+    font-size: 1em;
+    color: #777;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Estilos específicos para cartões superiores e inferiores */
+/* Os cartões superiores (com descrição) terão uma altura ligeiramente maior */
+.top-card {
+    /* O flexbox e padding cuidam da altura base */
+}
+
+/* Os cartões inferiores (sem descrição) */
+.bottom-card {
+    /* No-op, apenas para consistência */
+}
+
+/* Responsividade (para dispositivos móveis) */
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr; /* Muda para uma única coluna em telas menores */
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .results-container {
+        margin: 30px auto;
+    }
+
+    .result-card {
+        padding: 20px;
+    }
+
+    .card-number {
+        font-size: 3em;
+    }
+}
