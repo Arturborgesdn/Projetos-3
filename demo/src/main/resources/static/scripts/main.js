@@ -24,14 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 3. Atualizar o valor do Slider em tempo real
-    const faturasRange = document.getElementById('faturasRange');
-    const sliderValue = document.getElementById('sliderValue');
-    
-    faturasRange.addEventListener('input', function() {
-        sliderValue.textContent = this.value + '%';
-    });
-
-    // 4. Capturar dados para enviar ao Spring Boot
     const btnCalcular = document.getElementById('btnCalcular');
     
     btnCalcular.addEventListener('click', () => {
@@ -40,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const dadosSimulacao = Object.fromEntries(formData.entries());
         
         console.log("Dados prontos para o Spring Boot:", dadosSimulacao);
-        alert("Dados capturados! Verifique o Console (F12). Próximo passo: Fetch API.");
 
         /* Exemplo de como o JS Integrator fará a requisição depois:
         

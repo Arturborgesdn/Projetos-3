@@ -31,7 +31,7 @@ public class modelSimulacao {
 
     private String tipoEmbalagem;
     private String frequenciaUso;
-    private Double taxareemissao;
+    private Double taxaReemissao;
     private String destinoFinal;
     private Integer multiplicidadeCartoes; 
 

@@ -1,54 +1,54 @@
 package com.edenredsustentavel.demo.service;
 
 import com.edenredsustentavel.demo.dto.SimulacaoRequestDTO;
+import com.edenredsustentavel.demo.dto.SimulacaoResponseDTO;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class serviceEdenred {
 
-    public double calcularImpacto(SimulacaoRequestDTO req) {
+    public SimulacaoResponseDTO calcularImpacto(SimulacaoRequestDTO req) {
+    SimulacaoResponseDTO response = new SimulacaoResponseDTO();
 
-        // Total de cartões
-        int cartoesTotais = req.qtd_cartoes * req.multiplicidade_cartoes;
+    // 1. Cálculo da base de cartões (Produção + Reemissão)
+    int cartoesTotais = req.qtd_cartoes * req.multiplicidade_cartoes;
+    double reemissao = cartoesTotais * (req.taxa_reemissao / 100.0);
+    double totalCartoes = cartoesTotais + reemissao;
 
-        // Reemissão
-        double reemissao = cartoesTotais * (req.taxa_reemissao / 100.0);
+    // 2. Definição de Fatores de Material e Embalagem
+    double fatorMaterial = req.material.equals("pvc_reciclado") ? 0.7 : 1.0;
+    
+    double fatorEmbalagem;
+    switch (req.tipo_embalagem) {
+        case "kit_premium": fatorEmbalagem = 1.5; break;
+        case "kit_padrao": fatorEmbalagem = 1.0; break;
+        default: fatorEmbalagem = 0.8;
+    }
 
-        double totalCartoes = cartoesTotais + reemissao;
+    // 3. CÁLCULOS DOS INDICADORES
+    
+    // Carbono (kg CO2) - Lógica que você já tinha
+    double emissaoCartao = 0.011; 
+    double emissaoPapel = 0.005;
+    double baseCarbono = (totalCartoes * emissaoCartao * fatorMaterial) + 
+                         (totalCartoes * emissaoPapel * fatorEmbalagem);
+    
+    // Ajuste de destino final
+    double fatorDestino = req.destino.equals("reciclagem") ? 0.7 : (req.destino.equals("descarte_comum") ? 1.2 : 1.0);
+    response.carbono = baseCarbono * fatorDestino;
 
-        // ===== FATORES REAIS =====
-        double emissaoCartao = 0.011; // kg CO2 por cartão (PVC)
-        double emissaoPapel = 0.005;  // kg CO2 por carta
+    // Água (Litros) - Ex: 0.15L por cartão PVC
+    response.agua = totalCartoes * 0.15 * fatorMaterial;
 
-        // ===== MATERIAL =====
-        double fatorMaterial = req.material.equals("pvc_reciclado") ? 0.7 : 1.0;
+    // Energia (kWh) - Ex: 0.02kWh por cartão
+    response.energia = totalCartoes * 0.02 * fatorMaterial;
 
-        // ===== EMBALAGEM =====
-        double fatorEmbalagem;
-        switch (req.tipo_embalagem) {
-            case "kit_padrao":
-                fatorEmbalagem = 1.0;
-                break;
-            case "kit_premium":
-                fatorEmbalagem = 1.5;
-                break;
-            default:
-                fatorEmbalagem = 0.8;
-        }
+    // Resíduos Plásticos (kg) - Peso médio de um cartão é ~0.005kg
+    // Se for reciclado, o resíduo "final" para o planeta é menor
+    double pesoPlastico = totalCartoes * 0.005;
+    response.residuos = req.destino.equals("reciclagem") ? pesoPlastico * 0.1 : pesoPlastico;
 
-        // ===== CÁLCULO BASE =====
-        double emissaoTotal =
-                totalCartoes * emissaoCartao * fatorMaterial +
-                totalCartoes * emissaoPapel * fatorEmbalagem;
-
-        // ===== DESTINO FINAL =====
-        double fatorDestino = 1.0;
-        if (req.destino.equals("descarte_comum")) {
-            fatorDestino = 1.2;
-        } else if (req.destino.equals("reciclagem")) {
-            fatorDestino = 0.7;
-        }
-
-        return emissaoTotal * fatorDestino;
+    return response;
     }
 }
