@@ -2,7 +2,7 @@
 package com.edenredsustentavel.demo.controller;
 
 import com.edenredsustentavel.demo.dto.SimulacaoRequestDTO;
-import com.edenredsustentavel.demo.service.ServiceEdenred;
+import com.edenredsustentavel.demo.service.serviceEdenred;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class SimulacaoController {
 
     @Autowired
-    private ServiceEdenred service;
+    private serviceEdenred service;
 
     @PostMapping
     public double calcular(@RequestBody SimulacaoRequestDTO request) {
