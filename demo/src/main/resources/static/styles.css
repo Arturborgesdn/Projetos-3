@@ -174,7 +174,7 @@ input[type="range"] {
 }
 
 .btn-primary:hover {
-    background-color: #8bb3c9;
+    background-color: #114a64;
 }
 
 @media (max-width: 900px) {
@@ -302,7 +302,7 @@ h2 {
     
 }
 
-.bottao:hover{
+button:hover{
     background-color: #031824;
 }
 
