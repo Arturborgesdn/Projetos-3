@@ -64,7 +64,7 @@ body {
 
 /* --- NAVBAR PRINCIPAL --- */
 .navbar {
-    background-color: var(--white);
+    background-color: #f5f5f5;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
     display: flex;
     justify-content: center;
@@ -87,13 +87,11 @@ body {
     gap: 10px;
 }
 .red-circle {
-    width: 42px;
-    height: 42px;
-    background-color: var(--edenred-red);
-    border-radius: 50%;
+    width: 100px;
+    height: 80px;
 }
 .logo-text {
-    font-weight: 800;
+    font-weight: 100;
     font-size: 26px;
     letter-spacing: -1px;
     color: var(--edenred-red);
