@@ -4,6 +4,7 @@
 - Screencast da Prototipação de baixa fidelidade (https://youtu.be/zewOdGQVTis)
 ## Entrega 2
 - Issue/bug tracker atualizado (https://github.com/Arturborgesdn/Projetos-3/issues)
+- Screencast 2 primeiras histórias de usuário (https://youtu.be/cbvwdfVgjTY)
 ## Contexto
 
 A **Edenred** é uma multinacional francesa presente em mais de **45 países**, líder global no mercado de **benefícios corporativos e soluções de mobilidade**. A empresa atua fortemente em iniciativas de sustentabilidade por meio do pilar estratégico **Ideal Planet**, que tem como meta atingir **Net Zero Carbon até 2050**.
