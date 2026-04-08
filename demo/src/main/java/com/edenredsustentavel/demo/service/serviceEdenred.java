@@ -5,6 +5,12 @@ import com.edenredsustentavel.demo.dto.SimulacaoResponseDTO;
 
 import org.springframework.stereotype.Service;
 
+import com.edenredsustentavel.demo.model.modelEmpresa;
+import com.edenredsustentavel.demo.repository.repositoryEmpresa;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Optional;
+
 @Service
 public class serviceEdenred {
 
@@ -50,5 +56,18 @@ public class serviceEdenred {
     response.residuos = req.destino.equals("reciclagem") ? pesoPlastico * 0.1 : pesoPlastico;
 
     return response;
+    }
+        // Adicionar dentro da classe, antes do último }
+    @Autowired
+    private repositoryEmpresa repositoryEmpresa;
+
+    public modelEmpresa login(String cnpj, String senha) {
+        Optional<modelEmpresa> empresa = repositoryEmpresa.findByCnpj(cnpj);
+
+    if (empresa.isPresent() && empresa.get().getSenha().equals(senha)) {
+        return empresa.get();
+    }
+
+    return null;
     }
 }
