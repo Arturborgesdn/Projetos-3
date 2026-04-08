@@ -70,4 +70,17 @@ public class serviceEdenred {
 
     return null;
     }
+    public modelEmpresa cadastrar(modelEmpresa empresa) {
+    // Verifica se CNPJ já está cadastrado
+        if (repositoryEmpresa.findByCnpj(empresa.getCnpj()).isPresent()) {
+            throw new RuntimeException("CNPJ já cadastrado");
+        }
+
+    // Verifica se email já está cadastrado
+        if (repositoryEmpresa.findByEmail(empresa.getEmail()).isPresent()) {
+            throw new RuntimeException("Email já cadastrado");
+        }
+
+        return repositoryEmpresa.save(empresa);
+    }
 }

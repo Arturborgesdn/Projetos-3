@@ -34,4 +34,19 @@ public class controllerLogin {
             "mensagem", "CNPJ ou senha inválidos"
         ));
     }
+    @PostMapping("/cadastro")
+    public ResponseEntity<?> cadastrar(@RequestBody modelEmpresa empresa) {
+        try {
+            modelEmpresa nova = serviceEdenred.cadastrar(empresa);
+            return ResponseEntity.ok(Map.of(
+                "mensagem", "Empresa cadastrada com sucesso",
+                "empresa", nova.getNome(),
+                "cnpj", nova.getCnpj()
+            ));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(400).body(Map.of(
+                "mensagem", e.getMessage()
+            ));
+        }
+    }
 }
