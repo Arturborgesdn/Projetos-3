@@ -1,11 +1,16 @@
 
 package com.edenredsustentavel.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.edenredsustentavel.demo.dto.SimulacaoRequestDTO;
 import com.edenredsustentavel.demo.dto.SimulacaoResponseDTO;
 import com.edenredsustentavel.demo.service.serviceEdenred;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/impacto")

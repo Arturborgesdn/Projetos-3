@@ -1,206 +1,259 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Impacto - Edenred</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" th:href="@{/styles.css}">
-</head>
-<body>
-
+    <link rel="stylesheet" href="/styles.css" th:href="@{/styles.css}" />
+  </head>
+  <body>
     <div class="top-bar">
-        <div class="top-bar-content">
-            <span class="country">BRASIL</span>
-            <div class="top-bar-links">
-                <i class="ph-fill ph-linkedin-logo"></i>
-                <i class="ph ph-magnifying-glass"></i>
-                <a href="#">IMPRENSA</a> | <a href="#">CONTATO</a>
-            </div>
+      <div class="top-bar-content">
+        <span class="country">BRASIL</span>
+        <div class="top-bar-links">
+          <i class="ph-fill ph-linkedin-logo"></i>
+          <i class="ph ph-magnifying-glass"></i>
+          <a href="#">IMPRENSA</a> | <a href="#">CONTATO</a>
         </div>
+      </div>
     </div>
 
     <nav class="navbar">
-        <div style="background-color: #f5f5f5" class="navbar-content">
-            <div class="logo-edenred">
-                <img class="red-circle" th:src="@{/images/Edenred_Logo_(depuis_2017).png}" alt="logo-edenred">
-            </div>
-            <div class="nav-links">
-                <a href="#">Por Pessoas</a>
-                <a href="#">Para Pessoas</a>
-                <a href="#" class="active">Sustentabilidade</a>
-                <a href="#">Inovação</a>
-                <a href="#">Notícias</a>
-                <a href="#">Carreiras</a>
-                <a href="#">Compliance e Segurança</a>
-            </div>
+      <div style="background-color: #f5f5f5" class="navbar-content">
+        <div class="logo-edenred">
+          <img
+            class="red-circle"
+            th:src="@{/images/Edenred_Logo_(depuis_2017).png}"
+            alt="logo-edenred"
+          />
         </div>
+        <div class="nav-links">
+          <a href="#">Por Pessoas</a>
+          <a href="#">Para Pessoas</a>
+          <a href="#" class="active">Sustentabilidade</a>
+          <a href="#">Inovação</a>
+          <a href="#">Notícias</a>
+          <a href="#">Carreiras</a>
+          <a href="#">Compliance e Segurança</a>
+          <a href="/cadastro" th:href="@{/cadastro}">Cadastro</a>
+        </div>
+      </div>
     </nav>
 
     <header class="hero-banner">
-        <div class="hero-content">
-            <h1>Calcule seu <strong>impacto</strong>,<br>mude o <strong>futuro.</strong></h1>
-            <p>Configure os dados da sua empresa para<br>mensurar sua pegada de carbono.</p>
-        </div>
+      <div class="hero-content">
+        <h1>
+          Calcule seu <strong>impacto</strong>,<br />mude o
+          <strong>futuro.</strong>
+        </h1>
+        <p>
+          Configure os dados da sua empresa para<br />mensurar sua pegada de
+          carbono.
+        </p>
+      </div>
     </header>
 
-    <div style="display: flex; flex-direction: column;" class="container main-layout">
-        
-        <div style="display: flex; flex-direction:column;" class="form-section">
-            <form id="calculadoraForm">
-                
-                <div style="display: flex; flex-direction: column;" class="form-blocks-wrapper">
-                    
-                    <div style="display: flex; flex-direction: column;" class="card">
-                        <h3>📦 Materiais</h3>
-                        
-                        <div class="form-group">
-                            <label>Quantidade de cartões ativos</label>
-                            <input type="number" name="qtd_cartoes" placeholder="Ex: 5000">
-                            <small>Levando em consideração que cada funcionário de sua equipe utiliza um cartão</small>
-                        </div>
+    <div
+      style="display: flex; flex-direction: column"
+      class="container main-layout"
+    >
+      <div style="display: flex; flex-direction: column" class="form-section">
+        <form id="calculadoraForm">
+          <div
+            style="display: flex; flex-direction: column"
+            class="form-blocks-wrapper"
+          >
+            <div style="display: flex; flex-direction: column" class="card">
+              <h3>📦 Materiais</h3>
 
-                        <div class="form-group">
-                            <label>Material do cartão</label>
-                            <div class="radio-group row-group">
-                                <label class="radio-card">
-                                    <input type="radio" name="material" value="pvc_virgem" checked>
-                                    <span>💳 PVC</span>
-                                </label>
-                                <label class="radio-card">
-                                    <input type="radio" name="material" value="pvc_reciclado">
-                                    <span>♻️ PVC Reciclado</span>
-                                </label>
-                            </div>
-                            <small>Sabia que a Edenred já utiliza 85% de PVC reciclado em sua produção?</small>
-                        </div>
+              <div class="form-group">
+                <label>Quantidade de cartões ativos</label>
+                <input
+                  type="number"
+                  name="qtd_cartoes"
+                  placeholder="Ex: 5000"
+                />
+                <small
+                  >Levando em consideração que cada funcionário de sua equipe
+                  utiliza um cartão</small
+                >
+              </div>
 
-                        <div class="form-group">
-                            <label>Embalagem e Kit de Boas-Vindas</label>
-                            <select name="tipo_embalagem">
-                                <option value="" disabled selected>Selecione a embalagem...</option>
-                                <option value="envelope_simples">Envelope Simples</option>
-                                <option value="kit_padrao">Kit Padrão (Carta + Berço plástico)</option>
-                                <option value="kit_premium">Kit Premium (Caixa + Manuais impressos)</option>
-                            </select>
-                            <small>Embalagens maiores aumentam a emissão de CO2 no transporte</small>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>🚚 Uso e Entrega</h3>
-                        <div class="form-group">
-                            <label>Frequência de uso de cada empregado</label>
-                            <select name="frequencia">
-                                <option value="" disabled selected>Selecione a frequência...</option>
-                                <option value="diario">Diário</option>
-                                <option value="semanal">Semanal</option>
-                                <option value="mensal">Mensal</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Taxa anual de reemissão (%)</label>
-                            <input type="number" name="taxa_reemissao" min="0" max="100" placeholder="Ex: 15">
-                            <small>Cartões reemitidos por perda, roubo ou dano físico</small>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Destino final dos cartões</label>
-                            <select name="destino">
-                                <option value="" disabled selected>Selecione o destino...</option>
-                                <option value="descarte_comum">Descarte Comum</option>
-                                <option value="reciclagem">Reciclagem Especializada</option>
-                                <option value="nao_sei">Não sei</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Multiplicidade de Benefícios 💳</label>
-                            <select name="multiplicidade_cartoes">
-                                <option value="" disabled selected>Selecione a multiplicidade...</option>
-                                <option value="1">1 cartão (Benefícios já unificados)</option>
-                                <option value="2">2 cartões (Ex: Alimentação + Refeição)</option>
-                                <option value="3">3 cartões (Ex: VR + VA + Mobilidade)</option>
-                                <option value="4">4 ou mais cartões (Fragmentado)</option>
-                            </select>
-                        </div>
-                    </div>
-
+              <div class="form-group">
+                <label>Material do cartão</label>
+                <div class="radio-group row-group">
+                  <label class="radio-card">
+                    <input
+                      type="radio"
+                      name="material"
+                      value="pvc_virgem"
+                      checked
+                    />
+                    <span>💳 PVC</span>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="material" value="pvc_reciclado" />
+                    <span>♻️ PVC Reciclado</span>
+                  </label>
                 </div>
+                <small
+                  >Sabia que a Edenred já utiliza 85% de PVC reciclado em sua
+                  produção?</small
+                >
+              </div>
 
-                <div class="btn-container">
-                    <button class="btn-primary" type="button" id="btnCalcular">
-                        CALCULAR MEU IMPACTO
-                    </button>  
-                </div>
-            </form>
-        </div>
-
-        <div class="results-section" id="secaoResultados" style="display: none;">
-            <div class="results-header">
-                <h2>Seu Resultado Corporativo</h2>
-                <p>O impacto anual da sua operação.</p>
+              <div class="form-group">
+                <label>Embalagem e Kit de Boas-Vindas</label>
+                <select name="tipo_embalagem">
+                  <option value="" disabled selected>
+                    Selecione a embalagem...
+                  </option>
+                  <option value="envelope_simples">Envelope Simples</option>
+                  <option value="kit_padrao">
+                    Kit Padrão (Carta + Berço plástico)
+                  </option>
+                  <option value="kit_premium">
+                    Kit Premium (Caixa + Manuais impressos)
+                  </option>
+                </select>
+                <small
+                  >Embalagens maiores aumentam a emissão de CO2 no
+                  transporte</small
+                >
+              </div>
             </div>
 
-            <div class="cards-grid">
-                
-                <div class="result-card bg-red">
-                    <div class="card-header">
-                        <i class="ph ph-cloud card-icon"></i>
-                        <h3>CO₂ Emitido</h3>
-                    </div>
-                    <div class="card-number-wrapper">
-                        <span class="card-number">0.00</span>
-                        <span class="card-unit">kg</span>
-                    </div>
-                    <p class="card-desc">Carbono emitido na produção e logística</p>
-                </div>
+            <div class="card">
+              <h3>🚚 Uso e Entrega</h3>
+              <div class="form-group">
+                <label>Frequência de uso de cada empregado</label>
+                <select name="frequencia">
+                  <option value="" disabled selected>
+                    Selecione a frequência...
+                  </option>
+                  <option value="diario">Diário</option>
+                  <option value="semanal">Semanal</option>
+                  <option value="mensal">Mensal</option>
+                </select>
+              </div>
 
-                <div class="result-card bg-blue">
-                    <div class="card-header">
-                        <i class="ph ph-drop card-icon"></i>
-                        <h3>Água Consumida</h3>
-                    </div>
-                    <div class="card-number-wrapper">
-                        <span class="card-number">0.00</span>
-                        <span class="card-unit">litros</span>
-                    </div>
-                    <p class="card-desc">Água utilizada no processo de fabricação</p>
-                </div>
+              <div class="form-group">
+                <label>Taxa anual de reemissão (%)</label>
+                <input
+                  type="number"
+                  name="taxa_reemissao"
+                  min="0"
+                  max="100"
+                  placeholder="Ex: 15"
+                />
+                <small
+                  >Cartões reemitidos por perda, roubo ou dano físico</small
+                >
+              </div>
 
-                <div class="result-card bg-yellow">
-                    <div class="card-header">
-                        <i class="ph ph-trash card-icon"></i>
-                        <h3>Plástico</h3>
-                    </div>
-                    <div class="card-number-wrapper">
-                        <span class="card-number">0.00</span>
-                        <span class="card-unit">kg</span>
-                    </div>
-                    <p class="card-desc">Plástico descartado ao fim da vida útil</p>
-                </div>
+              <div class="form-group">
+                <label>Destino final dos cartões</label>
+                <select name="destino">
+                  <option value="" disabled selected>
+                    Selecione o destino...
+                  </option>
+                  <option value="descarte_comum">Descarte Comum</option>
+                  <option value="reciclagem">Reciclagem Especializada</option>
+                  <option value="nao_sei">Não sei</option>
+                </select>
+              </div>
 
-                <div class="result-card bg-green">
-                    <div class="card-header">
-                        <i class="ph ph-lightning card-icon"></i>
-                        <h3>Energia</h3>
-                    </div>
-                    <div class="card-number-wrapper">
-                        <span class="card-number">0.00</span>
-                        <span class="card-unit">kWh</span>
-                    </div>
-                    <p class="card-desc">Consumo de energia para operações</p>
-                </div>
-
+              <div class="form-group">
+                <label>Multiplicidade de Benefícios 💳</label>
+                <select name="multiplicidade_cartoes">
+                  <option value="" disabled selected>
+                    Selecione a multiplicidade...
+                  </option>
+                  <option value="1">1 cartão (Benefícios já unificados)</option>
+                  <option value="2">
+                    2 cartões (Ex: Alimentação + Refeição)
+                  </option>
+                  <option value="3">
+                    3 cartões (Ex: VR + VA + Mobilidade)
+                  </option>
+                  <option value="4">4 ou mais cartões (Fragmentado)</option>
+                </select>
+              </div>
             </div>
+          </div>
+
+          <div class="btn-container">
+            <button class="btn-primary" type="button" id="btnCalcular">
+              CALCULAR MEU IMPACTO
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="results-section" id="secaoResultados" style="display: none">
+        <div class="results-header">
+          <h2>Seu Resultado Corporativo</h2>
+          <p>O impacto anual da sua operação.</p>
         </div>
 
+        <div class="cards-grid">
+          <div class="result-card bg-red">
+            <div class="card-header">
+              <i class="ph ph-cloud card-icon"></i>
+              <h3>CO₂ Emitido</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number">0.00</span>
+              <span class="card-unit">kg</span>
+            </div>
+            <p class="card-desc">Carbono emitido na produção e logística</p>
+          </div>
+
+          <div class="result-card bg-blue">
+            <div class="card-header">
+              <i class="ph ph-drop card-icon"></i>
+              <h3>Água Consumida</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number">0.00</span>
+              <span class="card-unit">litros</span>
+            </div>
+            <p class="card-desc">Água utilizada no processo de fabricação</p>
+          </div>
+
+          <div class="result-card bg-yellow">
+            <div class="card-header">
+              <i class="ph ph-trash card-icon"></i>
+              <h3>Plástico</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number">0.00</span>
+              <span class="card-unit">kg</span>
+            </div>
+            <p class="card-desc">Plástico descartado ao fim da vida útil</p>
+          </div>
+
+          <div class="result-card bg-green">
+            <div class="card-header">
+              <i class="ph ph-lightning card-icon"></i>
+              <h3>Energia</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number">0.00</span>
+              <span class="card-unit">kWh</span>
+            </div>
+            <p class="card-desc">Consumo de energia para operações</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script th:src="@{/scripts/main.js}"></script>
-    <script th:src="@{/scripts/calculo.js}"></script>
-
-</body>
+    <script src="/scripts/main.js" th:src="@{/scripts/main.js}"></script>
+    <script src="/scripts/calculo.js" th:src="@{/scripts/calculo.js}"></script>
+  </body>
 </html>
