@@ -35,6 +35,13 @@ public class modelSimulacao {
     private String destinoFinal;
     private Integer multiplicidadeCartoes; 
 
+    //Dados Tangíveis
+    private Double arvoresPlantadas;
+    private Double garrafasPet;
+    private Double piscinasOlimpicas;
+    private Double lampadasLedAcesas;
+    private Double camposFutebol;
+
 
     @PrePersist
     public void prePersist() {
@@ -102,5 +109,40 @@ public class modelSimulacao {
     }
     public void setMultiplicidadeCartoes(Integer multiplicidadeCartoes) { 
         this.multiplicidadeCartoes = multiplicidadeCartoes; 
+    }
+
+    public Double getArvoresPlantadas() { 
+        return arvoresPlantadas; 
+    }
+    public void setArvoresPlantadas(Double arvoresPlantadas) { 
+        this.arvoresPlantadas = arvoresPlantadas; 
+    }
+
+    public Double getGarrafasPet() { 
+        return garrafasPet; 
+    }
+    public void setGarrafasPet(Double garrafasPet) { 
+        this.garrafasPet = garrafasPet; 
+    }
+
+    public Double getPiscinasOlimpicas() { 
+        return piscinasOlimpicas; }
+    public void setPiscinasOlimpicas(Double piscinasOlimpicas) { 
+        this.piscinasOlimpicas = piscinasOlimpicas; 
+    }
+
+    public Double getLampadasLedAcesas() { 
+        return lampadasLedAcesas; 
+    }
+    public void setLampadasLedAcesas(Double lampadasLedAcesas) { 
+        this.lampadasLedAcesas = lampadasLedAcesas; 
+    }
+
+    public Double getCamposFutebol(){
+        return this.camposFutebol;
+    }
+
+    public void setCamposFutebol(Double camposFutebol){
+        this.camposFutebol=camposFutebol;
     }
 }
