@@ -33,13 +33,21 @@
           />
         </div>
         <div class="nav-links">
-          <a href="#">Por Pessoas</a>
-          <a href="#">Para Pessoas</a>
-          <a href="#" class="active">Sustentabilidade</a>
-          <a href="#">Inovação</a>
-          <a href="#">Notícias</a>
-          <a href="#">Carreiras</a>
-          <a href="#">Compliance e Segurança</a>
+          <a href="/por-pessoas" th:href="@{/por-pessoas}">Por Pessoas</a>
+          <a href="/para-pessoas" th:href="@{/para-pessoas}">Para Pessoas</a>
+          <a
+            href="/sustentabilidade"
+            th:href="@{/sustentabilidade}"
+            class="active"
+            >Sustentabilidade</a
+          >
+          <a href="/inovacao" th:href="@{/inovacao}">Inovação</a>
+          <a href="/noticias" th:href="@{/noticias}">Notícias</a>
+          <a href="/carreiras" th:href="@{/carreiras}">Carreiras</a>
+          <a href="/compliance" th:href="@{/compliance}"
+            >Compliance e Segurança</a
+          >
+          <a href="/login" th:href="@{/login}">Login</a>
           <a href="/cadastro" th:href="@{/cadastro}" class="active">Cadastro</a>
         </div>
       </div>
@@ -80,6 +88,8 @@
                   placeholder="00.000.000/0000-00"
                   maxlength="18"
                   autocomplete="off"
+                  inputmode="numeric"
+                  spellcheck="false"
                 />
               </div>
               <span class="form-hint"
@@ -125,6 +135,7 @@
                   name="senha"
                   placeholder="Crie uma senha segura"
                   autocomplete="new-password"
+                  spellcheck="false"
                 />
                 <button
                   class="toggle-password"
@@ -183,14 +194,12 @@
                 Você já pode começar a calcular seu impacto.
               </p>
             </div>
-            <button
-              class="btn-primary"
-              style="max-width: 260px"
-              onclick="window.location.href = '#'"
-            >
-              <i class="ph ph-arrow-right"></i>
-              IR PARA A CALCULADORA
-            </button>
+            <a href="/calculadora"
+              ><button class="btn-primary" style="max-width: 260px">
+                <i class="ph ph-arrow-right"></i>
+                IR PARA A CALCULADORA
+              </button>
+            </a>
           </div>
 
           <p class="login-prompt" id="loginPrompt">

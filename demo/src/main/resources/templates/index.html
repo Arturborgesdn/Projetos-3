@@ -33,13 +33,21 @@
           />
         </div>
         <div class="nav-links">
-          <a href="#">Por Pessoas</a>
-          <a href="#">Para Pessoas</a>
-          <a href="#" class="active">Sustentabilidade</a>
-          <a href="#">Inovação</a>
-          <a href="#">Notícias</a>
-          <a href="#">Carreiras</a>
-          <a href="#">Compliance e Segurança</a>
+          <a href="/por-pessoas" th:href="@{/por-pessoas}">Por Pessoas</a>
+          <a href="/para-pessoas" th:href="@{/para-pessoas}">Para Pessoas</a>
+          <a
+            href="/sustentabilidade"
+            th:href="@{/sustentabilidade}"
+            class="active"
+            >Sustentabilidade</a
+          >
+          <a href="/inovacao" th:href="@{/inovacao}">Inovação</a>
+          <a href="/noticias" th:href="@{/noticias}">Notícias</a>
+          <a href="/carreiras" th:href="@{/carreiras}">Carreiras</a>
+          <a href="/compliance" th:href="@{/compliance}"
+            >Compliance e Segurança</a
+          >
+          <a href="/login" th:href="@{/login}">Login</a>
           <a href="/cadastro" th:href="@{/cadastro}">Cadastro</a>
         </div>
       </div>
@@ -77,6 +85,9 @@
                   type="number"
                   name="qtd_cartoes"
                   placeholder="Ex: 5000"
+                  inputmode="numeric"
+                  step="1"
+                  min="0"
                 />
                 <small
                   >Levando em consideração que cada funcionário de sua equipe
@@ -150,6 +161,8 @@
                   min="0"
                   max="100"
                   placeholder="Ex: 15"
+                  inputmode="decimal"
+                  step="0.1"
                 />
                 <small
                   >Cartões reemitidos por perda, roubo ou dano físico</small
