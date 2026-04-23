@@ -55,6 +55,12 @@ public class serviceEdenred {
     double pesoPlastico = totalCartoes * 0.005;
     response.residuos = req.destino.equals("reciclagem") ? pesoPlastico * 0.1 : pesoPlastico;
 
+    //Cálculo dos dados tangíveis
+    response.entregasDelivery = response.carbono / 1.2;
+    response.transacoesDigitais = response.energia / 0.0004;
+    response.garrafasPet = response.residuos / 0.045;
+    response.banhosDeAgua = response.agua / 90.0;
+
     return response;
     }
         // Adicionar dentro da classe, antes do último }
