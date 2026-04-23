@@ -35,7 +35,7 @@
         <div class="nav-links">
           <a href="/por-pessoas" th:href="@{/por-pessoas}">Por Pessoas</a>
           <a href="/para-pessoas" th:href="@{/para-pessoas}">Para Pessoas</a>
-          <a
+          
             href="/sustentabilidade"
             th:href="@{/sustentabilidade}"
             class="active"
@@ -259,6 +259,93 @@
             <p class="card-desc">Consumo de energia para operações</p>
           </div>
         </div>
+
+        <!-- CARDS TANGÍVEIS -->
+        <div class="results-header" style="margin-top: 2.5rem;">
+          <h2>Isso equivale a…</h2>
+          <p>Traduza o impacto em situações do dia a dia.</p>
+        </div>
+
+        <div class="cards-grid tangivel-grid">
+          <div class="result-card tangivel-card tc-laranja">
+            <div class="tangivel-icon">🛵</div>
+            <div class="tangivel-numero"><span class="card-tangivel" id="val-delivery">0</span></div>
+            <h4 class="tangivel-label">Entregas de delivery</h4>
+            <p class="tangivel-desc">O CO₂ gerado equivale a essa quantidade de corridas de motoboy</p>
+          </div>
+
+          <div class="result-card tangivel-card tc-roxo">
+            <div class="tangivel-icon">📱</div>
+            <div class="tangivel-numero"><span class="card-tangivel" id="val-digital">0</span></div>
+            <h4 class="tangivel-label">Transações digitais</h4>
+            <p class="tangivel-desc">A energia consumida poderia processar essa quantidade de pagamentos digitais</p>
+          </div>
+
+          <div class="result-card tangivel-card tc-verde">
+            <div class="tangivel-icon">🧴</div>
+            <div class="tangivel-numero"><span class="card-tangivel" id="val-pet">0</span></div>
+            <h4 class="tangivel-label">Garrafas PET</h4>
+            <p class="tangivel-desc">O plástico descartado equivale a essa quantidade de garrafas PET de 500ml</p>
+          </div>
+
+          <div class="result-card tangivel-card tc-azul">
+            <div class="tangivel-icon">🚿</div>
+            <div class="tangivel-numero"><span class="card-tangivel" id="val-banho">0</span></div>
+            <h4 class="tangivel-label">Banhos de 8 min</h4>
+            <p class="tangivel-desc">A água utilizada na fabricação equivale a essa quantidade de banhos</p>
+          </div>
+        </div>
+
+        <style>
+          .tangivel-grid {
+            margin-top: 1rem;
+          }
+          .tangivel-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            color: #fff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+          }
+          .tangivel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+          }
+          .tc-laranja { background: linear-gradient(135deg, #f97316, #ea580c); }
+          .tc-roxo    { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+          .tc-verde   { background: linear-gradient(135deg, #22c55e, #15803d); }
+          .tc-azul    { background: linear-gradient(135deg, #38bdf8, #0284c7); }
+
+          .tangivel-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.75rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+          }
+          .tangivel-numero {
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+          }
+          .tangivel-label {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0.4rem 0 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+          .tangivel-desc {
+            font-size: 0.82rem;
+            opacity: 0.88;
+            line-height: 1.5;
+            margin: 0;
+          }
+        </style>
+
       </div>
     </div>
 

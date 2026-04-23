@@ -40,6 +40,12 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
         // Card 3: Consumo de Energia (kWh)
         cards[3].textContent = resultado.energia.toFixed(2);
 
+        // Cards Tangíveis
+        document.getElementById('val-delivery').textContent = Math.round(resultado.entregasDelivery).toLocaleString('pt-BR');
+        document.getElementById('val-digital').textContent  = Math.round(resultado.transacoesDigitais).toLocaleString('pt-BR');
+        document.getElementById('val-pet').textContent      = Math.round(resultado.garrafasPet).toLocaleString('pt-BR');
+        document.getElementById('val-banho').textContent    = Math.round(resultado.banhosDeAgua).toLocaleString('pt-BR');
+
         // 4. Rola a tela suavemente até os resultados
         secaoResultados.scrollIntoView({ behavior: 'smooth' });
 
