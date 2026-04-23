@@ -27,14 +27,13 @@ public class modelEmpresa {
     private LocalDateTime dataCadastro;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-    private List<modelSimulacao> simulacoes;
+    private List<modelDadosSimulacao> simulacoes;  // ✅ corrigido
 
     @PrePersist
     public void prePersist() {
         this.dataCadastro = LocalDateTime.now();
     }
 
-    // Getters e Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -53,6 +52,6 @@ public class modelEmpresa {
     public LocalDateTime getDataCadastro() { return dataCadastro; }
     public void setDataCadastro(LocalDateTime dataCadastro) { this.dataCadastro = dataCadastro; }
 
-    public List<modelSimulacao> getSimulacoes() { return simulacoes; }
-    public void setSimulacoes(List<modelSimulacao> simulacoes) { this.simulacoes = simulacoes; }
+    public List<modelDadosSimulacao> getSimulacoes() { return simulacoes; }  // ✅ corrigido
+    public void setSimulacoes(List<modelDadosSimulacao> simulacoes) { this.simulacoes = simulacoes; }  // ✅ corrigido
 }

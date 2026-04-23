@@ -12,10 +12,9 @@ public class modelDadosSimulacao {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "empresa_id", nullable = false)
+    @JoinColumn(name = "empresa_id")  // ✅ removido nullable = false
     private modelEmpresa empresa;
 
-    // Entradas
     private Integer qtdCartoes;
     private String material;
     private String tipoEmbalagem;
@@ -24,7 +23,6 @@ public class modelDadosSimulacao {
     private String destino;
     private Integer multiplicidadeCartoes;
 
-    // Resultados ambientais
     private Double emissaoCo2Kg;
     private Double consumoAguaLitros;
     private Double residuosPlasticosKg;
@@ -40,7 +38,6 @@ public class modelDadosSimulacao {
         this.dataCriacao = LocalDateTime.now();
     }
 
-    // Getters e Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
