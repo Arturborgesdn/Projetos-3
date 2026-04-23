@@ -35,12 +35,11 @@ public class modelSimulacao {
     private String destinoFinal;
     private Integer multiplicidadeCartoes; 
 
-    //Dados Tangíveis
-    private Double arvoresPlantadas;
+    // Dados Tangíveis 
+    private Double entregasDelivery;
+    private Double transacoesDigitais;
     private Double garrafasPet;
-    private Double piscinasOlimpicas;
-    private Double lampadasLedAcesas;
-    private Double camposFutebol;
+    private Double banhosDeAgua;
 
 
     @PrePersist
@@ -111,11 +110,18 @@ public class modelSimulacao {
         this.multiplicidadeCartoes = multiplicidadeCartoes; 
     }
 
-    public Double getArvoresPlantadas() { 
-        return arvoresPlantadas; 
+    public Double getEntregasDelivery() { 
+        return entregasDelivery; 
     }
-    public void setArvoresPlantadas(Double arvoresPlantadas) { 
-        this.arvoresPlantadas = arvoresPlantadas; 
+    public void setEntregasDelivery(Double entregasDelivery) { 
+        this.entregasDelivery = entregasDelivery; 
+    }
+
+    public Double getTransacoesDigitais() { 
+        return transacoesDigitais; 
+    }
+    public void setTransacoesDigitais(Double transacoesDigitais) { 
+        this.transacoesDigitais = transacoesDigitais; 
     }
 
     public Double getGarrafasPet() { 
@@ -125,24 +131,10 @@ public class modelSimulacao {
         this.garrafasPet = garrafasPet; 
     }
 
-    public Double getPiscinasOlimpicas() { 
-        return piscinasOlimpicas; }
-    public void setPiscinasOlimpicas(Double piscinasOlimpicas) { 
-        this.piscinasOlimpicas = piscinasOlimpicas; 
+    public Double getBanhosDeAgua() { 
+        return banhosDeAgua; 
     }
-
-    public Double getLampadasLedAcesas() { 
-        return lampadasLedAcesas; 
-    }
-    public void setLampadasLedAcesas(Double lampadasLedAcesas) { 
-        this.lampadasLedAcesas = lampadasLedAcesas; 
-    }
-
-    public Double getCamposFutebol(){
-        return this.camposFutebol;
-    }
-
-    public void setCamposFutebol(Double camposFutebol){
-        this.camposFutebol=camposFutebol;
+    public void setBanhosDeAgua(Double banhosDeAgua) { 
+        this.banhosDeAgua = banhosDeAgua; 
     }
 }

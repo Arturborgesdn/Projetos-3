@@ -6,11 +6,9 @@ public class SimulacaoResponseDTO {
     public double energia;
     public double residuos;
 
-    //Dados Tangíveis
-    public double arvoresPlantadas;  
-    public double garrafasPet;       
-    public double piscinasOlimpicas; 
-    public double lampadasLedAcesas;
-    public double camposFutebol; 
+    // Dados Tangíveis 
+    public double entregasDelivery;   // Para CO2
+    public double transacoesDigitais; // Para Energia
+    public double garrafasPet;        // Para Resíduos 
+    public double banhosDeAgua;       // Para Água
 }
-
