@@ -4,589 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edenred – Calcule seu Impacto</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <style>
-
-      /* ============================================================
-         TOKENS – herdados do styles.css do projeto
-         ============================================================ */
-      :root {
-        --bg-page:          #f8fbfe;
-        --text-main:        #1f2937;
-        --text-muted:       #627083;
-        --primary-blue:     #a5c8d8;
-        --edenred-red:      #e1000f;
-        --white:            #ffffff;
-        --border-light:     #e6ebf1;
-
-        --card-red-bg:      #fff1f2;
-        --card-red-text:    #c1000b;
-        --card-blue-bg:     #eef7ff;
-        --card-blue-text:   #0060c2;
-        --card-yellow-bg:   #fffce8;
-        --card-yellow-text: #b38f00;
-        --card-green-bg:    #f0fdf4;
-        --card-green-text:  #009933;
-
-        /* landing-only */
-        --dark:    #0f1410;
-        --card-bg: #111d13;
-        --green:   #4ade80;
-        --radius:  20px;
-      }
-
-      *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        letter-spacing: -0.2px;
-      }
-
-      html { scroll-behavior: smooth; }
-
-      body {
-        background-color: var(--bg-page);
-        color: var(--text-main);
-        overflow-x: hidden;
-      }
-
-      /* ============================================================
-         TOP BAR – styles.css
-         ============================================================ */
-      .top-bar {
-        background-color: var(--primary-blue);
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--text-main);
-        text-transform: uppercase;
-      }
-      .top-bar-content {
-        width: 100%;
-        max-width: 1200px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-      }
-      .top-bar-links {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-      .top-bar-links a {
-        color: var(--text-main);
-        text-decoration: none;
-        transition: opacity .2s;
-      }
-      .top-bar-links a:hover { opacity: .65; }
-      .top-bar-links i {
-        font-size: 16px;
-        cursor: pointer;
-        transition: opacity .2s;
-      }
-      .top-bar-links i:hover { opacity: .65; }
-
-      /* ============================================================
-         NAVBAR – styles.css
-         ============================================================ */
-      .navbar {
-        background-color: #f5f5f5;
-        box-shadow: 0 4px 15px rgba(0,0,0,.03);
-        display: flex;
-        justify-content: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        transition: box-shadow .3s;
-      }
-      .navbar-content {
-        width: 100%;
-        max-width: 1200px;
-        height: 85px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
-        position: relative;
-      }
-      .logo-edenred {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        transition: transform .3s ease;
-      }
-      .logo-edenred:hover { transform: scale(1.05); }
-      .red-circle {
-        width: 80px;
-        height: auto;
-        object-fit: contain;
-        filter: drop-shadow(0 2px 8px rgba(0,0,0,.08));
-        transition: filter .3s ease;
-      }
-      .logo-edenred:hover .red-circle {
-        filter: drop-shadow(0 4px 12px rgba(225,0,15,.15));
-      }
-      .nav-links {
-        display: flex;
-        gap: 26px;
-        align-items: center;
-      }
-      .nav-links a {
-        text-decoration: none;
-        color: var(--text-main);
-        font-size: 14px;
-        font-weight: 600;
-        transition: all .2s ease;
-        opacity: .8;
-      }
-      .nav-links a:hover,
-      .nav-links a.active {
-        color: var(--edenred-red);
-        opacity: 1;
-      }
-      .nav-links a.active {
-        border-bottom: 2px solid var(--edenred-red);
-        padding-bottom: 2px;
-      }
-      .nav-btn {
-        background-color: var(--edenred-red) !important;
-        color: var(--white) !important;
-        padding: 8px 20px !important;
-        border-radius: 30px;
-        font-weight: 700 !important;
-        opacity: 1 !important;
-        transition: background-color .2s, transform .2s !important;
-        border: none;
-      }
-      .nav-btn:hover {
-        background-color: #b8000c !important;
-        transform: translateY(-1px);
-      }
-      .nav-btn-outline {
-        background-color: transparent !important;
-        border: 2px solid var(--edenred-red) !important;
-        color: var(--edenred-red) !important;
-      }
-      .nav-btn-outline:hover {
-        background-color: var(--card-red-bg) !important;
-      }
-      .hamburger {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 26px;
-        cursor: pointer;
-        color: var(--text-main);
-      }
-
-      /* ============================================================
-         HERO
-         ============================================================ */
-      .hero {
-        background-color: var(--white);
-        min-height: calc(100vh - 125px);
-        display: flex;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-        padding: 80px 0 70px;
-      }
-      .hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(ellipse 55% 55% at 72% 50%, rgba(165,200,216,.2) 0%, transparent 70%),
-          radial-gradient(ellipse 35% 50% at 8% 85%,  rgba(225,0,15,.06) 0%, transparent 60%);
-        pointer-events: none;
-      }
-      .hero-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 56px;
-        width: 100%;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* texto */
-      .hero-text { flex: 1; max-width: 540px; }
-
-      .hero-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        background-color: var(--card-red-bg);
-        color: var(--card-red-text);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-        padding: 6px 14px;
-        border-radius: 30px;
-        margin-bottom: 22px;
-        opacity: 0;
-        transform: translateY(16px);
-        animation: fadeUp .55s .05s forwards;
-      }
-      .hero-title {
-        font-size: clamp(2rem, 4vw, 3.1rem);
-        font-weight: 800;
-        line-height: 1.1;
-        color: var(--text-main);
-        margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(24px);
-        animation: fadeUp .6s .18s forwards;
-      }
-      .hero-title .accent { color: var(--edenred-red); }
-      .hero-sub {
-        font-size: 16px;
-        color: var(--text-muted);
-        line-height: 1.7;
-        max-width: 460px;
-        margin-bottom: 38px;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp .6s .3s forwards;
-      }
-
-      /* CTA – baseado no .btn-primary do styles.css */
-      .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background-color: var(--edenred-red);
-        color: var(--white);
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: .06em;
-        text-transform: uppercase;
-        padding: 18px 40px;
-        border-radius: 30px;
-        text-decoration: none;
-        box-shadow: 0 6px 20px rgba(225,0,15,.35);
-        transition: background-color .25s, transform .2s, box-shadow .25s;
-        opacity: 0;
-        animation: fadeUp .6s .42s forwards;
-      }
-      .cta-btn:hover {
-        background-color: #b8000c;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 28px rgba(225,0,15,.45);
-      }
-      .cta-btn i { font-size: 18px; transition: transform .2s; }
-      .cta-btn:hover i { transform: translateX(4px); }
-
-      /* device mockup */
-      .hero-device {
-        flex: 1;
-        max-width: 500px;
-        position: relative;
-        opacity: 0;
-        transform: translateY(36px) scale(.97);
-        animation: fadeUp .75s .28s forwards;
-      }
-      .blob {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(72px);
-        pointer-events: none;
-        z-index: 0;
-      }
-      .blob-tl {
-        width: 250px; height: 250px;
-        background: rgba(225,0,15,.11);
-        top: -55px; left: -55px;
-      }
-      .blob-br {
-        width: 210px; height: 210px;
-        background: rgba(165,200,216,.28);
-        bottom: -35px; right: -35px;
-      }
-
-      /* frame – inspirado no .card do styles.css */
-      .device-frame {
-        position: relative;
-        z-index: 1;
-        background: var(--dark);
-        border-radius: 24px;
-        padding: 7px;
-        box-shadow:
-          0 40px 90px rgba(0,0,0,.2),
-          0 0 0 1px rgba(255,255,255,.06) inset;
-      }
-      .device-screen {
-        background: var(--card-bg);
-        border-radius: 18px;
-        padding: 24px 22px 22px;
-        overflow: hidden;
-      }
-      .dash-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-      }
-      .dash-title {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,.42);
-      }
-      .dash-dots { display: flex; gap: 5px; }
-      .dash-dots span {
-        width: 8px; height: 8px; border-radius: 50%;
-        background: rgba(255,255,255,.12);
-      }
-      .dash-dots span:last-child { background: var(--green); }
-
-      /* métricas – inspiradas nos .result-card do styles.css */
-      .dash-metrics {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-      .metric {
-        flex: 1;
-        background: rgba(255,255,255,.04);
-        border: 1px solid rgba(255,255,255,.07);
-        border-radius: 14px;
-        padding: 14px 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 7px;
-      }
-      .metric-center { align-items: center; }
-      .metric-label {
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: .1em;
-        color: rgba(255,255,255,.38);
-        text-transform: uppercase;
-      }
-      .spark-line { width: 100%; height: 30px; }
-      .metric-badge {
-        font-size: 11px;
-        font-weight: 700;
-        padding: 3px 9px;
-        border-radius: 30px;
-      }
-      .metric-badge.neg {
-        background: rgba(225,0,15,.2);
-        color: #ff7a7a;
-      }
-      .metric-big {
-        font-size: 28px;
-        font-weight: 800;
-        color: var(--white);
-        line-height: 1;
-        letter-spacing: -1px;
-      }
-      .dots-row { display: flex; gap: 4px; }
-      .dot {
-        width: 8px; height: 8px; border-radius: 50%;
-        background: rgba(255,255,255,.1);
-      }
-      .dot.d1 { background: var(--edenred-red); }
-      .dot.d2 { background: #f97316; }
-      .dot.d3 { background: var(--green); }
-      .metric-sub {
-        font-size: 9px;
-        color: rgba(255,255,255,.26);
-        text-align: center;
-        line-height: 1.4;
-      }
-      .donut-wrap { width: 66px; height: 66px; }
-      .donut { width: 100%; height: 100%; }
-
-      /* dash CTA – mesma base do .btn-primary do styles.css */
-      .dash-cta {
-        display: block;
-        background-color: var(--edenred-red);
-        color: var(--white);
-        text-align: center;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-        padding: 14px;
-        border-radius: 30px;
-        text-decoration: none;
-        box-shadow: 0 4px 16px rgba(225,0,15,.35);
-        transition: opacity .2s, transform .2s;
-      }
-      .dash-cta:hover { opacity: .88; transform: translateY(-1px); }
-
-      /* ============================================================
-         WHY SECTION
-         ============================================================ */
-      .why-section {
-        background-color: var(--white);
-        padding: 100px 20px 110px;
-        text-align: center;
-        border-top: 1px solid var(--border-light);
-      }
-      .why-title {
-        font-size: clamp(1.7rem, 3vw, 2.5rem);
-        font-weight: 800;
-        color: var(--text-main);
-        margin-bottom: 10px;
-      }
-      .why-sub {
-        font-size: 16px;
-        color: var(--text-muted);
-        margin-bottom: 64px;
-        line-height: 1.6;
-      }
-      .features-grid {
-        max-width: 1140px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
-      }
-
-      /* .feature-card – usa a base do .card do styles.css */
-      .feature-card {
-        background: var(--white);
-        border-radius: var(--radius);
-        box-shadow: 0 15px 45px rgba(0,0,0,.05);
-        border: 1px solid rgba(226,232,240,.7);
-        overflow: hidden;
-        text-align: left;
-        transition: transform .3s ease, box-shadow .3s ease;
-        opacity: 0;
-        transform: translateY(28px);
-      }
-      .feature-card.visible {
-        animation: fadeUp .6s var(--delay) forwards;
-      }
-      .feature-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 20px 50px rgba(0,0,0,.09);
-      }
-      .feature-img {
-        height: 170px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
-      .fi-1 { background: linear-gradient(135deg, #1a2a47 0%, #0f1e35 100%); }
-      .fi-2 { background: linear-gradient(135deg, #0b2e1a 0%, #174a28 100%); }
-      .fi-3 { background: linear-gradient(135deg, #2e0b0b 0%, #4a1515 100%); }
-      .feature-icon {
-        font-size: 56px;
-        transition: transform .3s, color .3s;
-      }
-      .feature-card:hover .feature-icon { transform: scale(1.12); }
-      .fi-1 .feature-icon { color: rgba(165,200,216,.85); }
-      .fi-2 .feature-icon { color: rgba(74,222,128,.8); }
-      .fi-3 .feature-icon { color: rgba(255,120,120,.82); }
-      .feature-card:hover .fi-1 .feature-icon { color: var(--primary-blue); }
-      .feature-card:hover .fi-2 .feature-icon { color: var(--green); }
-      .feature-card:hover .fi-3 .feature-icon { color: #ff8080; }
-
-      .feature-card h3 {
-        font-size: 18px;
-        font-weight: 800;
-        color: var(--text-main);
-        padding: 22px 24px 8px;
-      }
-      .feature-card p {
-        font-size: 14px;
-        color: var(--text-muted);
-        line-height: 1.65;
-        padding: 0 24px 26px;
-      }
-
-      /* ============================================================
-         FOOTER
-         ============================================================ */
-      .footer-strip {
-        background-color: var(--text-main);
-        text-align: center;
-        padding: 22px;
-        font-size: 12px;
-        font-weight: 500;
-        color: rgba(255,255,255,.3);
-      }
-
-      /* ============================================================
-         ANIMATIONS
-         ============================================================ */
-      @keyframes fadeUp {
-        to { opacity: 1; transform: none; }
-      }
-
-      /* ============================================================
-         RESPONSIVIDADE – mesma lógica do styles.css
-         ============================================================ */
-      @media (max-width: 1024px) {
-        .features-grid { grid-template-columns: repeat(2, 1fr); }
-      }
-
-      @media (max-width: 900px) {
-        .hero-inner { flex-direction: column; text-align: center; }
-        .hero-text { max-width: 100%; }
-        .hero-sub { margin: 0 auto 38px; }
-        .cta-btn { margin: 0 auto; }
-        .hero-device { max-width: 420px; width: 100%; }
-      }
-
-      @media (max-width: 768px) {
-        .top-bar { height: 35px; font-size: 11px; }
-        .top-bar-links { gap: 12px; }
-        .top-bar-links a { display: none; }
-
-        .navbar-content { height: 70px; padding: 0 15px; }
-        .red-circle { width: 60px; }
-
-        .nav-links {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 70px; left: 0; right: 0;
-          background: #f5f5f5;
-          padding: 20px;
-          gap: 16px;
-          border-bottom: 1px solid var(--border-light);
-          box-shadow: 0 8px 24px rgba(0,0,0,.07);
-          z-index: 99;
-        }
-        .nav-links.open { display: flex; }
-        .hamburger { display: block; }
-
-        .features-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
-        .hero { padding: 56px 0 50px; }
-      }
-
-      @media (max-width: 480px) {
-        .top-bar { height: 32px; font-size: 10px; }
-        .top-bar-content { padding: 0 10px; }
-        .navbar-content { height: 60px; padding: 0 10px; }
-        .red-circle { width: 50px; }
-        .hero-title { font-size: 1.8rem; }
-        .hero-sub { font-size: 14px; }
-        .why-title { font-size: 1.5rem; }
-        .cta-btn { padding: 15px 28px; font-size: 13px; }
-      }
-
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
 
@@ -597,9 +19,10 @@
         <div class="top-bar-links">
           <i class="ph-fill ph-linkedin-logo"></i>
           <i class="ph ph-magnifying-glass"></i>
-          <a href="#">IMPRENSA</a>
-          <span>|</span>
+          <span class="divider">|</span>
           <a href="#">CONTATO</a>
+          <span class="divider">|</span>
+          <a href="#">IMPRENSA</a>
         </div>
       </div>
     </div>
@@ -608,13 +31,13 @@
     <nav class="navbar">
       <div class="navbar-content">
         <div class="logo-edenred">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="red-circle">
+          <svg width="72" height="72" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="40" cy="40" r="40" fill="#E1000F"/>
-            <text x="40" y="44" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="16" fill="#fff">eden</text>
-            <text x="40" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-weight="300" font-size="11" fill="rgba(255,255,255,.75)">red</text>
+            <text x="40" y="36" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="15" fill="#fff">Eden</text>
+            <text x="40" y="54" text-anchor="middle" font-family="Inter,sans-serif" font-weight="300" font-size="12" fill="rgba(255,255,255,.8)">red</text>
           </svg>
         </div>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
           <a href="#">Por Pessoas</a>
           <a href="#">Para Pessoas</a>
           <a href="#" class="active">Sustentabilidade</a>
@@ -622,8 +45,8 @@
           <a href="#">Notícias</a>
           <a href="#">Carreiras</a>
           <a href="#">Compliance e Segurança</a>
-          <a href="#" class="nav-btn">Login</a>
-          <a href="#" class="nav-btn nav-btn-outline">Cadastro</a>
+          <a href="/auth/login" class="nav-btn-login">Login</a>
+          <a href="/auth/cadastro" class="nav-btn-cadastro">Cadastro</a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Menu">
           <i class="ph ph-list"></i>
@@ -631,128 +54,274 @@
       </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- ═══════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════ -->
     <section class="hero">
-      <div class="hero-inner">
 
-        <div class="hero-text">
-          <span class="hero-eyebrow">
-            <i class="ph ph-leaf"></i> Sustentabilidade Corporativa
-          </span>
-          <h1 class="hero-title">
-            Calcule o seu impacto.<br/>
-            <span class="accent">Compartilhe</span> sua liderança
-          </h1>
-          <p class="hero-sub">
-            Utilize nossa calculadora inteligente para visualizar, em tempo real,
-            o resultado das suas escolhas e descobrir oportunidades reais de melhoria.
-          </p>
-          <a href="#" class="cta-btn">
-            Calcule agora <i class="ph ph-arrow-right"></i>
-          </a>
-        </div>
+      <!-- Texto centralizado -->
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Calcule o seu impacto.<br/>
+          Compartilhe sua liderança
+        </h1>
+        <p class="hero-sub">
+          Utilize nossa calculadora inteligente para visualizar, em tempo real, o resultado das suas
+          escolhas e descobrir oportunidades reais de melhoria.
+        </p>
+      </div>
 
-        <!-- Dashboard mockup -->
+      <!-- Faixa azul com tablet centralizado -->
+      <div class="hero-band">
+        <div class="band-side band-left"></div>
+
+        <!-- Tablet mockup -->
         <div class="hero-device" id="heroDevice">
-          <div class="blob blob-tl"></div>
-          <div class="blob blob-br"></div>
-          <div class="device-frame">
-            <div class="device-screen">
+          <div class="tablet-frame">
+            <div class="tablet-camera"></div>
+            <div class="tablet-screen">
 
-              <div class="dash-header">
-                <span class="dash-title">Dashboard Economia</span>
-                <div class="dash-dots"><span></span><span></span><span></span></div>
+              <!-- Status bar -->
+              <div class="tablet-status">
+                <i class="ph ph-wifi-high"></i>
+                <span>100%</span>
+                <i class="ph ph-battery-full"></i>
               </div>
+
+              <div class="dash-title-row">DASHBOARD ECONOMIA</div>
 
               <div class="dash-metrics">
-                <div class="metric">
-                  <span class="metric-label">Emissões</span>
-                  <svg class="spark-line" viewBox="0 0 80 30" preserveAspectRatio="none">
-                    <polyline points="0,26 12,21 28,23 44,11 60,15 80,4"
-                      fill="none" stroke="#e1000f" stroke-width="2.2" stroke-linejoin="round"/>
+                <!-- Emissões -->
+                <div class="dash-card">
+                  <span class="dash-label">Emissões</span>
+                  <svg class="spark-line" viewBox="0 0 110 44" preserveAspectRatio="none">
+                    <polyline
+                      points="0,38 18,30 38,34 62,16 85,22 110,6"
+                      fill="none"
+                      stroke="rgba(200,220,240,0.85)"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"/>
                   </svg>
-                  <span class="metric-badge neg">-52,8%</span>
+                  <span class="dash-badge">-52,8%</span>
                 </div>
 
-                <div class="metric metric-center">
-                  <span class="metric-label">Impacto total</span>
-                  <span class="metric-big" id="bigNum">12.4k</span>
-                  <div class="dots-row">
-                    <span class="dot d1"></span>
-                    <span class="dot d2"></span>
-                    <span class="dot d3"></span>
-                    <span class="dot"></span>
+                <!-- Impacto total -->
+                <div class="dash-card dash-card-center">
+                  <span class="dash-label">Impacto total</span>
+                  <span class="dash-big" id="bigNum">0.0k</span>
+                  <span class="dash-sub">toneladas compensadas</span>
+                  <div class="dash-pills">
+                    <span class="pill pill-on"></span>
+                    <span class="pill pill-on"></span>
+                    <span class="pill pill-on"></span>
+                    <span class="pill pill-off"></span>
+                    <span class="pill pill-off"></span>
+                    <span class="pill pill-off"></span>
+                    <span class="pill pill-off"></span>
                   </div>
-                  <span class="metric-sub">toneladas compensadas</span>
                 </div>
 
-                <div class="metric metric-center">
-                  <span class="metric-label">CO₂ Reduzido</span>
-                  <div class="donut-wrap">
-                    <svg class="donut" viewBox="0 0 80 80">
-                      <circle cx="40" cy="40" r="30" fill="none" stroke="#1d2b1f" stroke-width="11"/>
-                      <circle id="donutArc" cx="40" cy="40" r="30" fill="none" stroke="#4ade80"
-                        stroke-width="11" stroke-dasharray="0 188.5"
-                        stroke-linecap="round" transform="rotate(-90 40 40)"/>
-                      <text id="donutText" x="40" y="46" text-anchor="middle"
-                        fill="#fff" font-size="14" font-weight="800">0%</text>
+                <!-- CO₂ Reduzido -->
+                <div class="dash-card dash-card-center">
+                  <span class="dash-label">CO₂ Reduzido</span>
+                  <div class="gauge-wrap">
+                    <svg class="gauge-svg" viewBox="0 0 110 72">
+                      <path d="M8,64 A47,47 0 0,1 102,64"
+                        fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="9" stroke-linecap="round"/>
+                      <path id="gaugeFill" d="M8,64 A47,47 0 0,1 102,64"
+                        fill="none" stroke="rgba(190,215,235,0.9)" stroke-width="9" stroke-linecap="round"
+                        stroke-dasharray="0 148"/>
+                      <circle id="gaugeDot" cx="8" cy="64" r="5" fill="white" opacity="0.9"/>
+                      <text id="gaugeText" x="55" y="58"
+                        text-anchor="middle" fill="white"
+                        font-size="20" font-weight="800"
+                        font-family="Inter,sans-serif">0%</text>
                     </svg>
                   </div>
-                  <span class="metric-sub">Eficiência</span>
+                  <span class="dash-sub">Eficiência</span>
                 </div>
               </div>
 
-              <a href="#" class="dash-cta">Calcule agora</a>
+              <!-- CTA -->
+              <a href="#" class="dash-cta-btn">CALCULE AGORA</a>
+
+              <!-- Home bar -->
+              <div class="tablet-home-bar"></div>
             </div>
           </div>
         </div>
 
+        <div class="band-side band-right"></div>
       </div>
+
     </section>
 
-    <!-- WHY SECTION -->
-    <section class="why-section">
+    <!-- Por que digitalizar -->
+    <div class="why-divider">
       <h2 class="why-title">Por que digitalizar?</h2>
       <p class="why-sub">A inovação que sua empresa e o planeta precisam</p>
+    </div>
 
-      <div class="features-grid">
+    <!-- ═══════════════════════════════════════
+         SEÇÃO: DO CÁLCULO À CERTIFICAÇÃO
+    ═══════════════════════════════════════ -->
+    <section class="cert-section">
+      <!-- Imagem hero full-width -->
+      <div class="cert-hero-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Dashboard sustentável" />
+        <div class="cert-hero-overlay"></div>
+      </div>
 
-        <div class="feature-card" style="--delay: 0s">
-          <div class="feature-img fi-1">
-            <i class="ph ph-chart-line-up feature-icon"></i>
+      <div class="cert-content">
+        <h2 class="cert-heading">Do cálculo à certificação em segundos</h2>
+        <p class="cert-body">
+          Transforme os dados da sua operação em um diferencial competitivo instantâneo. Ao inserir as
+          informações da sua frota, o sistema processa métricas complexas e entrega painéis visuais claros sobre a
+          sua redução de emissões de CO<sub>2</sub> e economia de recursos. Muito mais que uma calculadora, é o caminho
+          mais rápido para comprovar, certificar e compartilhar o seu compromisso ambiental com o mercado.
+        </p>
+
+        <!-- 3 cards de features -->
+        <div class="features-grid">
+          <div class="feature-card" style="--d:0s">
+            <div class="feature-card-top">
+              <h3>Visão Detalhada</h3>
+              <p>Meça suas emissões de CO<sub>2</sub> e entenda o tamanho real do seu impacto ambiental com dados precisos.</p>
+            </div>
+            <div class="feature-card-img">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Visão Detalhada" />
+            </div>
           </div>
-          <h3>Visão Detalhada</h3>
-          <p>Meça com precisão o tamanho real do seu impacto ambiental com dados precisos e atualizados em tempo real.</p>
-        </div>
 
-        <div class="feature-card" style="--delay: 0.12s">
-          <div class="feature-img fi-2">
-            <i class="ph ph-leaf feature-icon"></i>
+          <div class="feature-card" style="--d:.1s">
+            <div class="feature-card-top">
+              <h3>Economia Verde</h3>
+              <p>Identifique oportunidades para reduzir o desperdício, otimizar recursos e diminuir custos operacionais.</p>
+            </div>
+            <div class="feature-card-img">
+              <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Economia Verde" />
+            </div>
           </div>
-          <h3>Economia Verde</h3>
-          <p>Identifique oportunidades para reduzir o desperdício, otimizar recursos e diminuir custos operacionais.</p>
-        </div>
 
-        <div class="feature-card" style="--delay: 0.24s">
-          <div class="feature-img fi-3">
-            <i class="ph ph-trophy feature-icon"></i>
+          <div class="feature-card" style="--d:.2s">
+            <div class="feature-card-top">
+              <h3>Liderança Sustentável</h3>
+              <p>Gere relatórios claros, comprove seus resultados e inspire o mercado com o seu compromisso.</p>
+            </div>
+            <div class="feature-card-img">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Liderança Sustentável" />
+            </div>
           </div>
-          <h3>Liderança Sustentável</h3>
-          <p>Sem relatórios densos: compartilhe seus resultados e inspire o mercado com o seu compromisso ambiental.</p>
         </div>
-
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer-strip">
-      <p>© 2025 Edenred Brasil – Todos os direitos reservados</p>
+    <!-- ═══════════════════════════════════════
+         SEÇÃO: SELO DE AUTORIDADE
+    ═══════════════════════════════════════ -->
+    <section class="seal-section">
+      <div class="seal-inner">
+        <div class="seal-text">
+          <h2 class="seal-title">
+            Sua jornada sustentável merece<br/>
+            um selo de autoridade.
+          </h2>
+          <p class="seal-body">
+            Não guarde seus resultados apenas para você. O <a href="#" class="seal-link">Edenred EcoBalance</a>
+            valida seu progresso e gera automaticamente o selo digital 'Parceiro do
+            Meio Ambiente'. Com a chancela e verificação da Edenred, você
+            transforma dados operacionais em um diferencial competitivo pronto
+            para ser compartilhado no seu <a href="#" class="seal-link">LinkedIn.</a>
+          </p>
+          <div class="seal-btns">
+            <a href="#" class="btn-calcular">Calcular</a>
+            <a href="#" class="btn-saiba">Saiba mais</a>
+          </div>
+        </div>
+        <div class="seal-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Selo Edenred EcoBalance" class="seal-img" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <!-- Logo + tagline -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg width="100" height="44" viewBox="0 0 140 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="22" r="22" fill="#E1000F"/>
+              <text x="22" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="9" fill="#fff">Eden</text>
+              <text x="22" y="30" text-anchor="middle" font-family="Inter,sans-serif" font-weight="300" font-size="7" fill="rgba(255,255,255,.8)">red</text>
+              <text x="52" y="28" font-family="Inter,sans-serif" font-weight="700" font-size="22" fill="#fff" letter-spacing="-1">Edenred</text>
+            </svg>
+          </div>
+          <p class="footer-tagline">
+            Construindo redes mais humanas e<br/>
+            confiáveis, a Edenred faz com que<br/>
+            todo mundo saia ganhando
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <span class="footer-col-title">POR PESSOAS</span>
+            <a href="#">Conheça a Edenred</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">PARA PESSOAS</span>
+            <a href="#">Conheça nossas soluções</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">SUSTENTABILIDADE</span>
+            <a href="#">Nosso compromisso</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">NOTÍCIAS</span>
+            <a href="#">Acompanhe a Edenred</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">CARREIRAS</span>
+            <a href="#">Faça parte do time</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">COMPLIANCE</span>
+            <a href="#">Nossa integridade</a>
+            <a href="#">Canal Seguro</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">CONTATO</span>
+            <a href="#">Fala com a gente</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">SITE GLOBAL</span>
+            <a href="#">Site Global da Edenred</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">RELATÓRIO TRANSPARÊNCIA SALARIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <a href="#" class="footer-privacy">POLÍTICA DE PRIVACIDADE</a>
+        <a href="#" class="footer-linkedin">
+          <i class="ph-fill ph-linkedin-logo"></i>
+        </a>
+        <p class="footer-copy">Copyright © Edenred 2018</p>
+      </div>
     </footer>
 
     <script>
       /* ── Hamburger ── */
       const hamburger = document.getElementById('hamburger');
-      const navLinks  = document.querySelector('.nav-links');
+      const navLinks  = document.getElementById('navLinks');
       hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('open');
         const icon = hamburger.querySelector('i');
@@ -764,27 +333,36 @@
       const navbar = document.querySelector('.navbar');
       window.addEventListener('scroll', () => {
         navbar.style.boxShadow = window.scrollY > 10
-          ? '0 4px 20px rgba(0,0,0,.1)'
-          : '0 4px 15px rgba(0,0,0,.03)';
+          ? '0 4px 20px rgba(0,0,0,.12)'
+          : '0 2px 8px rgba(0,0,0,.04)';
       }, { passive: true });
 
-      /* ── Donut animation ── */
-      function animateDonut() {
-        const arc  = document.getElementById('donutArc');
-        const text = document.getElementById('donutText');
-        if (!arc) return;
-        const circumference = 2 * Math.PI * 30;
+      /* ── Gauge animation ── */
+      function animateGauge() {
+        const fill = document.getElementById('gaugeFill');
+        const dot  = document.getElementById('gaugeDot');
+        const txt  = document.getElementById('gaugeText');
+        if (!fill) return;
+
+        const totalLen = 148; // arc length for viewBox 110x72, r=47
         const target = 0.78;
-        let progress = 0;
+        let p = 0;
+
         const timer = setInterval(() => {
-          progress = Math.min(progress + 0.014, target);
-          arc.setAttribute('stroke-dasharray', `${progress * circumference} ${circumference}`);
-          if (text) text.textContent = Math.round(progress * 100) + '%';
-          if (progress >= target) clearInterval(timer);
+          p = Math.min(p + 0.013, target);
+          fill.setAttribute('stroke-dasharray', `${p * totalLen} ${totalLen}`);
+          // move dot along semicircle: starts left (8,64), ends right (102,64), cx=55, cy=64, r=47
+          const angle = Math.PI - p * Math.PI;
+          const cx = 55 + 47 * Math.cos(angle);
+          const cy = 64 + 47 * Math.sin(angle);
+          dot.setAttribute('cx', cx.toFixed(1));
+          dot.setAttribute('cy', cy.toFixed(1));
+          txt.textContent = Math.round(p * 100) + '%';
+          if (p >= target) clearInterval(timer);
         }, 16);
       }
 
-      /* ── Big number counter ── */
+      /* ── Counter ── */
       function animateCounter(el, end, decimals, suffix) {
         let val = 0;
         const step = end / 60;
@@ -795,17 +373,19 @@
         }, 16);
       }
 
-      /* ── Trigger on scroll ── */
+      /* ── IntersectionObserver ── */
       const device = document.getElementById('heroDevice');
-      const deviceIO = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-          animateDonut();
+      let animated = false;
+      const io = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !animated) {
+          animated = true;
+          animateGauge();
           const bigNum = document.getElementById('bigNum');
           if (bigNum) animateCounter(bigNum, 12.4, 1, 'k');
-          deviceIO.unobserve(device);
+          io.unobserve(device);
         }
-      }, { threshold: 0.25 });
-      if (device) deviceIO.observe(device);
+      }, { threshold: 0.2 });
+      if (device) io.observe(device);
 
       /* ── Feature cards scroll reveal ── */
       const cards = document.querySelectorAll('.feature-card');
@@ -816,7 +396,7 @@
             cardIO.unobserve(e.target);
           }
         });
-      }, { threshold: 0.15 });
+      }, { threshold: 0.1 });
       cards.forEach(c => cardIO.observe(c));
     </script>
   </body>
