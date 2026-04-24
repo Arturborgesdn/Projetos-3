@@ -15,4 +15,39 @@ public class PageController {
     public String calculadora() {
         return "calculadora"; // serve templates/calculadora.html
     }
+
+    @GetMapping("/por-pessoas")
+    public String porPessoas() {
+        return "index"; // Lembre-se de criar um HTML para esta página depois!
+    }
+
+    @GetMapping("/para-pessoas")
+    public String paraPessoas() {
+        return "index";
+    }
+
+    @GetMapping("/sustentabilidade")
+    public String sustentabilidade() {
+        return "index";
+    }
+
+    @GetMapping("/inovacao")
+    public String inovacao() {
+        return "index";
+    }
+
+    @GetMapping("/noticias")
+    public String noticias() {
+        return "index";
+    }
+
+    @GetMapping("/carreiras")
+    public String carreiras() {
+        return "index";
+    }
+
+    @GetMapping("/compliance")
+    public String compliance() {
+        return "index";
+    }
 }
