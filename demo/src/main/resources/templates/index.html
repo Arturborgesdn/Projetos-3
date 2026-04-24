@@ -31,11 +31,7 @@
     <nav class="navbar">
       <div class="navbar-content">
         <div class="logo-edenred">
-          <svg width="72" height="72" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="40" fill="#E1000F"/>
-            <text x="40" y="36" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="15" fill="#fff">Eden</text>
-            <text x="40" y="54" text-anchor="middle" font-family="Inter,sans-serif" font-weight="300" font-size="12" fill="rgba(255,255,255,.8)">red</text>
-          </svg>
+          <img class="red-circle" th:src="@{/images/Edenred_Logo_(depuis_2017).png}" alt="Edenred Logo" />
         </div>
         <div class="nav-links" id="navLinks">
           <a href="#">Por Pessoas</a>
@@ -144,7 +140,7 @@
               </div>
 
               <!-- CTA -->
-              <a href="calculadora.html" class="dash-cta-btn">CALCULE AGORA</a>
+              <a href="/calculadora" th:href="@{/calculadora}" class="dash-cta-btn">CALCULE AGORA</a>
 
               <!-- Home bar -->
               <div class="tablet-home-bar"></div>
