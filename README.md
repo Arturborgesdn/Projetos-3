@@ -5,6 +5,10 @@
 ## Entrega 2
 - Issue/bug tracker atualizado (https://github.com/Arturborgesdn/Projetos-3/issues)
 - Screencast 2 primeiras histórias de usuário (https://youtu.be/cbvwdfVgjTY)
+## Entrega 3
+- Issue/bug tracker atualizado (<img width="1361" height="616" alt="image" src="https://github.com/user-attachments/assets/957b0511-5a96-480d-a25b-cdcf7ff3325e" />
+ )
+- Screencast 3 - 4 histórias de usuário e evolução do projeto (https://youtu.be/vpwV2chFlmI)
 ## Contexto
 
 A **Edenred** é uma multinacional francesa presente em mais de **45 países**, líder global no mercado de **benefícios corporativos e soluções de mobilidade**. A empresa atua fortemente em iniciativas de sustentabilidade por meio do pilar estratégico **Ideal Planet**, que tem como meta atingir **Net Zero Carbon até 2050**.
