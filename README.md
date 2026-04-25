@@ -1,6 +1,6 @@
 # Projeto – Calculadora de Impacto Ambiental para Pagamentos Digitais
 ## Entrega 1
-- Histórias de usuário do Projeto [Histórias de usuário - Projetos 3.pdf](https://github.com/user-attachments/files/25920748/Historias.de.usuario.-.Projetos.3.pdf)
+- Histórias de usuário do Projeto [Histórias de usuário - Projetos 3.pdf](https://docs.google.com/document/d/1acG23aitg1odm9QbZYD1o-JmEy9F-HNU1X26R3d0vic/edit?usp=sharing)
 - Screencast da Prototipação de baixa fidelidade (https://youtu.be/zewOdGQVTis)
 ## Entrega 2
 - Issue/bug tracker atualizado (https://github.com/Arturborgesdn/Projetos-3/issues)
