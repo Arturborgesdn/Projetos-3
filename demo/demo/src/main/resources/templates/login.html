@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro - Edenred</title>
+    <title>Login - Edenred</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -24,50 +24,51 @@
     </div>
 
     <nav class="navbar">
-      <div class="navbar-content">
-        <div class="logo-edenred"><img
+      <div style="background-color: #f5f5f5" class="navbar-content">
+        <div class="logo-edenred">
+          <img
             class="red-circle"
             th:src="@{/images/Edenred_Logo_(depuis_2017).png}"
-            src="/images/Edenred_Logo_(depuis_2017).png"
             alt="logo-edenred"
-            style="height: 48px; width: auto; display: block;"
           />
         </div>
-        <div class="nav-links" id="navLinks">
-          <a href="#">Por Pessoas</a>
-          <a href="#">Para Pessoas</a>
-          <a href="/">Sustentabilidade</a>
-          <a href="#">Inovação</a>
-          <a href="#">Notícias</a>
-          <a href="#">Carreiras</a>
-          <a href="#">Compliance e Segurança</a>
-          <a href="/login" class="nav-btn-login">Login</a>
-          <a href="/cadastro" class="nav-btn-cadastro">Cadastro</a>
+        <div class="nav-links">
+          <a href="/por-pessoas" th:href="@{/por-pessoas}">Por Pessoas</a>
+          <a href="/para-pessoas" th:href="@{/para-pessoas}">Para Pessoas</a>
+          <a
+            href="/sustentabilidade"
+            th:href="@{/sustentabilidade}"
+            class="active"
+            >Sustentabilidade</a
+          >
+          <a href="/inovacao" th:href="@{/inovacao}">Inovação</a>
+          <a href="/noticias" th:href="@{/noticias}">Notícias</a>
+          <a href="/carreiras" th:href="@{/carreiras}">Carreiras</a>
+          <a href="/compliance" th:href="@{/compliance}"
+            >Compliance e Segurança</a
+          >
+          <a href="/cadastro" th:href="@{/cadastro}">Cadastro</a>
         </div>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-          <i class="ph ph-list"></i>
-        </button>
       </div>
     </nav>
-
 
     <header class="hero-banner">
       <div class="hero-content">
         <h1>
-          Crie sua <strong>conta</strong>,<br />comece a
-          <strong>transformar.</strong>
+          Bem-vindo de <strong>volta</strong>,<br />acesse sua
+          <strong>conta.</strong>
         </h1>
       </div>
     </header>
 
     <div class="container">
       <div class="register-wrapper">
-        <div class="register-card" id="registerCard">
+        <div class="register-card" id="loginCard">
           <!-- FORM -->
           <div id="formContent">
-            <h2>Criar Conta Corporativa</h2>
+            <h2>Acessar Conta Corporativa</h2>
             <p class="subtitle">
-              Preencha os dados abaixo para cadastrar sua empresa na plataforma
+              Preencha os dados abaixo para acessar sua conta na plataforma
               Edenred.
             </p>
 
@@ -87,36 +88,8 @@
                 />
               </div>
               <span class="form-hint"
-                >Somente empresas com CNPJ válido podem se cadastrar</span
+                >Digite o CNPJ registrado na sua conta</span
               >
-            </div>
-
-            <div class="form-group">
-              <label for="nome">Nome do Responsável</label>
-              <div class="input-wrapper">
-                <i class="ph ph-user input-icon"></i>
-                <input
-                  type="text"
-                  id="nome"
-                  name="nome"
-                  placeholder="Seu nome completo"
-                  autocomplete="name"
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email de Contato</label>
-              <div class="input-wrapper">
-                <i class="ph ph-envelope input-icon"></i>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="seu@email.com"
-                  autocomplete="email"
-                />
-              </div>
             </div>
 
             <div class="form-group">
@@ -127,8 +100,8 @@
                   type="password"
                   id="senha"
                   name="senha"
-                  placeholder="Crie uma senha segura"
-                  autocomplete="new-password"
+                  placeholder="Sua senha"
+                  autocomplete="current-password"
                   spellcheck="false"
                 />
                 <button
@@ -140,35 +113,15 @@
                   <i class="ph ph-eye" id="eyeIcon"></i>
                 </button>
               </div>
-              <div
-                class="password-strength"
-                id="strengthContainer"
-                style="display: none"
-              >
-                <div class="strength-bars">
-                  <div class="strength-bar" id="bar1"></div>
-                  <div class="strength-bar" id="bar2"></div>
-                  <div class="strength-bar" id="bar3"></div>
-                  <div class="strength-bar" id="bar4"></div>
-                </div>
-                <span class="strength-label" id="strengthLabel"
-                  >Muito fraca</span
-                >
-              </div>
             </div>
 
             <div class="form-divider"></div>
 
             <div class="btn-container">
-              <button class="btn-primary" type="button" id="btnCadastrar">
-                <i class="ph ph-rocket-launch"></i>
-                CRIAR MINHA CONTA
+              <button class="btn-primary" type="button" id="btnEntrar">
+                <i class="ph ph-sign-in"></i>
+                ENTRAR
               </button>
-              <p class="terms-text">
-                Ao se cadastrar, você concorda com os
-                <a href="#">Termos de Uso</a> e a
-                <a href="#">Política de Privacidade</a> da Edenred.
-              </p>
             </div>
           </div>
 
@@ -182,13 +135,13 @@
               <i class="ph ph-check-circle"></i>
             </div>
             <div>
-              <p class="success-title">Cadastro realizado!</p>
-              <p class="success-desc">
-                Sua conta corporativa foi criada com sucesso.<br />
-                Você já pode começar a calcular seu impacto.
+              <p class="success-title">Login realizado!</p>
+              <p class="success-desc" id="empresaNome">
+                Bem-vindo de volta.<br />
+                Você já pode começar a gerenciar seu impacto.
               </p>
             </div>
-            <a href="/calculadora"
+            <a href="/calculadora" th:href="@{/calculadora}"
               ><button class="btn-primary" style="max-width: 260px">
                 <i class="ph ph-arrow-right"></i>
                 IR PARA A CALCULADORA
@@ -197,7 +150,8 @@
           </div>
 
           <p class="login-prompt" id="loginPrompt">
-            Já tem uma conta? <a href="#">Entrar</a>
+            Não tem uma conta?
+            <a href="/cadastro" th:href="@{/cadastro}">Cadastre-se</a>
           </p>
         </div>
       </div>
@@ -231,51 +185,14 @@
           icon.className = isHidden ? "ph ph-eye-slash" : "ph ph-eye";
         });
 
-      /* ── Password strength ── */
-      document.getElementById("senha").addEventListener("input", function () {
-        const val = this.value;
-        const container = document.getElementById("strengthContainer");
-        const label = document.getElementById("strengthLabel");
-        const bars = [
-          document.getElementById("bar1"),
-          document.getElementById("bar2"),
-          document.getElementById("bar3"),
-          document.getElementById("bar4"),
-        ];
-
-        if (!val) {
-          container.style.display = "none";
-          return;
-        }
-        container.style.display = "flex";
-
-        let score = 0;
-        if (val.length >= 8) score++;
-        if (/[A-Z]/.test(val)) score++;
-        if (/[0-9]/.test(val)) score++;
-        if (/[^A-Za-z0-9]/.test(val)) score++;
-
-        const colors = ["#E63312", "#f57c00", "#fbc02d", "#388e3c"];
-        const labels = ["Muito fraca", "Fraca", "Moderada", "Forte"];
-
-        bars.forEach((bar, i) => {
-          bar.style.background =
-            i < score ? colors[score - 1] : "var(--gray-200)";
-        });
-        label.textContent = labels[score - 1] || "Muito fraca";
-        label.style.color = colors[score - 1] || "var(--gray-400)";
-      });
-
       /* ── Form Submit ── */
       document
-        .getElementById("btnCadastrar")
+        .getElementById("btnEntrar")
         .addEventListener("click", async function () {
           const cnpj = document.getElementById("cnpj").value.trim();
-          const nome = document.getElementById("nome").value.trim();
-          const email = document.getElementById("email").value.trim();
           const senha = document.getElementById("senha").value.trim();
 
-          if (!cnpj || !nome || !email || !senha) {
+          if (!cnpj || !senha) {
             alert("Por favor, preencha todos os campos.");
             return;
           }
@@ -283,25 +200,19 @@
             alert("Digite um CNPJ válido com 14 dígitos.");
             return;
           }
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            alert("Digite um email válido.");
-            return;
-          }
-          if (senha.length < 6) {
-            alert("A senha deve ter pelo menos 6 caracteres.");
+          if (senha.length < 1) {
+            alert("Digite sua senha.");
             return;
           }
 
           try {
-            const response = await fetch("/auth/cadastro", {
+            const response = await fetch("/auth/login", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
                 cnpj,
-                nome,
-                email,
                 senha,
               }),
             });
@@ -309,10 +220,12 @@
             const data = await response.json();
 
             if (!response.ok) {
-              alert(data.mensagem || "Erro ao cadastrar. Tente novamente.");
+              alert(data.mensagem || "CNPJ ou senha inválidos.");
               return;
             }
 
+            document.getElementById("empresaNome").innerHTML =
+              `Bem-vindo de volta, <strong>${data.empresa}</strong>.<br />Você já pode começar a gerenciar seu impacto.`;
             document.getElementById("formContent").style.display = "none";
             document.getElementById("loginPrompt").style.display = "none";
             document.getElementById("successOverlay").style.display = "flex";

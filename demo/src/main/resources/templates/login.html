@@ -23,34 +23,33 @@
       </div>
     </div>
 
-    <nav class="navbar">
-      <div style="background-color: #f5f5f5" class="navbar-content">
-        <div class="logo-edenred">
-          <img
+   <nav class="navbar">
+      <div class="navbar-content">
+        <div class="logo-edenred"><img
             class="red-circle"
             th:src="@{/images/Edenred_Logo_(depuis_2017).png}"
+            src="/images/Edenred_Logo_(depuis_2017).png"
             alt="logo-edenred"
+            style="height: 48px; width: auto; display: block;"
           />
         </div>
-        <div class="nav-links">
-          <a href="/por-pessoas" th:href="@{/por-pessoas}">Por Pessoas</a>
-          <a href="/para-pessoas" th:href="@{/para-pessoas}">Para Pessoas</a>
-          <a
-            href="/sustentabilidade"
-            th:href="@{/sustentabilidade}"
-            class="active"
-            >Sustentabilidade</a
-          >
-          <a href="/inovacao" th:href="@{/inovacao}">Inovação</a>
-          <a href="/noticias" th:href="@{/noticias}">Notícias</a>
-          <a href="/carreiras" th:href="@{/carreiras}">Carreiras</a>
-          <a href="/compliance" th:href="@{/compliance}"
-            >Compliance e Segurança</a
-          >
-          <a href="/cadastro" th:href="@{/cadastro}">Cadastro</a>
+        <div class="nav-links" id="navLinks">
+          <a href="#">Por Pessoas</a>
+          <a href="#">Para Pessoas</a>
+          <a href="/">Sustentabilidade</a>
+          <a href="#">Inovação</a>
+          <a href="#">Notícias</a>
+          <a href="#">Carreiras</a>
+          <a href="#">Compliance e Segurança</a>
+          <a href="/login" class="nav-btn-login">Login</a>
+          <a href="/cadastro" class="nav-btn-cadastro">Cadastro</a>
         </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <i class="ph ph-list"></i>
+        </button>
       </div>
     </nav>
+
 
     <header class="hero-banner">
       <div class="hero-content">
