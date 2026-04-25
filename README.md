@@ -3,7 +3,8 @@
 - Histórias de usuário do Projeto [Histórias de usuário - Projetos 3.pdf](https://docs.google.com/document/d/1acG23aitg1odm9QbZYD1o-JmEy9F-HNU1X26R3d0vic/edit?usp=sharing)
 - Screencast da Prototipação de baixa fidelidade (https://youtu.be/zewOdGQVTis)
 ## Entrega 2
-- Issue/bug tracker atualizado (https://github.com/Arturborgesdn/Projetos-3/issues)
+- Issue/bug tracker atualizado : <img width="917" height="545" alt="image" src="https://github.com/user-attachments/assets/6cf1b4fc-f01a-41dd-b2d1-cc781499746e" />
+
 - Screencast 2 primeiras histórias de usuário (https://youtu.be/cbvwdfVgjTY)
 ## Entrega 3
 - Issue/bug tracker atualizado :<img width="1361" height="616" alt="image" src="https://github.com/user-attachments/assets/957b0511-5a96-480d-a25b-cdcf7ff3325e" />
