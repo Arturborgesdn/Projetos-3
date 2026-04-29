@@ -158,6 +158,24 @@
 
     </section>
 
+    <!-- BANNER HISTÓRICO (aparece só após login + simulação) -->
+  <div id="containerHistorico" style="display:none" class="historico-banner">
+    <div class="historico-banner-inner">
+      <div class="historico-banner-left">
+        <div class="historico-banner-icon">
+          <i class="ph ph-clock-counter-clockwise"></i>
+        </div>
+        <div class="historico-banner-text">
+          <h3>Você já tem simulações registradas!</h3>
+          <p>Acesse o histórico da sua última simulação e compare sua evolução.</p>
+        </div>
+      </div>
+      <a href="/historico" class="btn-historico">
+        <i class="ph ph-chart-bar"></i>
+        Ver meu histórico
+      </a>
+    </div>
+  </div>
     <!-- Por que digitalizar -->
     <div class="why-divider">
       <h2 class="why-title">Por que digitalizar?</h2>
@@ -399,6 +417,11 @@
         });
       }, { threshold: 0.1 });
       cards.forEach(c => cardIO.observe(c));
+      /* ── Mostra banner se usuário estiver logado ── */
+      const emailSalvo = sessionStorage.getItem("emailEmpresa");
+      if (emailSalvo) {
+        document.getElementById("containerHistorico").style.display = "block";
+      }
     </script>
   </body>
 </html>

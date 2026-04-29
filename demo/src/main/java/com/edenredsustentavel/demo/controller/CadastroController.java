@@ -15,4 +15,9 @@ public class CadastroController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("/historico")
+    public String historico() {
+        return "historico";
+}
 }
