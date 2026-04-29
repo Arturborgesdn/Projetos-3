@@ -17,23 +17,24 @@ public class controllerLogin {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> dados) {
-        String cnpj = dados.get("cnpj");
+        String email = dados.get("email");
         String senha = dados.get("senha");
 
-        modelEmpresa empresa = serviceEdenred.login(cnpj, senha);
+        modelEmpresa empresa = serviceEdenred.login(email, senha);
 
         if (empresa != null) {
             return ResponseEntity.ok(Map.of(
                 "mensagem", "Login realizado com sucesso",
                 "empresa", empresa.getNome(),
-                "cnpj", empresa.getCnpj()
+                "email", empresa.getEmail()
             ));
         }
 
         return ResponseEntity.status(401).body(Map.of(
-            "mensagem", "CNPJ ou senha inválidos"
+            "mensagem", "Email ou senha inválidos"
         ));
     }
+
     @PostMapping("/cadastro")
     public ResponseEntity<?> cadastrar(@RequestBody modelEmpresa empresa) {
         try {
@@ -41,7 +42,7 @@ public class controllerLogin {
             return ResponseEntity.ok(Map.of(
                 "mensagem", "Empresa cadastrada com sucesso",
                 "empresa", nova.getNome(),
-                "cnpj", nova.getCnpj()
+                "email", nova.getEmail()
             ));
         } catch (RuntimeException e) {
             return ResponseEntity.status(400).body(Map.of(

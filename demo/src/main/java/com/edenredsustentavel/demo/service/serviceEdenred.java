@@ -26,19 +26,16 @@ public class serviceEdenred {
     private repositoryDadosTangiveis repoDadosTangiveis;
 
     // ── Login ──────────────────────────────────────────────
-    public modelEmpresa login(String cnpj, String senha) {
-        Optional<modelEmpresa> empresa = repositoryEmpresa.findByCnpj(cnpj);
+    public modelEmpresa login(String email, String senha) {
+        Optional<modelEmpresa> empresa = repositoryEmpresa.findByEmail(email);
         if (empresa.isPresent() && empresa.get().getSenha().equals(senha)) {
             return empresa.get();
         }
         return null;
     }
 
-    // ── Cadastro ───────────────────────────────────────────
+// ── Cadastro ───────────────────────────────────────────
     public modelEmpresa cadastrar(modelEmpresa empresa) {
-        if (repositoryEmpresa.findByCnpj(empresa.getCnpj()).isPresent()) {
-            throw new RuntimeException("CNPJ já cadastrado");
-        }
         if (repositoryEmpresa.findByEmail(empresa.getEmail()).isPresent()) {
             throw new RuntimeException("Email já cadastrado");
         }

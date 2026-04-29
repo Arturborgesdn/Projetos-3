@@ -12,9 +12,6 @@ public class modelEmpresa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false, length = 18)
-    private String cnpj;
-
     @Column(nullable = false)
     private String nome;
 
@@ -27,7 +24,7 @@ public class modelEmpresa {
     private LocalDateTime dataCadastro;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-    private List<modelDadosSimulacao> simulacoes;  // ✅ corrigido
+    private List<modelDadosSimulacao> simulacoes;
 
     @PrePersist
     public void prePersist() {
@@ -36,9 +33,6 @@ public class modelEmpresa {
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-
-    public String getCnpj() { return cnpj; }
-    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
@@ -52,6 +46,6 @@ public class modelEmpresa {
     public LocalDateTime getDataCadastro() { return dataCadastro; }
     public void setDataCadastro(LocalDateTime dataCadastro) { this.dataCadastro = dataCadastro; }
 
-    public List<modelDadosSimulacao> getSimulacoes() { return simulacoes; }  // ✅ corrigido
-    public void setSimulacoes(List<modelDadosSimulacao> simulacoes) { this.simulacoes = simulacoes; }  // ✅ corrigido
+    public List<modelDadosSimulacao> getSimulacoes() { return simulacoes; }
+    public void setSimulacoes(List<modelDadosSimulacao> simulacoes) { this.simulacoes = simulacoes; }
 }
