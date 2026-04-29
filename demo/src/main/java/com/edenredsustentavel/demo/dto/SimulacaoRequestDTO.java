@@ -1,7 +1,6 @@
 package com.edenredsustentavel.demo.dto;
 
-
-public class SimulacaoRequestDTO{
+public class SimulacaoRequestDTO {
     public int qtd_cartoes;
     public int multiplicidade_cartoes;
     public double taxa_reemissao;
@@ -9,6 +8,6 @@ public class SimulacaoRequestDTO{
     public String tipo_embalagem;
     public String destino;
     public String frequencia;
-    public int volumeTransacoes;
-
+    public double volumeTransacoes;
+    public String emailEmpresa; // ← novo campo
 }

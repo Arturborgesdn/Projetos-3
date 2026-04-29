@@ -126,6 +126,10 @@ public class serviceEdenred {
         simulacao.setConsumoAguaLitros(response.agua);
         simulacao.setResiduosPlasticosKg(response.residuos);
         simulacao.setEnergiaKwh(response.energia);
+        if (req.emailEmpresa != null && !req.emailEmpresa.isEmpty()) {
+            repositoryEmpresa.findByEmail(req.emailEmpresa)
+                .ifPresent(simulacao::setEmpresa);
+        }
         repoDadosSimulacao.save(simulacao);
 
         // 6. Salva tabela dados_tangiveis

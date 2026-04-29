@@ -20,8 +20,25 @@ public class SimulacaoController {
     @Autowired
     private serviceEdenred service;
 
+    @Autowired
+    private repositoryEmpresa repositoryEmpresa;
+
+    @Autowired
+    private repositoryDadosSimulacao repoDadosSimulacao;
+
     @PostMapping
     public SimulacaoResponseDTO calcular(@RequestBody SimulacaoRequestDTO request) {
     return service.calcularImpacto(request);
     }
+
+    @GetMapping("/historico/{email}")
+    public ResponseEntity<?> ultimaSimulacao(@PathVariable String email) {
+    return repositoryEmpresa.findByEmail(email)
+        .map(empresa -> repoDadosSimulacao
+            .findFirstByEmpresaIdOrderByDataCriacaoDesc(empresa.getId())
+            .map(sim -> ResponseEntity.ok(sim))
+            .orElse(ResponseEntity.noContent().build()))
+        .orElse(ResponseEntity.notFound().build());
 }
+}
+
