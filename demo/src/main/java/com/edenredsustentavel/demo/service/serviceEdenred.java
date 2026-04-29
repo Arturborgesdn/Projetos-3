@@ -76,11 +76,45 @@ public class serviceEdenred {
         double pesoPlastico = totalCartoes * 0.005;
         response.residuos   = req.destino.equals("reciclagem") ? pesoPlastico * 0.1 : pesoPlastico;
 
-        // 4. Dados tangíveis
-        response.entregasDelivery   = response.carbono  / 1.2;
-        response.transacoesDigitais = response.energia  / 0.0004;
-        response.garrafasPet        = response.residuos / 0.045;
-        response.banhosDeAgua       = response.agua     / 90.0;
+        
+        // Mapeamento do Cenário Físico (Dados Brutos calculados anteriormente)
+        response.carbonoFisico = response.carbono;
+        response.aguaFisica = response.agua;
+        response.energiaFisica = response.energia;
+        response.residuosFisicos = response.residuos;
+
+        // Cálculo do Cenário Digital
+        response.residuosDigital = 0.0; 
+        response.aguaDigital = 0.0;     
+        response.energiaDigital = req.volumeTransacoes * 0.0004; 
+        response.carbonoDigital = response.energiaDigital * 0.085; 
+
+        // Cálculo das Percentagens de Redução
+        if (response.carbonoFisico > 0) {
+            response.reducaoCarbono = ((response.carbonoFisico - response.carbonoDigital) / response.carbonoFisico) * 100;
+        } else {
+            response.reducaoCarbono = 0.0;
+        }
+
+        response.reducaoAgua = 100.0; 
+
+        if (response.energiaFisica > 0) {
+            response.reducaoEnergia = ((response.energiaFisica - response.energiaDigital) / response.energiaFisica) * 100;
+        } else {
+            response.reducaoEnergia = 0.0;
+        }
+
+        response.reducaoResiduos = 100.0;
+
+        // Atualização dos Dados Tangíveis baseada na Economia Real (Físico - Digital)
+        double poupadoCarbono = response.carbonoFisico - response.carbonoDigital;
+        double poupadoEnergia = response.energiaFisica - response.energiaDigital;
+
+        // Dados tangíveis
+        response.entregasDelivery = poupadoCarbono / 1.2;
+        response.transacoesDigitais = poupadoEnergia / 0.0004;
+        response.garrafasPet = response.residuosFisicos / 0.045;
+        response.banhosDeAgua = response.aguaFisica / 90.0;
 
         // 5. Salva tabela dados_simulacao
         modelDadosSimulacao simulacao = new modelDadosSimulacao();

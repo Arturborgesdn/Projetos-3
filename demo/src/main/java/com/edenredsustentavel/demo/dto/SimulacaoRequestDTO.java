@@ -9,5 +9,6 @@ public class SimulacaoRequestDTO{
     public String tipo_embalagem;
     public String destino;
     public String frequencia;
+    public int volumeTransacoes;
 
 }
