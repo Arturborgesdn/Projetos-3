@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Impacto - Edenred</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/styles.css" th:href="@{/styles.css}" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -24,7 +27,13 @@
     <nav class="navbar">
       <div class="navbar-content">
         <div class="logo-edenred">
-          <img class="red-circle" th:src="@{/images/Edenred_Logo_(depuis_2017).png}" src="/images/Edenred_Logo_(depuis_2017).png" alt="logo-edenred" style="height: 48px; width: auto; display: block;"/>
+          <img
+            class="red-circle"
+            th:src="@{/images/Edenred_Logo_(depuis_2017).png}"
+            src="/images/Edenred_Logo_(depuis_2017).png"
+            alt="logo-edenred"
+            style="height: 48px; width: auto; display: block"
+          />
         </div>
         <div class="nav-links" id="navLinks">
           <a href="#">Por Pessoas</a>
@@ -47,54 +56,101 @@
 
     <header class="hero-banner">
       <div class="hero-content">
-        <h1>Calcule seu <strong>impacto</strong>,<br />mude o <strong>futuro.</strong></h1>
+        <h1>
+          Calcule seu <strong>impacto</strong>,<br />mude o
+          <strong>futuro.</strong>
+        </h1>
       </div>
     </header>
 
-
-
-    <div style="display: flex; flex-direction: column" class="container main-layout">
-      <div style="padding: 20px 40px;">
-      <a href="/" style="display: inline-block; background-color: #e1261c; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.2s;" onmouseover="this.style.backgroundColor='#b71c14'" onmouseout="this.style.backgroundColor='#e1261c'">
-        ← Voltar
-      </a>
-    </div>
+    <div
+      style="display: flex; flex-direction: column"
+      class="container main-layout"
+    >
+      <div style="padding: 20px 40px">
+        <a
+          href="/"
+          style="
+            display: inline-block;
+            background-color: #e1261c;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+          "
+          onmouseover="this.style.backgroundColor = '#b71c14'"
+          onmouseout="this.style.backgroundColor = '#e1261c'"
+        >
+          ← Voltar
+        </a>
+      </div>
 
       <!-- FORMULÁRIO -->
       <div style="display: flex; flex-direction: column" class="form-section">
         <form id="calculadoraForm">
-          <div style="display: flex; flex-direction: column" class="form-blocks-wrapper">
-
+          <div
+            style="display: flex; flex-direction: column"
+            class="form-blocks-wrapper"
+          >
             <div style="display: flex; flex-direction: column" class="card">
               <h3>📦 Materiais</h3>
               <div class="form-group">
                 <label>Quantidade de cartões ativos</label>
-                <input type="number" name="qtd_cartoes" placeholder="Ex: 5000" inputmode="numeric" step="1" min="0"/>
-                <small>Levando em consideração que cada funcionário de sua equipe utiliza um cartão</small>
+                <input
+                  type="number"
+                  name="qtd_cartoes"
+                  placeholder="Ex: 5000"
+                  inputmode="numeric"
+                  step="1"
+                  min="0"
+                />
+                <small
+                  >Levando em consideração que cada funcionário de sua equipe
+                  utiliza um cartão</small
+                >
               </div>
               <div class="form-group">
                 <label>Material do cartão</label>
                 <div class="radio-group row-group">
                   <label class="radio-card">
-                    <input type="radio" name="material" value="pvc_virgem" checked/>
+                    <input
+                      type="radio"
+                      name="material"
+                      value="pvc_virgem"
+                      checked
+                    />
                     <span>💳 PVC</span>
                   </label>
                   <label class="radio-card">
-                    <input type="radio" name="material" value="pvc_reciclado"/>
+                    <input type="radio" name="material" value="pvc_reciclado" />
                     <span>♻️ PVC Reciclado</span>
                   </label>
                 </div>
-                <small>Sabia que a Edenred já utiliza 85% de PVC reciclado em sua produção?</small>
+                <small
+                  >Sabia que a Edenred já utiliza 85% de PVC reciclado em sua
+                  produção?</small
+                >
               </div>
               <div class="form-group">
                 <label>Embalagem e Kit de Boas-Vindas</label>
                 <select name="tipo_embalagem">
-                  <option value="" disabled selected>Selecione a embalagem...</option>
+                  <option value="" disabled selected>
+                    Selecione a embalagem...
+                  </option>
                   <option value="envelope_simples">Envelope Simples</option>
-                  <option value="kit_padrao">Kit Padrão (Carta + Berço plástico)</option>
-                  <option value="kit_premium">Kit Premium (Caixa + Manuais impressos)</option>
+                  <option value="kit_padrao">
+                    Kit Padrão (Carta + Berço plástico)
+                  </option>
+                  <option value="kit_premium">
+                    Kit Premium (Caixa + Manuais impressos)
+                  </option>
                 </select>
-                <small>Embalagens maiores aumentam a emissão de CO2 no transporte</small>
+                <small
+                  >Embalagens maiores aumentam a emissão de CO2 no
+                  transporte</small
+                >
               </div>
             </div>
 
@@ -103,7 +159,9 @@
               <div class="form-group">
                 <label>Frequência de uso de cada empregado</label>
                 <select name="frequencia">
-                  <option value="" disabled selected>Selecione a frequência...</option>
+                  <option value="" disabled selected>
+                    Selecione a frequência...
+                  </option>
                   <option value="diario">Diário</option>
                   <option value="semanal">Semanal</option>
                   <option value="mensal">Mensal</option>
@@ -111,13 +169,25 @@
               </div>
               <div class="form-group">
                 <label>Taxa anual de reemissão (%)</label>
-                <input type="number" name="taxa_reemissao" min="0" max="100" placeholder="Ex: 15" inputmode="decimal" step="0.1"/>
-                <small>Cartões reemitidos por perda, roubo ou dano físico</small>
+                <input
+                  type="number"
+                  name="taxa_reemissao"
+                  min="0"
+                  max="100"
+                  placeholder="Ex: 15"
+                  inputmode="decimal"
+                  step="0.1"
+                />
+                <small
+                  >Cartões reemitidos por perda, roubo ou dano físico</small
+                >
               </div>
               <div class="form-group">
                 <label>Destino final dos cartões</label>
                 <select name="destino">
-                  <option value="" disabled selected>Selecione o destino...</option>
+                  <option value="" disabled selected>
+                    Selecione o destino...
+                  </option>
                   <option value="descarte_comum">Descarte Comum</option>
                   <option value="reciclagem">Reciclagem Especializada</option>
                   <option value="nao_sei">Não sei</option>
@@ -126,10 +196,16 @@
               <div class="form-group">
                 <label>Multiplicidade de Benefícios 💳</label>
                 <select name="multiplicidade_cartoes">
-                  <option value="" disabled selected>Selecione a multiplicidade...</option>
+                  <option value="" disabled selected>
+                    Selecione a multiplicidade...
+                  </option>
                   <option value="1">1 cartão (Benefícios já unificados)</option>
-                  <option value="2">2 cartões (Ex: Alimentação + Refeição)</option>
-                  <option value="3">3 cartões (Ex: VR + VA + Mobilidade)</option>
+                  <option value="2">
+                    2 cartões (Ex: Alimentação + Refeição)
+                  </option>
+                  <option value="3">
+                    3 cartões (Ex: VR + VA + Mobilidade)
+                  </option>
                   <option value="4">4 ou mais cartões (Fragmentado)</option>
                 </select>
               </div>
@@ -147,35 +223,59 @@
       <!-- RESULTADOS -->
       <div class="results-section" id="secaoResultados" style="display: none">
         <div class="results-header">
-          <h2>Seu Resultado Corporativo</h2>
+          <h2>Seu Resultado</h2>
           <p>O impacto anual da sua operação.</p>
         </div>
 
         <div class="cards-grid">
           <div class="result-card bg-red">
-            <div class="card-header"><i class="ph ph-cloud card-icon"></i><h3>CO₂ Emitido</h3></div>
-            <div class="card-number-wrapper"><span class="card-number">0.00</span><span class="card-unit">kg</span></div>
+            <div class="card-header">
+              <i class="ph ph-cloud card-icon"></i>
+              <h3>CO₂ Emitido</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number">0.00</span
+              ><span class="card-unit">kg</span>
+            </div>
             <p class="card-desc">Carbono emitido na produção e logística</p>
           </div>
           <div class="result-card bg-blue">
-            <div class="card-header"><i class="ph ph-drop card-icon"></i><h3>Água Consumida</h3></div>
-            <div class="card-number-wrapper"><span class="card-number">0.00</span><span class="card-unit">litros</span></div>
+            <div class="card-header">
+              <i class="ph ph-drop card-icon"></i>
+              <h3>Água Consumida</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number">0.00</span
+              ><span class="card-unit">litros</span>
+            </div>
             <p class="card-desc">Água utilizada no processo de fabricação</p>
           </div>
           <div class="result-card bg-yellow">
-            <div class="card-header"><i class="ph ph-trash card-icon"></i><h3>Plástico</h3></div>
-            <div class="card-number-wrapper"><span class="card-number">0.00</span><span class="card-unit">kg</span></div>
+            <div class="card-header">
+              <i class="ph ph-trash card-icon"></i>
+              <h3>Plástico</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number">0.00</span
+              ><span class="card-unit">kg</span>
+            </div>
             <p class="card-desc">Plástico descartado ao fim da vida útil</p>
           </div>
           <div class="result-card bg-green">
-            <div class="card-header"><i class="ph ph-lightning card-icon"></i><h3>Energia</h3></div>
-            <div class="card-number-wrapper"><span class="card-number">0.00</span><span class="card-unit">kWh</span></div>
+            <div class="card-header">
+              <i class="ph ph-lightning card-icon"></i>
+              <h3>Energia</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number">0.00</span
+              ><span class="card-unit">kWh</span>
+            </div>
             <p class="card-desc">Consumo de energia para operações</p>
           </div>
         </div>
 
         <!-- DADOS TANGÍVEIS -->
-        <div class="results-header" style="margin-top: 2.5rem;">
+        <div class="results-header" style="margin-top: 2.5rem">
           <h2>Isso equivale a…</h2>
           <p>Traduza o impacto em situações do dia a dia.</p>
         </div>
@@ -183,32 +283,51 @@
         <div class="cards-grid tangivel-grid">
           <div class="result-card tangivel-card tc-laranja">
             <div class="tangivel-icon">🛵</div>
-            <div class="tangivel-numero"><span class="card-tangivel" id="val-delivery">0</span></div>
+            <div class="tangivel-numero">
+              <span class="card-tangivel" id="val-delivery">0</span>
+            </div>
             <h4 class="tangivel-label">Entregas de delivery</h4>
-            <p class="tangivel-desc">O CO₂ gerado equivale a essa quantidade de corridas de motoboy</p>
+            <p class="tangivel-desc">
+              O CO₂ gerado equivale a essa quantidade de corridas de motoboy
+            </p>
           </div>
           <div class="result-card tangivel-card tc-roxo">
             <div class="tangivel-icon">📱</div>
-            <div class="tangivel-numero"><span class="card-tangivel" id="val-digital">0</span></div>
+            <div class="tangivel-numero">
+              <span class="card-tangivel" id="val-digital">0</span>
+            </div>
             <h4 class="tangivel-label">Transações digitais</h4>
-            <p class="tangivel-desc">A energia consumida poderia processar essa quantidade de pagamentos digitais</p>
+            <p class="tangivel-desc">
+              A energia consumida poderia processar essa quantidade de
+              pagamentos digitais
+            </p>
           </div>
           <div class="result-card tangivel-card tc-verde">
             <div class="tangivel-icon">🧴</div>
-            <div class="tangivel-numero"><span class="card-tangivel" id="val-pet">0</span></div>
+            <div class="tangivel-numero">
+              <span class="card-tangivel" id="val-pet">0</span>
+            </div>
             <h4 class="tangivel-label">Garrafas PET</h4>
-            <p class="tangivel-desc">O plástico descartado equivale a essa quantidade de garrafas PET de 500ml</p>
+            <p class="tangivel-desc">
+              O plástico descartado equivale a essa quantidade de garrafas PET
+              de 500ml
+            </p>
           </div>
           <div class="result-card tangivel-card tc-azul">
             <div class="tangivel-icon">🚿</div>
-            <div class="tangivel-numero"><span class="card-tangivel" id="val-banho">0</span></div>
+            <div class="tangivel-numero">
+              <span class="card-tangivel" id="val-banho">0</span>
+            </div>
             <h4 class="tangivel-label">Banhos de 10 min</h4>
-            <p class="tangivel-desc">A água utilizada na fabricação equivale a essa quantidade de banhos</p>
+            <p class="tangivel-desc">
+              A água utilizada na fabricação equivale a essa quantidade de
+              banhos
+            </p>
           </div>
         </div>
 
         <!-- GRÁFICOS DE IMPACTO -->
-        <div class="results-header" style="margin-top: 3rem;">
+        <div class="results-header" style="margin-top: 3rem">
           <h2>Visualização do Impacto</h2>
           <p>Comparação detalhada entre os cenários físico e digital.</p>
         </div>
@@ -225,12 +344,24 @@
         </div>
 
         <!-- Botão voltar dentro dos resultados -->
-        <div style="text-align: center; margin: 40px 0;">
-          <a href="/" style="display: inline-block; background-color: #e1261c; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;" onmouseover="this.style.backgroundColor='#b71c14'" onmouseout="this.style.backgroundColor='#e1261c'">
+        <div style="text-align: center; margin: 40px 0">
+          <a
+            href="/"
+            style="
+              display: inline-block;
+              background-color: #e1261c;
+              color: white;
+              padding: 12px 24px;
+              border-radius: 8px;
+              text-decoration: none;
+              font-weight: 600;
+            "
+            onmouseover="this.style.backgroundColor = '#b71c14'"
+            onmouseout="this.style.backgroundColor = '#e1261c'"
+          >
             Voltar para Landing Page
           </a>
         </div>
-
       </div>
 
       <!-- HISTÓRICO DE SIMULAÇÕES -->
@@ -242,24 +373,48 @@
 
         <div class="cards-grid">
           <div class="result-card bg-red">
-            <div class="card-header"><i class="ph ph-cloud card-icon"></i><h3>CO₂</h3></div>
-            <div class="card-number-wrapper"><span class="card-number" id="histCo2">-</span><span class="card-unit">kg</span></div>
+            <div class="card-header">
+              <i class="ph ph-cloud card-icon"></i>
+              <h3>CO₂</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number" id="histCo2">-</span
+              ><span class="card-unit">kg</span>
+            </div>
           </div>
           <div class="result-card bg-blue">
-            <div class="card-header"><i class="ph ph-drop card-icon"></i><h3>Água</h3></div>
-            <div class="card-number-wrapper"><span class="card-number" id="histAgua">-</span><span class="card-unit">litros</span></div>
+            <div class="card-header">
+              <i class="ph ph-drop card-icon"></i>
+              <h3>Água</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number" id="histAgua">-</span
+              ><span class="card-unit">litros</span>
+            </div>
           </div>
           <div class="result-card bg-yellow">
-            <div class="card-header"><i class="ph ph-trash card-icon"></i><h3>Plástico</h3></div>
-            <div class="card-number-wrapper"><span class="card-number" id="histPlastico">-</span><span class="card-unit">kg</span></div>
+            <div class="card-header">
+              <i class="ph ph-trash card-icon"></i>
+              <h3>Plástico</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number" id="histPlastico">-</span
+              ><span class="card-unit">kg</span>
+            </div>
           </div>
           <div class="result-card bg-green">
-            <div class="card-header"><i class="ph ph-lightning card-icon"></i><h3>Energia</h3></div>
-            <div class="card-number-wrapper"><span class="card-number" id="histEnergia">-</span><span class="card-unit">kWh</span></div>
+            <div class="card-header">
+              <i class="ph ph-lightning card-icon"></i>
+              <h3>Energia</h3>
+            </div>
+            <div class="card-number-wrapper">
+              <span class="card-number" id="histEnergia">-</span
+              ><span class="card-unit">kWh</span>
+            </div>
           </div>
         </div>
 
-        <div class="results-header" style="margin-top: 2rem;">
+        <div class="results-header" style="margin-top: 2rem">
           <h2>Dados Tangíveis Registrados</h2>
         </div>
 
@@ -271,7 +426,9 @@
           </div>
           <div class="result-card tangivel-card tc-roxo">
             <div class="tangivel-icon">📱</div>
-            <div class="tangivel-numero"><span id="histTransacoes">-</span></div>
+            <div class="tangivel-numero">
+              <span id="histTransacoes">-</span>
+            </div>
             <h4 class="tangivel-label">Transações digitais</h4>
           </div>
           <div class="result-card tangivel-card tc-verde">
@@ -286,10 +443,10 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <script src="/scripts/main.js" th:src="@{/scripts/main.js}"></script>
     <script src="/scripts/calculo.js" th:src="@{/scripts/calculo.js}"></script>
+    <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
   </body>
 </html>

@@ -5,15 +5,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "empresas")
+@Table(name = "empresa_sustentavel")
 public class modelEmpresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(unique = true, nullable = false, length = 18)
-    private String cnpj;
 
     @Column(nullable = false)
     private String nome;
@@ -36,9 +33,6 @@ public class modelEmpresa {
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-
-    public String getCnpj() { return cnpj; }
-    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }

@@ -22,12 +22,18 @@ public class PageController {
     }
 
     @GetMapping("/historico")
-    public String historico() {
+    public String historico(jakarta.servlet.http.HttpSession session) {
+        if (session.getAttribute("usuarioLogado") == null) {
+            return "redirect:/login";
+        }
         return "historico";
     }
 
     @GetMapping("/calculadora")
-    public String calculadora() {
+    public String calculadora(jakarta.servlet.http.HttpSession session) {
+        if (session.getAttribute("usuarioLogado") == null) {
+            return "redirect:/login";
+        }
         return "calculadora";
     }
 

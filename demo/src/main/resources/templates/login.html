@@ -54,9 +54,10 @@
 
           <!-- FORM -->
           <div id="formContent">
-            <h2>Acessar Conta Corporativa</h2>
+            <h2>Acessar Conta</h2>
             <p class="subtitle">Preencha os dados abaixo para acessar sua conta na plataforma Edenred.</p>
 
+            <form id="loginForm">
             <!-- CAMPO EMAIL (substituiu CNPJ) -->
             <div class="form-group">
               <label for="email">Email da Empresa</label>
@@ -100,6 +101,7 @@
                 ENTRAR
               </button>
             </div>
+            </form>
           </div>
 
           <!-- SUCCESS STATE -->
@@ -187,5 +189,6 @@
         }
       });
     </script>
+    <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
   </body>
 </html>

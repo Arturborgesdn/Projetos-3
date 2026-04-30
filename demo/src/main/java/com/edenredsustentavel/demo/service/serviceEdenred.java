@@ -54,7 +54,8 @@ public class serviceEdenred {
         // 2. Fatores
         double fatorMaterial  = req.material.equals("pvc_reciclado") ? 0.7 : 1.0;
         double fatorEmbalagem;
-        switch (req.tipo_embalagem) {
+        String tipoEmbalagem = req.tipo_embalagem != null ? req.tipo_embalagem : "kit_padrao";
+        switch (tipoEmbalagem) {
             case "kit_premium": fatorEmbalagem = 1.5; break;
             case "kit_padrao":  fatorEmbalagem = 1.0; break;
             default:            fatorEmbalagem = 0.8;
@@ -63,15 +64,16 @@ public class serviceEdenred {
         // 3. Cálculos ambientais
         double baseCarbono  = (totalCartoes * 0.011 * fatorMaterial)
                             + (totalCartoes * 0.005 * fatorEmbalagem);
-        double fatorDestino = req.destino.equals("reciclagem")     ? 0.7
-                            : req.destino.equals("descarte_comum") ? 1.2 : 1.0;
+        String destinoFinal = req.destino != null ? req.destino : "descarte_comum";
+        double fatorDestino = destinoFinal.equals("reciclagem")     ? 0.7
+                            : destinoFinal.equals("descarte_comum") ? 1.2 : 1.0;
 
         response.carbono  = baseCarbono * fatorDestino;
         response.agua     = totalCartoes * 0.15 * fatorMaterial;
         response.energia  = totalCartoes * 0.02 * fatorMaterial;
 
         double pesoPlastico = totalCartoes * 0.005;
-        response.residuos   = req.destino.equals("reciclagem") ? pesoPlastico * 0.1 : pesoPlastico;
+        response.residuos   = destinoFinal.equals("reciclagem") ? pesoPlastico * 0.1 : pesoPlastico;
 
         
         // Mapeamento do Cenário Físico (Dados Brutos calculados anteriormente)
@@ -81,9 +83,10 @@ public class serviceEdenred {
         response.residuosFisicos = response.residuos;
 
         // Cálculo do Cenário Digital
+        double volumeTransacoes = req.volumeTransacoes > 0 ? req.volumeTransacoes : (totalCartoes * 22);
         response.residuosDigital = 0.0; 
         response.aguaDigital = 0.0;     
-        response.energiaDigital = req.volumeTransacoes * 0.0004; 
+        response.energiaDigital = volumeTransacoes * 0.0004; 
         response.carbonoDigital = response.energiaDigital * 0.085; 
 
         // Cálculo das Percentagens de Redução

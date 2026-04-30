@@ -65,16 +65,11 @@
         <div class="register-card" id="registerCard">
           <!-- FORM -->
           <div id="formContent">
-            <h2>Criar Conta Corporativa</h2>
+            <h2>Criar Conta</h2>
             <p class="subtitle">
-              Preencha os dados abaixo para cadastrar sua empresa na plataforma
+              Preencha os dados abaixo para se cadastrar na plataforma
               Edenred.
             </p>
-
-            <div class="form-group">
-              <div class="input-wrapper">
-              </div>
-            </div>
 
             <div class="form-group">
               <label for="nome">Nome do Responsável</label>
@@ -169,7 +164,7 @@
             <div>
               <p class="success-title">Cadastro realizado!</p>
               <p class="success-desc">
-                Sua conta corporativa foi criada com sucesso.<br />
+                Sua conta foi criada com sucesso.<br />
                 Você já pode começar a calcular seu impacto.
               </p>
             </div>
@@ -182,29 +177,13 @@
           </div>
 
           <p class="login-prompt" id="loginPrompt">
-            Já tem uma conta? <a href="#">Entrar</a>
+            Já tem uma conta? <a href="/login">Entrar</a>
           </p>
         </div>
       </div>
     </div>
 
     <script>
-      /* ── CNPJ Mask ── */
-      document.getElementById("cnpj").addEventListener("input", function (e) {
-        let v = e.target.value.replace(/\D/g, "").slice(0, 14);
-        if (v.length > 12)
-          v = v.replace(
-            /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/,
-            "$1.$2.$3/$4-$5",
-          );
-        else if (v.length > 8)
-          v = v.replace(/^(\d{2})(\d{3})(\d{3})(\d{0,4})/, "$1.$2.$3/$4");
-        else if (v.length > 5)
-          v = v.replace(/^(\d{2})(\d{3})(\d{0,3})/, "$1.$2.$3");
-        else if (v.length > 2) v = v.replace(/^(\d{2})(\d{0,3})/, "$1.$2");
-        e.target.value = v;
-      });
-
       /* ── Password toggle ── */
       document
         .getElementById("toggleSenha")
@@ -255,17 +234,12 @@
       document
         .getElementById("btnCadastrar")
         .addEventListener("click", async function () {
-          const cnpj = document.getElementById("cnpj").value.trim();
           const nome = document.getElementById("nome").value.trim();
           const email = document.getElementById("email").value.trim();
           const senha = document.getElementById("senha").value.trim();
 
-          if (!cnpj || !nome || !email || !senha) {
+          if (!nome || !email || !senha) {
             alert("Por favor, preencha todos os campos.");
-            return;
-          }
-          if (cnpj.length < 18) {
-            alert("Digite um CNPJ válido com 14 dígitos.");
             return;
           }
           if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -284,7 +258,6 @@
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                cnpj,
                 nome,
                 email,
                 senha,
@@ -309,5 +282,6 @@
           }
         });
     </script>
+    <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
   </body>
 </html>
