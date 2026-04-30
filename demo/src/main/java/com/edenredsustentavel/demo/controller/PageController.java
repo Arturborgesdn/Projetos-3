@@ -8,17 +8,32 @@ public class PageController {
 
     @GetMapping("/")
     public String index() {
-        return "index"; // serve templates/index.html
+        return "index";
+    }
+
+    @GetMapping("/cadastro")
+    public String cadastro() {
+        return "cadastro";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/historico")
+    public String historico() {
+        return "historico";
     }
 
     @GetMapping("/calculadora")
     public String calculadora() {
-        return "calculadora"; // serve templates/calculadora.html
+        return "calculadora";
     }
 
     @GetMapping("/por-pessoas")
     public String porPessoas() {
-        return "index"; // Lembre-se de criar um HTML para esta página depois!
+        return "index";
     }
 
     @GetMapping("/para-pessoas")
