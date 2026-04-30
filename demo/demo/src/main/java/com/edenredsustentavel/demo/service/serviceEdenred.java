@@ -26,19 +26,16 @@ public class serviceEdenred {
     private repositoryDadosTangiveis repoDadosTangiveis;
 
     // ── Login ──────────────────────────────────────────────
-    public modelEmpresa login(String cnpj, String senha) {
-        Optional<modelEmpresa> empresa = repositoryEmpresa.findByCnpj(cnpj);
+    public modelEmpresa login(String email, String senha) {
+        Optional<modelEmpresa> empresa = repositoryEmpresa.findByEmail(email);
         if (empresa.isPresent() && empresa.get().getSenha().equals(senha)) {
             return empresa.get();
         }
         return null;
     }
 
-    // ── Cadastro ───────────────────────────────────────────
+// ── Cadastro ───────────────────────────────────────────
     public modelEmpresa cadastrar(modelEmpresa empresa) {
-        if (repositoryEmpresa.findByCnpj(empresa.getCnpj()).isPresent()) {
-            throw new RuntimeException("CNPJ já cadastrado");
-        }
         if (repositoryEmpresa.findByEmail(empresa.getEmail()).isPresent()) {
             throw new RuntimeException("Email já cadastrado");
         }
@@ -55,9 +52,10 @@ public class serviceEdenred {
         double totalCartoes = cartoesTotais + reemissao;
 
         // 2. Fatores
-        double fatorMaterial  = req.material.equals("pvc_reciclado") ? 0.7 : 1.0;
+        double fatorMaterial  = "pvc_reciclado".equals(req.material) ? 0.7 : 1.0;
         double fatorEmbalagem;
-        switch (req.tipo_embalagem) {
+        String tipoEmbalagem = req.tipo_embalagem != null ? req.tipo_embalagem : "kit_padrao";
+        switch (tipoEmbalagem) {
             case "kit_premium": fatorEmbalagem = 1.5; break;
             case "kit_padrao":  fatorEmbalagem = 1.0; break;
             default:            fatorEmbalagem = 0.8;
@@ -66,21 +64,57 @@ public class serviceEdenred {
         // 3. Cálculos ambientais
         double baseCarbono  = (totalCartoes * 0.011 * fatorMaterial)
                             + (totalCartoes * 0.005 * fatorEmbalagem);
-        double fatorDestino = req.destino.equals("reciclagem")     ? 0.7
-                            : req.destino.equals("descarte_comum") ? 1.2 : 1.0;
+        String destinoFinal = req.destino != null ? req.destino : "descarte_comum";
+        double fatorDestino = destinoFinal.equals("reciclagem")     ? 0.7
+                            : destinoFinal.equals("descarte_comum") ? 1.2 : 1.0;
 
         response.carbono  = baseCarbono * fatorDestino;
         response.agua     = totalCartoes * 0.15 * fatorMaterial;
         response.energia  = totalCartoes * 0.02 * fatorMaterial;
 
         double pesoPlastico = totalCartoes * 0.005;
-        response.residuos   = req.destino.equals("reciclagem") ? pesoPlastico * 0.1 : pesoPlastico;
+        response.residuos   = destinoFinal.equals("reciclagem") ? pesoPlastico * 0.1 : pesoPlastico;
 
-        // 4. Dados tangíveis
-        response.entregasDelivery   = response.carbono  / 1.2;
-        response.transacoesDigitais = response.energia  / 0.0004;
-        response.garrafasPet        = response.residuos / 0.045;
-        response.banhosDeAgua       = response.agua     / 90.0;
+        
+        // Mapeamento do Cenário Físico (Dados Brutos calculados anteriormente)
+        response.carbonoFisico = response.carbono;
+        response.aguaFisica = response.agua;
+        response.energiaFisica = response.energia;
+        response.residuosFisicos = response.residuos;
+
+        // Cálculo do Cenário Digital
+        double volumeTransacoes = req.volumeTransacoes > 0 ? req.volumeTransacoes : (totalCartoes * 22);
+        response.residuosDigital = 0.0; 
+        response.aguaDigital = 0.0;     
+        response.energiaDigital = volumeTransacoes * 0.0004; 
+        response.carbonoDigital = response.energiaDigital * 0.085; 
+
+        // Cálculo das Percentagens de Redução
+        if (response.carbonoFisico > 0) {
+            response.reducaoCarbono = ((response.carbonoFisico - response.carbonoDigital) / response.carbonoFisico) * 100;
+        } else {
+            response.reducaoCarbono = 0.0;
+        }
+
+        response.reducaoAgua = 100.0; 
+
+        if (response.energiaFisica > 0) {
+            response.reducaoEnergia = ((response.energiaFisica - response.energiaDigital) / response.energiaFisica) * 100;
+        } else {
+            response.reducaoEnergia = 0.0;
+        }
+
+        response.reducaoResiduos = 100.0;
+
+        // Atualização dos Dados Tangíveis baseada na Economia Real (Físico - Digital)
+        double poupadoCarbono = response.carbonoFisico - response.carbonoDigital;
+        double poupadoEnergia = response.energiaFisica - response.energiaDigital;
+
+        // Dados tangíveis
+        response.entregasDelivery = poupadoCarbono / 1.2;
+        response.transacoesDigitais = poupadoEnergia / 0.0004;
+        response.garrafasPet = response.residuosFisicos / 0.045;
+        response.banhosDeAgua = response.aguaFisica / 90.0;
 
         // 5. Salva tabela dados_simulacao
         modelDadosSimulacao simulacao = new modelDadosSimulacao();
@@ -95,6 +129,21 @@ public class serviceEdenred {
         simulacao.setConsumoAguaLitros(response.agua);
         simulacao.setResiduosPlasticosKg(response.residuos);
         simulacao.setEnergiaKwh(response.energia);
+
+        // Novos campos para histórico completo
+        simulacao.setCarbonoDigital(response.carbonoDigital);
+        simulacao.setAguaDigital(response.aguaDigital);
+        simulacao.setResiduosDigital(response.residuosDigital);
+        simulacao.setEnergiaDigital(response.energiaDigital);
+        simulacao.setReducaoCarbono(response.reducaoCarbono);
+        simulacao.setReducaoAgua(response.reducaoAgua);
+        simulacao.setReducaoEnergia(response.reducaoEnergia);
+        simulacao.setReducaoResiduos(response.reducaoResiduos);
+
+        if (req.emailEmpresa != null && !req.emailEmpresa.isEmpty()) {
+            repositoryEmpresa.findByEmail(req.emailEmpresa)
+                .ifPresent(simulacao::setEmpresa);
+        }
         repoDadosSimulacao.save(simulacao);
 
         // 6. Salva tabela dados_tangiveis

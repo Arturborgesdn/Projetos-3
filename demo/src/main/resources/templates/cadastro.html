@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro - Edenred</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/styles.css" th:href="@{/styles.css}" />
   </head>
@@ -25,13 +22,8 @@
 
     <nav class="navbar">
       <div class="navbar-content">
-        <div class="logo-edenred"><img
-            class="red-circle"
-            th:src="@{/images/Edenred_Logo_(depuis_2017).png}"
-            src="/images/Edenred_Logo_(depuis_2017).png"
-            alt="logo-edenred"
-            style="height: 48px; width: auto; display: block;"
-          />
+        <div class="logo-edenred">
+          <img class="red-circle" th:src="@{/images/Edenred_Logo_(depuis_2017).png}" src="/images/Edenred_Logo_(depuis_2017).png" alt="logo-edenred" style="height: 48px; width: auto; display: block;"/>
         </div>
         <div class="nav-links" id="navLinks">
           <a href="#">Por Pessoas</a>
@@ -50,37 +42,25 @@
       </div>
     </nav>
 
-
     <header class="hero-banner">
       <div class="hero-content">
-        <h1>
-          Crie sua <strong>conta</strong>,<br />comece a
-          <strong>transformar.</strong>
-        </h1>
+        <h1>Crie sua <strong>conta</strong>,<br />comece a <strong>transformar.</strong></h1>
       </div>
     </header>
 
     <div class="container">
       <div class="register-wrapper">
         <div class="register-card" id="registerCard">
-          <!-- FORM -->
+
           <div id="formContent">
-            <h2>Criar Conta Corporativa</h2>
-            <p class="subtitle">
-              Preencha os dados abaixo para cadastrar sua empresa na plataforma
-              Edenred.
-            </p>
+            <h2>Criar Conta</h2>
+            <p class="subtitle">Preencha os dados abaixo para se cadastrar na plataforma Edenred.</p>
+
             <div class="form-group">
               <label for="nome">Nome do Responsável</label>
               <div class="input-wrapper">
                 <i class="ph ph-user input-icon"></i>
-                <input
-                  type="text"
-                  id="nome"
-                  name="nome"
-                  placeholder="Seu nome completo"
-                  autocomplete="name"
-                />
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" autocomplete="name"/>
               </div>
             </div>
 
@@ -88,13 +68,7 @@
               <label for="email">Email de Contato</label>
               <div class="input-wrapper">
                 <i class="ph ph-envelope input-icon"></i>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="seu@email.com"
-                  autocomplete="email"
-                />
+                <input type="email" id="email" name="email" placeholder="seu@email.com" autocomplete="email"/>
               </div>
             </div>
 
@@ -102,37 +76,19 @@
               <label for="senha">Senha de Acesso</label>
               <div class="input-wrapper">
                 <i class="ph ph-lock input-icon"></i>
-                <input
-                  type="password"
-                  id="senha"
-                  name="senha"
-                  placeholder="Crie uma senha segura"
-                  autocomplete="new-password"
-                  spellcheck="false"
-                />
-                <button
-                  class="toggle-password"
-                  type="button"
-                  id="toggleSenha"
-                  aria-label="Mostrar senha"
-                >
+                <input type="password" id="senha" name="senha" placeholder="Crie uma senha segura" autocomplete="new-password" spellcheck="false"/>
+                <button class="toggle-password" type="button" id="toggleSenha" aria-label="Mostrar senha">
                   <i class="ph ph-eye" id="eyeIcon"></i>
                 </button>
               </div>
-              <div
-                class="password-strength"
-                id="strengthContainer"
-                style="display: none"
-              >
+              <div class="password-strength" id="strengthContainer" style="display: none">
                 <div class="strength-bars">
                   <div class="strength-bar" id="bar1"></div>
                   <div class="strength-bar" id="bar2"></div>
                   <div class="strength-bar" id="bar3"></div>
                   <div class="strength-bar" id="bar4"></div>
                 </div>
-                <span class="strength-label" id="strengthLabel"
-                  >Muito fraca</span
-                >
+                <span class="strength-label" id="strengthLabel">Muito fraca</span>
               </div>
             </div>
 
@@ -151,24 +107,14 @@
             </div>
           </div>
 
-          <!-- SUCCESS STATE -->
-          <div
-            class="success-overlay"
-            id="successOverlay"
-            style="display: none"
-          >
-            <div class="success-icon">
-              <i class="ph ph-check-circle"></i>
-            </div>
+          <div class="success-overlay" id="successOverlay" style="display: none">
+            <div class="success-icon"><i class="ph ph-check-circle"></i></div>
             <div>
               <p class="success-title">Cadastro realizado!</p>
-              <p class="success-desc">
-                Sua conta corporativa foi criada com sucesso.<br />
-                Você já pode começar a calcular seu impacto.
-              </p>
+              <p class="success-desc">Sua conta foi criada com sucesso.<br/>Você já pode começar a calcular seu impacto.</p>
             </div>
-            <a href="/calculadora"
-              ><button class="btn-primary" style="max-width: 260px">
+            <a href="/calculadora">
+              <button class="btn-primary" style="max-width: 260px">
                 <i class="ph ph-arrow-right"></i>
                 IR PARA A CALCULADORA
               </button>
@@ -176,7 +122,7 @@
           </div>
 
           <p class="login-prompt" id="loginPrompt">
-            Já tem uma conta? <a href="#">Entrar</a>
+            Já tem uma conta? <a href="/login">Entrar</a>
           </p>
         </div>
       </div>
@@ -191,7 +137,6 @@
         icon.className = isHidden ? "ph ph-eye-slash" : "ph ph-eye";
       });
 
-      /* ── Password strength ── */
       document.getElementById("senha").addEventListener("input", function () {
         const val = this.value;
         const container = document.getElementById("strengthContainer");
@@ -218,7 +163,6 @@
         label.style.color = colors[score - 1] || "var(--gray-400)";
       });
 
-      /* ── Form Submit ── */
       document.getElementById("btnCadastrar").addEventListener("click", async function () {
         const nome = document.getElementById("nome").value.trim();
         const email = document.getElementById("email").value.trim();

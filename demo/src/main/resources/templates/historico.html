@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Histórico de Simulações - Edenred</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/styles.css" th:href="@{/styles.css}" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-
     <div class="top-bar">
       <div class="top-bar-content">
         <span class="country">BRASIL</span>
@@ -25,7 +27,13 @@
     <nav class="navbar">
       <div class="navbar-content">
         <div class="logo-edenred">
-          <img class="red-circle" th:src="@{/images/Edenred_Logo_(depuis_2017).png}" src="/images/Edenred_Logo_(depuis_2017).png" alt="logo-edenred" style="height: 48px; width: auto; display: block;"/>
+          <img
+            class="red-circle"
+            th:src="@{/images/Edenred_Logo_(depuis_2017).png}"
+            src="/images/Edenred_Logo_(depuis_2017).png"
+            alt="logo-edenred"
+            style="height: 48px; width: auto; display: block"
+          />
         </div>
         <div class="nav-links" id="navLinks">
           <a href="#">Por Pessoas</a>
@@ -46,50 +54,98 @@
 
     <header class="hero-banner">
       <div class="hero-content">
-        <h1>Histórico de <strong>simulações</strong>,<br/>sua evolução <strong>sustentável.</strong></h1>
+        <h1>
+          Histórico de <strong>simulações</strong>,<br />sua evolução
+          <strong>sustentável.</strong>
+        </h1>
       </div>
     </header>
 
     <div class="container main-layout">
-
       <!-- Estado de carregamento -->
-      <div id="loadingState" style="text-align:center; padding: 60px 20px;">
-        <i class="ph ph-spinner" style="font-size: 32px; color: var(--text-muted);"></i>
-        <p style="color: var(--text-muted); margin-top: 12px;">Buscando sua última simulação...</p>
+      <div id="loadingState" style="text-align: center; padding: 60px 20px">
+        <i
+          class="ph ph-spinner"
+          style="font-size: 32px; color: var(--text-muted)"
+        ></i>
+        <p style="color: var(--text-muted); margin-top: 12px">
+          Buscando sua última simulação...
+        </p>
       </div>
 
       <!-- Estado sem login -->
-      <div id="semLoginState" style="display:none; text-align:center; padding: 60px 20px;">
-        <i class="ph ph-lock" style="font-size: 48px; color: var(--text-muted);"></i>
-        <h2 style="margin: 16px 0 8px; font-size: 22px;">Acesso restrito</h2>
-        <p style="color: var(--text-muted); margin-bottom: 24px;">Você precisa estar logado para ver seu histórico.</p>
-        <a href="/login" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+      <div
+        id="semLoginState"
+        style="display: none; text-align: center; padding: 60px 20px"
+      >
+        <i
+          class="ph ph-lock"
+          style="font-size: 48px; color: var(--text-muted)"
+        ></i>
+        <h2 style="margin: 16px 0 8px; font-size: 22px">Acesso restrito</h2>
+        <p style="color: var(--text-muted); margin-bottom: 24px">
+          Você precisa estar logado para ver seu histórico.
+        </p>
+        <a
+          href="/login"
+          class="btn-primary"
+          style="
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+          "
+        >
           <i class="ph ph-sign-in"></i> Fazer login
         </a>
       </div>
 
       <!-- Estado sem simulação -->
-      <div id="semSimulacaoState" style="display:none; text-align:center; padding: 60px 20px;">
-        <i class="ph ph-calculator" style="font-size: 48px; color: var(--text-muted);"></i>
-        <h2 style="margin: 16px 0 8px; font-size: 22px;">Nenhuma simulação encontrada</h2>
-        <p style="color: var(--text-muted); margin-bottom: 24px;">Você ainda não fez nenhuma simulação. Que tal começar agora?</p>
-        <a href="/calculadora" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+      <div
+        id="semSimulacaoState"
+        style="display: none; text-align: center; padding: 60px 20px"
+      >
+        <i
+          class="ph ph-calculator"
+          style="font-size: 48px; color: var(--text-muted)"
+        ></i>
+        <h2 style="margin: 16px 0 8px; font-size: 22px">
+          Nenhuma simulação encontrada
+        </h2>
+        <p style="color: var(--text-muted); margin-bottom: 24px">
+          Você ainda não fez nenhuma simulação. Que tal começar agora?
+        </p>
+        <a
+          href="/calculadora"
+          class="btn-primary"
+          style="
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+          "
+        >
           <i class="ph ph-arrow-right"></i> Ir para a calculadora
         </a>
       </div>
 
       <!-- Resultados -->
-      <div id="resultadoState" style="display:none;">
-
+      <div id="resultadoState" style="display: none">
         <div class="results-header">
           <h2>Sua última simulação</h2>
-          <p id="dataSimulacao" style="color: var(--text-muted); font-size: 13px;"></p>
+          <p
+            id="dataSimulacao"
+            style="color: var(--text-muted); font-size: 13px"
+          ></p>
         </div>
 
         <!-- Cards ambientais -->
         <div class="cards-grid">
           <div class="result-card bg-red">
-            <div class="card-header"><i class="ph ph-cloud card-icon"></i><h3>CO₂ Emitido</h3></div>
+            <div class="card-header">
+              <i class="ph ph-cloud card-icon"></i>
+              <h3>CO₂ Emitido</h3>
+            </div>
             <div class="card-number-wrapper">
               <span class="card-number" id="histCo2">-</span>
               <span class="card-unit">kg</span>
@@ -97,7 +153,10 @@
             <p class="card-desc">Carbono emitido na produção e logística</p>
           </div>
           <div class="result-card bg-blue">
-            <div class="card-header"><i class="ph ph-drop card-icon"></i><h3>Água Consumida</h3></div>
+            <div class="card-header">
+              <i class="ph ph-drop card-icon"></i>
+              <h3>Água Consumida</h3>
+            </div>
             <div class="card-number-wrapper">
               <span class="card-number" id="histAgua">-</span>
               <span class="card-unit">litros</span>
@@ -105,7 +164,10 @@
             <p class="card-desc">Água utilizada no processo de fabricação</p>
           </div>
           <div class="result-card bg-yellow">
-            <div class="card-header"><i class="ph ph-trash card-icon"></i><h3>Plástico</h3></div>
+            <div class="card-header">
+              <i class="ph ph-trash card-icon"></i>
+              <h3>Plástico</h3>
+            </div>
             <div class="card-number-wrapper">
               <span class="card-number" id="histPlastico">-</span>
               <span class="card-unit">kg</span>
@@ -113,7 +175,10 @@
             <p class="card-desc">Plástico descartado ao fim da vida útil</p>
           </div>
           <div class="result-card bg-green">
-            <div class="card-header"><i class="ph ph-lightning card-icon"></i><h3>Energia</h3></div>
+            <div class="card-header">
+              <i class="ph ph-lightning card-icon"></i>
+              <h3>Energia</h3>
+            </div>
             <div class="card-number-wrapper">
               <span class="card-number" id="histEnergia">-</span>
               <span class="card-unit">kWh</span>
@@ -123,40 +188,88 @@
         </div>
 
         <!-- Dados tangíveis -->
-        <div class="results-header" style="margin-top: 2.5rem;">
+        <div class="results-header" style="margin-top: 2.5rem">
           <h2>Isso equivale a…</h2>
           <p>Impacto traduzido para o dia a dia.</p>
         </div>
 
-        <div class="cards-grid" style="margin-bottom: 40px;">
-          <div class="result-card" style="background: linear-gradient(135deg,#f97316,#ea580c); color:white; border:none;">
-            <div class="card-header"><span style="font-size:24px;">🛵</span><h3 style="color:white;">Entregas evitadas</h3></div>
+        <div class="cards-grid" style="margin-bottom: 40px">
+          <div
+            class="result-card"
+            style="
+              background: linear-gradient(135deg, #f97316, #ea580c);
+              color: white;
+              border: none;
+            "
+          >
+            <div class="card-header">
+              <span style="font-size: 24px">🛵</span>
+              <h3 style="color: white">Entregas evitadas</h3>
+            </div>
             <div class="card-number-wrapper">
-              <span class="card-number" id="histEntregas" style="color:white;">-</span>
+              <span class="card-number" id="histEntregas" style="color: white"
+                >-</span
+              >
             </div>
           </div>
-          <div class="result-card" style="background: linear-gradient(135deg,#8b5cf6,#6d28d9); color:white; border:none;">
-            <div class="card-header"><span style="font-size:24px;">📱</span><h3 style="color:white;">Transações digitais</h3></div>
+          <div
+            class="result-card"
+            style="
+              background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+              color: white;
+              border: none;
+            "
+          >
+            <div class="card-header">
+              <span style="font-size: 24px">📱</span>
+              <h3 style="color: white">Transações digitais</h3>
+            </div>
             <div class="card-number-wrapper">
-              <span class="card-number" id="histTransacoes" style="color:white;">-</span>
+              <span class="card-number" id="histTransacoes" style="color: white"
+                >-</span
+              >
             </div>
           </div>
-          <div class="result-card" style="background: linear-gradient(135deg,#22c55e,#15803d); color:white; border:none;">
-            <div class="card-header"><span style="font-size:24px;">🧴</span><h3 style="color:white;">Garrafas PET</h3></div>
+          <div
+            class="result-card"
+            style="
+              background: linear-gradient(135deg, #22c55e, #15803d);
+              color: white;
+              border: none;
+            "
+          >
+            <div class="card-header">
+              <span style="font-size: 24px">🧴</span>
+              <h3 style="color: white">Garrafas PET</h3>
+            </div>
             <div class="card-number-wrapper">
-              <span class="card-number" id="histGarrafas" style="color:white;">-</span>
+              <span class="card-number" id="histGarrafas" style="color: white"
+                >-</span
+              >
             </div>
           </div>
-          <div class="result-card" style="background: linear-gradient(135deg,#38bdf8,#0284c7); color:white; border:none;">
-            <div class="card-header"><span style="font-size:24px;">🚿</span><h3 style="color:white;">Banhos de 10 min</h3></div>
+          <div
+            class="result-card"
+            style="
+              background: linear-gradient(135deg, #38bdf8, #0284c7);
+              color: white;
+              border: none;
+            "
+          >
+            <div class="card-header">
+              <span style="font-size: 24px">🚿</span>
+              <h3 style="color: white">Banhos de 10 min</h3>
+            </div>
             <div class="card-number-wrapper">
-              <span class="card-number" id="histBanhos" style="color:white;">-</span>
+              <span class="card-number" id="histBanhos" style="color: white"
+                >-</span
+              >
             </div>
           </div>
         </div>
 
         <!-- GRÁFICOS DE IMPACTO -->
-        <div class="results-header" style="margin-top: 3rem;">
+        <div class="results-header" style="margin-top: 3rem">
           <h2>Visualização do Impacto Histórico</h2>
           <p>Comparação detalhada da sua última simulação.</p>
         </div>
@@ -173,34 +286,42 @@
         </div>
 
         <div class="btn-container">
-          <a href="/calculadora" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+          <a
+            href="/calculadora"
+            class="btn-primary"
+            style="
+              text-decoration: none;
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+            "
+          >
             <i class="ph ph-arrow-clockwise"></i>
             Fazer nova simulação
           </a>
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
 
-        <script>
+    <script>
       let barChartInstance = null;
       let pieChartInstance = null;
 
-      const email = sessionStorage.getItem("emailEmpresa");
-
-      if (!email) {
-        document.getElementById("loadingState").style.display = "none";
-        document.getElementById("semLoginState").style.display = "block";
-      } else {
-        fetch(`http://localhost:8080/impacto/historico/${email}`)
-          .then(res => {
-            if (res.status === 204 || res.status === 404) {
-              document.getElementById("loadingState").style.display = "none";
-              document.getElementById("semSimulacaoState").style.display = "block";
-              return null;
-            }
-            return res.json();
-          })
-          .then(dados => {
+      fetch("/impacto/historico")
+        .then((res) => {
+          if (res.status === 401) {
+            window.location.href = "/login";
+            return null;
+          }
+          if (res.status === 204 || res.status === 404) {
+            document.getElementById("loadingState").style.display = "none";
+            document.getElementById("semSimulacaoState").style.display =
+              "block";
+            return null;
+          }
+          return res.json();
+        })
+          .then((dados) => {
             if (!dados) return;
 
             document.getElementById("loadingState").style.display = "none";
@@ -210,27 +331,40 @@
             if (dados.dataCriacao) {
               const data = new Date(dados.dataCriacao);
               document.getElementById("dataSimulacao").textContent =
-                `Simulação realizada em ${data.toLocaleDateString('pt-BR')} às ${data.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'})}`;
+                `Simulação realizada em ${data.toLocaleDateString("pt-BR")} às ${data.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}`;
             }
 
             // Resultados ambientais
-            document.getElementById("histCo2").textContent      = dados.emissaoCo2Kg?.toFixed(2) ?? "-";
-            document.getElementById("histAgua").textContent     = dados.consumoAguaLitros?.toLocaleString('pt-BR') ?? "-";
-            document.getElementById("histPlastico").textContent = dados.residuosPlasticosKg?.toFixed(2) ?? "-";
-            document.getElementById("histEnergia").textContent  = dados.energiaKwh?.toFixed(2) ?? "-";
+            document.getElementById("histCo2").textContent =
+              dados.emissaoCo2Kg?.toFixed(2) ?? "-";
+            document.getElementById("histAgua").textContent =
+              dados.consumoAguaLitros?.toLocaleString("pt-BR") ?? "-";
+            document.getElementById("histPlastico").textContent =
+              dados.residuosPlasticosKg?.toFixed(2) ?? "-";
+            document.getElementById("histEnergia").textContent =
+              dados.energiaKwh?.toFixed(2) ?? "-";
 
             // Dados tangíveis
-            document.getElementById("histEntregas").textContent   = Math.round(dados.dadosTangiveis?.entregasDelivery ?? 0).toLocaleString('pt-BR');
-            document.getElementById("histTransacoes").textContent = Math.round(dados.dadosTangiveis?.transacoesDigitais ?? 0).toLocaleString('pt-BR');
-            document.getElementById("histGarrafas").textContent   = Math.round(dados.dadosTangiveis?.garrafasPet ?? 0).toLocaleString('pt-BR');
-            document.getElementById("histBanhos").textContent     = Math.round(dados.dadosTangiveis?.banhosDeAgua ?? 0).toLocaleString('pt-BR');
+            document.getElementById("histEntregas").textContent = Math.round(
+              dados.dadosTangiveis?.entregasDelivery ?? 0,
+            ).toLocaleString("pt-BR");
+            document.getElementById("histTransacoes").textContent = Math.round(
+              dados.dadosTangiveis?.transacoesDigitais ?? 0,
+            ).toLocaleString("pt-BR");
+            document.getElementById("histGarrafas").textContent = Math.round(
+              dados.dadosTangiveis?.garrafasPet ?? 0,
+            ).toLocaleString("pt-BR");
+            document.getElementById("histBanhos").textContent = Math.round(
+              dados.dadosTangiveis?.banhosDeAgua ?? 0,
+            ).toLocaleString("pt-BR");
 
             // Renderizar Gráficos
             renderizarGraficos(dados);
           })
           .catch(() => {
             document.getElementById("loadingState").style.display = "none";
-            document.getElementById("semSimulacaoState").style.display = "block";
+            document.getElementById("semSimulacaoState").style.display =
+              "block";
           });
       }
 
@@ -238,8 +372,8 @@
         if (barChartInstance) barChartInstance.destroy();
         if (pieChartInstance) pieChartInstance.destroy();
 
-        const ctxBar = document.getElementById('barChart').getContext('2d');
-        const ctxPie = document.getElementById('pieChart').getContext('2d');
+        const ctxBar = document.getElementById("barChart").getContext("2d");
+        const ctxPie = document.getElementById("pieChart").getContext("2d");
 
         // Configurações globais (Inter)
         Chart.defaults.font.family = "'Inter', sans-serif";
@@ -247,109 +381,129 @@
 
         // 1. Gráfico de Colunas (Físico vs Digital)
         barChartInstance = new Chart(ctxBar, {
-            type: 'bar',
-            data: {
-                labels: ['CO₂ (kg)', 'Água (L)', 'Plástico (kg)', 'Energia (kWh)'],
-                datasets: [
-                    {
-                        label: 'Físico',
-                        data: [dados.emissaoCo2Kg, dados.consumoAguaLitros, dados.residuosPlasticosKg, dados.energiaKwh],
-                        backgroundColor: '#e1000f', 
-                        borderRadius: 6,
-                        barPercentage: 0.6,
-                        categoryPercentage: 0.6
-                    },
-                    {
-                        label: 'Digital',
-                        data: [dados.carbonoDigital ?? 0, dados.aguaDigital ?? 0, dados.residuosDigital ?? 0, dados.energiaDigital ?? 0],
-                        backgroundColor: '#16a34a',
-                        borderRadius: 6,
-                        barPercentage: 0.6,
-                        categoryPercentage: 0.6
-                    }
-                ]
+          type: "bar",
+          data: {
+            labels: ["CO₂ (kg)", "Água (L)", "Plástico (kg)", "Energia (kWh)"],
+            datasets: [
+              {
+                label: "Físico",
+                data: [
+                  dados.emissaoCo2Kg,
+                  dados.consumoAguaLitros,
+                  dados.residuosPlasticosKg,
+                  dados.energiaKwh,
+                ],
+                backgroundColor: "#e1000f",
+                borderRadius: 6,
+                barPercentage: 0.6,
+                categoryPercentage: 0.6,
+              },
+              {
+                label: "Digital",
+                data: [
+                  dados.carbonoDigital ?? 0,
+                  dados.aguaDigital ?? 0,
+                  dados.residuosDigital ?? 0,
+                  dados.energiaDigital ?? 0,
+                ],
+                backgroundColor: "#16a34a",
+                borderRadius: 6,
+                barPercentage: 0.6,
+                categoryPercentage: 0.6,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: {
+                  usePointStyle: true,
+                  padding: 20,
+                  font: { weight: "600", size: 12 },
+                },
+              },
+              tooltip: {
+                backgroundColor: "#1a2637",
+                padding: 12,
+                cornerRadius: 8,
+              },
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { usePointStyle: true, padding: 20, font: { weight: '600', size: 12 } }
-                    },
-                    tooltip: {
-                        backgroundColor: '#1a2637',
-                        padding: 12,
-                        cornerRadius: 8
-                    }
-                },
-                scales: {
-                    y: { 
-                        beginAtZero: true,
-                        grid: { display: true, color: '#f1f5f9' }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { font: { weight: '600', size: 11 } }
-                    }
-                },
-                animation: {
-                    duration: 2000,
-                    easing: 'easeOutQuart'
-                }
-            }
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: { display: true, color: "#f1f5f9" },
+              },
+              x: {
+                grid: { display: false },
+                ticks: { font: { weight: "600", size: 11 } },
+              },
+            },
+            animation: {
+              duration: 2000,
+              easing: "easeOutQuart",
+            },
+          },
         });
 
         // 2. Gráfico de Pizza (Média das Reduções)
         const reducoes = [
-            dados.reducaoCarbono ?? 0,
-            dados.reducaoAgua ?? 0,
-            dados.reducaoEnergia ?? 0,
-            dados.reducaoResiduos ?? 0
+          dados.reducaoCarbono ?? 0,
+          dados.reducaoAgua ?? 0,
+          dados.reducaoEnergia ?? 0,
+          dados.reducaoResiduos ?? 0,
         ];
         const mediaReducao = reducoes.reduce((a, b) => a + b, 0) / 4;
         const impactoRemanescente = 100 - mediaReducao;
 
         pieChartInstance = new Chart(ctxPie, {
-            type: 'doughnut',
-            data: {
-                labels: ['Redução Digital', 'Impacto Físico'],
-                datasets: [{
-                    data: [mediaReducao, impactoRemanescente],
-                    backgroundColor: ['#16a34a', '#e1000f'],
-                    borderWidth: 0,
-                    hoverOffset: 10
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { usePointStyle: true, padding: 20, font: { weight: '600', size: 12 } }
-                    },
-                    tooltip: {
-                        backgroundColor: '#1a2637',
-                        padding: 12,
-                        cornerRadius: 8,
-                        callbacks: {
-                            label: function(context) {
-                                return ` ${context.label}: ${context.raw.toFixed(1)}%`;
-                            }
-                        }
-                    }
+          type: "doughnut",
+          data: {
+            labels: ["Redução Digital", "Impacto Físico"],
+            datasets: [
+              {
+                data: [mediaReducao, impactoRemanescente],
+                backgroundColor: ["#16a34a", "#e1000f"],
+                borderWidth: 0,
+                hoverOffset: 10,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            cutout: "70%",
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: {
+                  usePointStyle: true,
+                  padding: 20,
+                  font: { weight: "600", size: 12 },
                 },
-                animation: {
-                    animateScale: true,
-                    animateRotate: true,
-                    duration: 2000
-                }
-            }
+              },
+              tooltip: {
+                backgroundColor: "#1a2637",
+                padding: 12,
+                cornerRadius: 8,
+                callbacks: {
+                  label: function (context) {
+                    return ` ${context.label}: ${context.raw.toFixed(1)}%`;
+                  },
+                },
+              },
+            },
+            animation: {
+              animateScale: true,
+              animateRotate: true,
+              duration: 2000,
+            },
+          },
         });
       }
     </script>
-
+    <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
   </body>
 </html>

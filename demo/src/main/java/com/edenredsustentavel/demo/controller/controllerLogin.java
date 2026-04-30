@@ -16,13 +16,14 @@ public class controllerLogin {
     private serviceEdenred serviceEdenred;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Map<String, String> dados) {
+    public ResponseEntity<?> login(@RequestBody Map<String, String> dados, jakarta.servlet.http.HttpSession session) {
         String email = dados.get("email");
         String senha = dados.get("senha");
 
         modelEmpresa empresa = serviceEdenred.login(email, senha);
 
         if (empresa != null) {
+            session.setAttribute("usuarioLogado", empresa.getEmail());
             return ResponseEntity.ok(Map.of(
                 "mensagem", "Login realizado com sucesso",
                 "empresa", empresa.getNome(),
@@ -33,6 +34,12 @@ public class controllerLogin {
         return ResponseEntity.status(401).body(Map.of(
             "mensagem", "Email ou senha inválidos"
         ));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(jakarta.servlet.http.HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok(Map.of("mensagem", "Logout realizado com sucesso"));
     }
 
     @PostMapping("/cadastro")
