@@ -70,12 +70,6 @@
               Preencha os dados abaixo para cadastrar sua empresa na plataforma
               Edenred.
             </p>
-
-            <div class="form-group">
-              <div class="input-wrapper">
-              </div>
-            </div>
-
             <div class="form-group">
               <label for="nome">Nome do Responsável</label>
               <div class="input-wrapper">
@@ -189,32 +183,13 @@
     </div>
 
     <script>
-      /* ── CNPJ Mask ── */
-      document.getElementById("cnpj").addEventListener("input", function (e) {
-        let v = e.target.value.replace(/\D/g, "").slice(0, 14);
-        if (v.length > 12)
-          v = v.replace(
-            /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/,
-            "$1.$2.$3/$4-$5",
-          );
-        else if (v.length > 8)
-          v = v.replace(/^(\d{2})(\d{3})(\d{3})(\d{0,4})/, "$1.$2.$3/$4");
-        else if (v.length > 5)
-          v = v.replace(/^(\d{2})(\d{3})(\d{0,3})/, "$1.$2.$3");
-        else if (v.length > 2) v = v.replace(/^(\d{2})(\d{0,3})/, "$1.$2");
-        e.target.value = v;
+      document.getElementById("toggleSenha").addEventListener("click", function () {
+        const input = document.getElementById("senha");
+        const icon = document.getElementById("eyeIcon");
+        const isHidden = input.type === "password";
+        input.type = isHidden ? "text" : "password";
+        icon.className = isHidden ? "ph ph-eye-slash" : "ph ph-eye";
       });
-
-      /* ── Password toggle ── */
-      document
-        .getElementById("toggleSenha")
-        .addEventListener("click", function () {
-          const input = document.getElementById("senha");
-          const icon = document.getElementById("eyeIcon");
-          const isHidden = input.type === "password";
-          input.type = isHidden ? "text" : "password";
-          icon.className = isHidden ? "ph ph-eye-slash" : "ph ph-eye";
-        });
 
       /* ── Password strength ── */
       document.getElementById("senha").addEventListener("input", function () {
@@ -227,87 +202,63 @@
           document.getElementById("bar3"),
           document.getElementById("bar4"),
         ];
-
-        if (!val) {
-          container.style.display = "none";
-          return;
-        }
+        if (!val) { container.style.display = "none"; return; }
         container.style.display = "flex";
-
         let score = 0;
         if (val.length >= 8) score++;
         if (/[A-Z]/.test(val)) score++;
         if (/[0-9]/.test(val)) score++;
         if (/[^A-Za-z0-9]/.test(val)) score++;
-
         const colors = ["#E63312", "#f57c00", "#fbc02d", "#388e3c"];
         const labels = ["Muito fraca", "Fraca", "Moderada", "Forte"];
-
         bars.forEach((bar, i) => {
-          bar.style.background =
-            i < score ? colors[score - 1] : "var(--gray-200)";
+          bar.style.background = i < score ? colors[score - 1] : "var(--gray-200)";
         });
         label.textContent = labels[score - 1] || "Muito fraca";
         label.style.color = colors[score - 1] || "var(--gray-400)";
       });
 
       /* ── Form Submit ── */
-      document
-        .getElementById("btnCadastrar")
-        .addEventListener("click", async function () {
-          const cnpj = document.getElementById("cnpj").value.trim();
-          const nome = document.getElementById("nome").value.trim();
-          const email = document.getElementById("email").value.trim();
-          const senha = document.getElementById("senha").value.trim();
+      document.getElementById("btnCadastrar").addEventListener("click", async function () {
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("senha").value.trim();
 
-          if (!cnpj || !nome || !email || !senha) {
-            alert("Por favor, preencha todos os campos.");
+        if (!nome || !email || !senha) {
+          alert("Por favor, preencha todos os campos.");
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert("Digite um email válido.");
+          return;
+        }
+        if (senha.length < 6) {
+          alert("A senha deve ter pelo menos 6 caracteres.");
+          return;
+        }
+
+        try {
+          const response = await fetch("/auth/cadastro", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, email, senha }),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            alert(data.mensagem || "Erro ao cadastrar. Tente novamente.");
             return;
           }
-          if (cnpj.length < 18) {
-            alert("Digite um CNPJ válido com 14 dígitos.");
-            return;
-          }
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            alert("Digite um email válido.");
-            return;
-          }
-          if (senha.length < 6) {
-            alert("A senha deve ter pelo menos 6 caracteres.");
-            return;
-          }
 
-          try {
-            const response = await fetch("/auth/cadastro", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                cnpj,
-                nome,
-                email,
-                senha,
-              }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-              alert(data.mensagem || "Erro ao cadastrar. Tente novamente.");
-              return;
-            }
-
-            document.getElementById("formContent").style.display = "none";
-            document.getElementById("loginPrompt").style.display = "none";
-            document.getElementById("successOverlay").style.display = "flex";
-          } catch (error) {
-            console.error(error);
-            alert(
-              "Não foi possível conectar ao servidor. Tente novamente mais tarde.",
-            );
-          }
-        });
+          document.getElementById("formContent").style.display = "none";
+          document.getElementById("loginPrompt").style.display = "none";
+          document.getElementById("successOverlay").style.display = "flex";
+        } catch (error) {
+          console.error(error);
+          alert("Não foi possível conectar ao servidor. Tente novamente mais tarde.");
+        }
+      });
     </script>
   </body>
 </html>
