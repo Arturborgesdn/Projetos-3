@@ -1,3 +1,6 @@
+let barChartInstance = null;
+let pieChartInstance = null;
+
 document.getElementById("btnCalcular").addEventListener("click", async () => {
     const form = document.getElementById("calculadoraForm");
     const secaoResultados = document.getElementById("secaoResultados");
@@ -45,10 +48,13 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
         document.getElementById('val-pet').textContent      = Math.round(resultado.garrafasPet).toLocaleString('pt-BR');
         document.getElementById('val-banho').textContent    = Math.round(resultado.banhosDeAgua).toLocaleString('pt-BR');
 
-        // 4. Rola até os resultados
+        // 4. Renderiza os Gráficos
+        renderizarGraficos(resultado);
+
+        // 5. Rola até os resultados
         secaoResultados.scrollIntoView({ behavior: 'smooth' });
 
-        // 5. Busca e exibe o histórico da última simulação
+        // 6. Busca e exibe o histórico da última simulação
         if (emailEmpresa) {
             const hist = await fetch(`http://localhost:8080/impacto/historico/${emailEmpresa}`);
 
@@ -76,3 +82,117 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
         alert("Erro ao processar cálculo. Verifique se o backend está rodando.");
     }
 });
+
+function renderizarGraficos(dados) {
+    // Destruir instâncias anteriores para evitar bugs de hover/renderização
+    if (barChartInstance) barChartInstance.destroy();
+    if (pieChartInstance) pieChartInstance.destroy();
+
+    const ctxBar = document.getElementById('barChart').getContext('2d');
+    const ctxPie = document.getElementById('pieChart').getContext('2d');
+
+    // Configurações globais para combinar com o tema Edenred
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.color = "#64748b";
+
+    // 1. Gráfico de Colunas (Físico vs Digital)
+    barChartInstance = new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: ['CO₂ (kg)', 'Água (L)', 'Plástico (kg)', 'Energia (kWh)'],
+            datasets: [
+                {
+                    label: 'Físico',
+                    data: [dados.carbonoFisico, dados.aguaFisica, dados.residuosFisicos, dados.energiaFisica],
+                    backgroundColor: '#e1000f', // Edenred Red
+                    borderRadius: 6,
+                    barPercentage: 0.6,
+                    categoryPercentage: 0.6
+                },
+                {
+                    label: 'Digital',
+                    data: [dados.carbonoDigital, dados.aguaDigital, dados.residuosDigital, dados.energiaDigital],
+                    backgroundColor: '#16a34a', // Green
+                    borderRadius: 6,
+                    barPercentage: 0.6,
+                    categoryPercentage: 0.6
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { usePointStyle: true, padding: 20, font: { weight: '600', size: 12 } }
+                },
+                tooltip: {
+                    backgroundColor: '#1a2637',
+                    padding: 12,
+                    cornerRadius: 8,
+                    titleFont: { size: 13, weight: '700' },
+                    bodyFont: { size: 13 }
+                }
+            },
+            scales: {
+                y: { 
+                    beginAtZero: true,
+                    grid: { display: true, color: '#f1f5f9' },
+                    ticks: { font: { size: 11 } }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { font: { weight: '600', size: 11 } }
+                }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeOutQuart'
+            }
+        }
+    });
+
+    // 2. Gráfico de Pizza (Média das Reduções)
+    const mediaReducao = (dados.reducaoCarbono + dados.reducaoAgua + dados.reducaoEnergia + dados.reducaoResiduos) / 4;
+    const impactoRemanescente = 100 - mediaReducao;
+
+    pieChartInstance = new Chart(ctxPie, {
+        type: 'doughnut', // Transformado em Doughnut para um visual mais moderno
+        data: {
+            labels: ['Redução Digital', 'Impacto Físico'],
+            datasets: [{
+                data: [mediaReducao, impactoRemanescente],
+                backgroundColor: ['#16a34a', '#e1000f'],
+                borderWidth: 0,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            cutout: '70%', // Espaço central do doughnut
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { usePointStyle: true, padding: 20, font: { weight: '600', size: 12 } }
+                },
+                tooltip: {
+                    backgroundColor: '#1a2637',
+                    padding: 12,
+                    cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) {
+                            return ` ${context.label}: ${context.raw.toFixed(1)}%`;
+                        }
+                    }
+                }
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true,
+                duration: 2000
+            }
+        }
+    });
+}

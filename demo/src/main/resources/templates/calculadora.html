@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/styles.css" th:href="@{/styles.css}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div class="top-bar">
@@ -206,6 +207,23 @@
           </div>
         </div>
 
+        <!-- GRÁFICOS DE IMPACTO -->
+        <div class="results-header" style="margin-top: 3rem;">
+          <h2>Visualização do Impacto</h2>
+          <p>Comparação detalhada entre os cenários físico e digital.</p>
+        </div>
+
+        <div class="charts-container">
+          <div class="chart-box">
+            <h3>Impacto: Físico vs Digital</h3>
+            <canvas id="barChart"></canvas>
+          </div>
+          <div class="chart-box">
+            <h3>Média de Redução Ambiental</h3>
+            <canvas id="pieChart"></canvas>
+          </div>
+        </div>
+
         <!-- Botão voltar dentro dos resultados -->
         <div style="text-align: center; margin: 40px 0;">
           <a href="/" style="display: inline-block; background-color: #e1261c; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;" onmouseover="this.style.backgroundColor='#b71c14'" onmouseout="this.style.backgroundColor='#e1261c'">
@@ -270,24 +288,6 @@
       </div>
 
     </div>
-
-    <style>
-      .tangivel-grid { margin-top: 1rem; }
-      .tangivel-card {
-        display: flex; flex-direction: column; align-items: center;
-        text-align: center; padding: 2rem 1.5rem; border-radius: 16px;
-        color: #fff; transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .tangivel-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
-      .tc-laranja { background: linear-gradient(135deg, #f97316, #ea580c); }
-      .tc-roxo    { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-      .tc-verde   { background: linear-gradient(135deg, #22c55e, #15803d); }
-      .tc-azul    { background: linear-gradient(135deg, #38bdf8, #0284c7); }
-      .tangivel-icon { font-size: 2.8rem; margin-bottom: 0.75rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
-      .tangivel-numero { font-size: 2.4rem; font-weight: 800; line-height: 1; margin-bottom: 0.5rem; letter-spacing: -1px; }
-      .tangivel-label { font-size: 1rem; font-weight: 700; margin: 0.4rem 0 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; }
-      .tangivel-desc { font-size: 0.82rem; opacity: 0.88; line-height: 1.5; margin: 0; }
-    </style>
 
     <script src="/scripts/main.js" th:src="@{/scripts/main.js}"></script>
     <script src="/scripts/calculo.js" th:src="@{/scripts/calculo.js}"></script>

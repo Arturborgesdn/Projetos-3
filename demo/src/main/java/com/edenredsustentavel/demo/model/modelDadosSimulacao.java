@@ -28,6 +28,18 @@ public class modelDadosSimulacao {
     private Double residuosPlasticosKg;
     private Double energiaKwh;
 
+    // Cenário Digital
+    private Double carbonoDigital;
+    private Double aguaDigital;
+    private Double residuosDigital;
+    private Double energiaDigital;
+
+    // Percentagens de Redução
+    private Double reducaoCarbono;
+    private Double reducaoAgua;
+    private Double reducaoEnergia;
+    private Double reducaoResiduos;
+
     private LocalDateTime dataCriacao;
 
     @OneToOne(mappedBy = "simulacao", cascade = CascadeType.ALL)
@@ -76,6 +88,30 @@ public class modelDadosSimulacao {
 
     public Double getEnergiaKwh() { return energiaKwh; }
     public void setEnergiaKwh(Double v) { this.energiaKwh = v; }
+
+    public Double getCarbonoDigital() { return carbonoDigital; }
+    public void setCarbonoDigital(Double v) { this.carbonoDigital = v; }
+
+    public Double getAguaDigital() { return aguaDigital; }
+    public void setAguaDigital(Double v) { this.aguaDigital = v; }
+
+    public Double getResiduosDigital() { return residuosDigital; }
+    public void setResiduosDigital(Double v) { this.residuosDigital = v; }
+
+    public Double getEnergiaDigital() { return energiaDigital; }
+    public void setEnergiaDigital(Double v) { this.energiaDigital = v; }
+
+    public Double getReducaoCarbono() { return reducaoCarbono; }
+    public void setReducaoCarbono(Double v) { this.reducaoCarbono = v; }
+
+    public Double getReducaoAgua() { return reducaoAgua; }
+    public void setReducaoAgua(Double v) { this.reducaoAgua = v; }
+
+    public Double getReducaoEnergia() { return reducaoEnergia; }
+    public void setReducaoEnergia(Double v) { this.reducaoEnergia = v; }
+
+    public Double getReducaoResiduos() { return reducaoResiduos; }
+    public void setReducaoResiduos(Double v) { this.reducaoResiduos = v; }
 
     public LocalDateTime getDataCriacao() { return dataCriacao; }
     public void setDataCriacao(LocalDateTime v) { this.dataCriacao = v; }

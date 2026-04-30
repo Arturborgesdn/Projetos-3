@@ -126,6 +126,17 @@ public class serviceEdenred {
         simulacao.setConsumoAguaLitros(response.agua);
         simulacao.setResiduosPlasticosKg(response.residuos);
         simulacao.setEnergiaKwh(response.energia);
+
+        // Novos campos para histórico completo
+        simulacao.setCarbonoDigital(response.carbonoDigital);
+        simulacao.setAguaDigital(response.aguaDigital);
+        simulacao.setResiduosDigital(response.residuosDigital);
+        simulacao.setEnergiaDigital(response.energiaDigital);
+        simulacao.setReducaoCarbono(response.reducaoCarbono);
+        simulacao.setReducaoAgua(response.reducaoAgua);
+        simulacao.setReducaoEnergia(response.reducaoEnergia);
+        simulacao.setReducaoResiduos(response.reducaoResiduos);
+
         if (req.emailEmpresa != null && !req.emailEmpresa.isEmpty()) {
             repositoryEmpresa.findByEmail(req.emailEmpresa)
                 .ifPresent(simulacao::setEmpresa);
