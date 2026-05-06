@@ -107,12 +107,6 @@ cd demo
 ./mvnw spring-boot:run
 ```
 
-> **Windows (PowerShell):** se der erro de porta em uso, rode:
-> ```bash
-> taskkill //PID numero_do_processo //F
-> ```
-> e tente novamente.
-
 ### 5. Acessar a aplicação
 
 Após o log exibir `Started DemoApplication`, acesse:
