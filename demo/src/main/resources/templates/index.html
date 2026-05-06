@@ -255,8 +255,7 @@
             para ser compartilhado no seu <a href="#" class="seal-link">LinkedIn.</a>
           </p>
           <div class="seal-btns">
-            <a href="#" class="btn-calcular">Calcular</a>
-            <a href="#" class="btn-saiba">Saiba mais</a>
+            <a href="#" class="btn-calcular" id="btnDownloadSelo" style="display:none">Fazer download do selo de sustentabilidade.</a>
           </div>
         </div>
         <div class="seal-img-wrap">
@@ -422,6 +421,11 @@
       const emailSalvo = sessionStorage.getItem("emailEmpresa");
       if (emailSalvo) {
         document.getElementById("containerHistorico").style.display = "block";
+      }
+
+      /* ── Mostra botão de download do selo se simulação foi feita ── */
+      if (sessionStorage.getItem("simulacaoFeita") === "true") {
+        document.getElementById("btnDownloadSelo").style.display = "inline-block";
       }
     </script>
     <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>

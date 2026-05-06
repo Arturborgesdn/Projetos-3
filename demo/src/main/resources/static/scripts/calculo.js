@@ -32,6 +32,9 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
 
     const resultado = await response.json();
 
+    // ── Marca que o usuário já fez uma simulação ──
+    sessionStorage.setItem("simulacaoFeita", "true");
+
     // 1. Mostra a seção de resultados
     secaoResultados.style.display = "block";
 
