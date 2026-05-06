@@ -1,15 +1,161 @@
 # Projeto – Calculadora de Impacto Ambiental para Pagamentos Digitais
-## Entrega 1
-- Histórias de usuário do Projeto [Histórias de usuário - Projetos 3.pdf](https://docs.google.com/document/d/1acG23aitg1odm9QbZYD1o-JmEy9F-HNU1X26R3d0vic/edit?usp=sharing)
-- Screencast da Prototipação de baixa fidelidade (https://youtu.be/zewOdGQVTis)
-## Entrega 2
-- Issue/bug tracker atualizado : <img width="917" height="545" alt="image" src="https://github.com/user-attachments/assets/6cf1b4fc-f01a-41dd-b2d1-cc781499746e" />
+## Entrega 1 - Concluída
 
-- Screencast 2 primeiras histórias de usuário (https://youtu.be/cbvwdfVgjTY)
-## Entrega 3
-- Issue/bug tracker atualizado :<img width="1361" height="616" alt="image" src="https://github.com/user-attachments/assets/957b0511-5a96-480d-a25b-cdcf7ff3325e" />
+- [x] Histórias de usuário do Projeto — [ver documento](https://docs.google.com/document/d/1acG23aitg1odm9QbZYD1o-JmEy9F-HNU1X26R3d0vic/edit?usp=sharing)
+- [x] Screencast da Prototipação de baixa fidelidade — [ver vídeo](https://youtu.be/zewOdGQVTis)
 
-- Screencast 3 - 4 histórias de usuário e evolução do projeto (https://youtu.be/vpwV2chFlmI)
+---
+
+## Entrega 2 - Concluída
+
+- [x] Issue/bug tracker atualizado: <img width="917" height="545" alt="image" src="https://github.com/user-attachments/assets/6cf1b4fc-f01a-41dd-b2d1-cc781499746e" />
+- [x] Screencast das 2 primeiras histórias de usuário — [ver vídeo](https://youtu.be/cbvwdfVgjTY)
+
+---
+
+## Entrega 3 - Concluída
+
+- [x] Issue/bug tracker atualizado: <img width="1361" height="616" alt="image" src="https://github.com/user-attachments/assets/957b0511-5a96-480d-a25b-cdcf7ff3325e" />
+- [x] Screencast — 3 a 4 histórias de usuário e evolução do projeto — [ver vídeo](https://youtu.be/vpwV2chFlmI)
+
+---
+
+## Entrega 4 -
+
+
+
+---
+
+## SR1 - 
+
+- [x] Apresentação Status Report — [ver documento](URL_DO_PDF_AQUI)
+
+---
+
+## SR2 - 
+
+
+
+---
+
+## Tecnologias Utilizadas
+
+### Back-end
+- **Java 17**
+- **Spring Boot 4.0.4**
+- **Spring Data JPA** — mapeamento objeto-relacional
+- **Spring Web MVC** — endpoints REST
+- **Thymeleaf** — template engine para renderização HTML
+- **Hibernate** — ORM para persistência
+- **MySQL 8.0** — banco de dados relacional
+- **HikariCP** — pool de conexões
+
+### Front-end
+- **HTML5 / CSS3 / JavaScript ES6+**
+- **Chart.js** — gráficos interativos
+- **Phosphor Icons** — biblioteca de ícones
+- **Google Fonts** — tipografia (Inter, DM Sans)
+
+### Ferramentas
+- **Maven** — gerenciamento de dependências
+- **Spring DevTools** — hot reload em desenvolvimento
+- **Git / GitHub** — controle de versão
+- **MySQL Workbench** — administração do banco de dados
+
+---
+
+## Instruções de Execução
+
+### Pré-requisitos
+
+- Java 17 ou superior instalado
+- MySQL 8.0 instalado e rodando
+- Git instalado
+
+### 1. Clonar o repositório
+
+- ```bash
+- git clone https://github.com/Arturborgesdn/Projetos-3.git
+- cd Projetos-3
+- ```
+
+### 2. Configurar o banco de dados
+
+- Abra o MySQL Workbench ou terminal MySQL e execute:
+- ```sql
+- CREATE DATABASE edenred_sustentavel;
+- ```
+
+### 3. Configurar as credenciais
+
+- Abra o arquivo `demo/src/main/resources/application.properties` e atualize com suas credenciais:
+- ```properties
+- spring.application.name=demo
+- spring.datasource.url=jdbc:mysql://localhost:3306/edenred_sustentavel
+- spring.datasource.username=root
+- spring.datasource.password=SUA_SENHA_AQUI
+- spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+- spring.jpa.hibernate.ddl-auto=update
+- spring.jpa.show-sql=true
+- ```
+
+### 4. Executar o projeto
+
+- ```bash
+- cd demo
+- ./mvnw spring-boot:run
+- ```
+-  **Windows (PowerShell):** se der erro de porta em uso, rode:
+- ```bash
+- taskkill //PID numero_do_processo //F
+- ```
+- e tente novamente.
+
+### 5. Acessar a aplicação
+
+- Após o log exibir `Started DemoApplication`, acesse:
+- http://localhost:8080
+
+### 6. Verificar as tabelas no banco
+
+- ```sql
+- USE edenred_sustentavel;
+- SHOW TABLES;
+- ```
+- Devem aparecer:
+- `empresas`
+- `dados_simulacao`
+- `dados_tangiveis`
+
+---
+
+## Endpoints da API
+
+| Método |             Rota             |            Descrição               |
+|--------|------------------------------|------------------------------------|
+| `POST` | `/auth/cadastro`             | Cadastrar nova empresa             |
+| `POST` | `/auth/login`                | Autenticar empresa                 |
+| `POST` | `/impacto`                   | Calcular impacto ambiental         |
+| `GET`  | `/impacto/historico/{email}` | Buscar última simulação da empresa |
+
+### Exemplo — Cadastro
+```json
+-{
+-  "nome": "Empresa Teste",
+-  "email": "empresa@teste.com",
+-  "senha": "123456"
+- }
+- ```
+
+### Exemplo — Login
+- ```json
+- {
+-  "email": "empresa@teste.com",
+-  "senha": "123456"
+- }
+- ```
+---
+
 ## Contexto
 
 A **Edenred** é uma multinacional francesa presente em mais de **45 países**, líder global no mercado de **benefícios corporativos e soluções de mobilidade**. A empresa atua fortemente em iniciativas de sustentabilidade por meio do pilar estratégico **Ideal Planet**, que tem como meta atingir **Net Zero Carbon até 2050**.
