@@ -28,7 +28,7 @@
 
 ## SR1 - 
 
-- [x] Apresentação Status Report — [ver documento](URL_DO_PDF_AQUI)
+- [x] Apresentação Status Report — [ver documento](https://github.com/Arturborgesdn/Projetos-3/blob/main/STATUS%20REPORT.pdf)
 
 ---
 
