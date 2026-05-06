@@ -74,55 +74,57 @@
 
 ### 1. Clonar o repositório
 
-- ```bash
-- git clone https://github.com/Arturborgesdn/Projetos-3.git
-- cd Projetos-3
-- ```
+```bash
+git clone https://github.com/Arturborgesdn/Projetos-3.git
+cd Projetos-3
+```
 
 ### 2. Configurar o banco de dados
 
-- Abra o MySQL Workbench ou terminal MySQL e execute:
-- ```sql
-- CREATE DATABASE edenred_sustentavel;
-- ```
+Abra o MySQL Workbench ou terminal MySQL e execute:
+
+```sql
+CREATE DATABASE edenred_sustentavel;
+```
 
 ### 3. Configurar as credenciais
 
-- Abra o arquivo `demo/src/main/resources/application.properties` e atualize com suas credenciais:
-- ```properties
-- spring.application.name=demo
-- spring.datasource.url=jdbc:mysql://localhost:3306/edenred_sustentavel
-- spring.datasource.username=root
-- spring.datasource.password=SUA_SENHA_AQUI
-- spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-- spring.jpa.hibernate.ddl-auto=update
-- spring.jpa.show-sql=true
-- ```
+Abra o arquivo `demo/src/main/resources/application.properties` e atualize com suas credenciais:
+```properties
+spring.application.name=demo
+spring.datasource.url=jdbc:mysql://localhost:3306/edenred_sustentavel
+spring.datasource.username=root
+spring.datasource.password=SUA_SENHA_AQUI
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
 
 ### 4. Executar o projeto
 
-- ```bash
-- cd demo
-- ./mvnw spring-boot:run
-- ```
--  **Windows (PowerShell):** se der erro de porta em uso, rode:
-- ```bash
-- taskkill //PID numero_do_processo //F
-- ```
-- e tente novamente.
+```bash
+cd demo
+./mvnw spring-boot:run
+```
+
+> **Windows (PowerShell):** se der erro de porta em uso, rode:
+> ```bash
+> taskkill //PID numero_do_processo //F
+> ```
+> e tente novamente.
 
 ### 5. Acessar a aplicação
 
-- Após o log exibir `Started DemoApplication`, acesse:
-- http://localhost:8080
+Após o log exibir `Started DemoApplication`, acesse:
+http://localhost:8080
 
 ### 6. Verificar as tabelas no banco
 
-- ```sql
-- USE edenred_sustentavel;
-- SHOW TABLES;
-- ```
-- Devem aparecer:
+```sql
+USE edenred_sustentavel;
+SHOW TABLES;
+```
+Devem aparecer:
 - `empresas`
 - `dados_simulacao`
 - `dados_tangiveis`
@@ -139,21 +141,24 @@
 | `GET`  | `/impacto/historico/{email}` | Buscar última simulação da empresa |
 
 ### Exemplo — Cadastro
+
 ```json
--{
--  "nome": "Empresa Teste",
--  "email": "empresa@teste.com",
--  "senha": "123456"
-- }
-- ```
+{
+  "nome": "Empresa Teste",
+  "email": "empresa@teste.com",
+  "senha": "123456"
+}
+```
 
 ### Exemplo — Login
-- ```json
-- {
--  "email": "empresa@teste.com",
--  "senha": "123456"
-- }
-- ```
+
+```json
+{
+  "email": "empresa@teste.com",
+  "senha": "123456"
+}
+```
+
 ---
 
 ## Contexto
@@ -195,30 +200,27 @@ Desenvolver uma **calculadora digital de impacto ambiental** capaz de comparar a
 ## Objetivos Específicos
 
 1. **Mensurar o impacto ambiental da produção de cartões físicos**, considerando:
-
-   * uso de plástico
-   * metais utilizados no chip
-   * consumo de energia e água
-   * emissões de carbono durante o processo produtivo
+   - uso de plástico
+   - metais utilizados no chip
+   - consumo de energia e água
+   - emissões de carbono durante o processo produtivo
 
 2. **Calcular o impacto logístico da distribuição dos cartões**, incluindo:
-
-   * emissões provenientes do transporte
-   * embalagens utilizadas
-   * materiais de envio
+   - emissões provenientes do transporte
+   - embalagens utilizadas
+   - materiais de envio
 
 3. **Analisar o impacto ambiental do pós-consumo**, considerando o descarte de cartões e dos materiais utilizados na entrega.
 
-4. **Comparar o consumo energético entre transações físicas e digitais**, levando em conta diferentes cenários de infraestrutura energética (uso de energia renovável ou não).
+4. **Comparar o consumo energético entre transações físicas e digitais**, levando em conta diferentes cenários de infraestrutura energética.
 
 5. **Apresentar os resultados de forma clara e comparativa**, traduzindo dados ambientais em equivalências compreensíveis, como:
+   - redução de **CO₂ emitido**
+   - quantidade de **plástico evitado**
+   - quantidade de **papel economizado**
+   - equivalência em **árvores preservadas**
 
-   * redução de **CO₂ emitido**
-   * quantidade de **plástico evitado**
-   * quantidade de **papel economizado**
-   * equivalência em **árvores preservadas**
-
-6. **Criar uma ferramenta visual e acessível**, que possa ser utilizada tanto por **clientes quanto pela equipe comercial**, facilitando a comunicação dos benefícios ambientais da digitalização.
+6. **Criar uma ferramenta visual e acessível**, que possa ser utilizada tanto por **clientes quanto pela equipe comercial**.
 
 7. **Apoiar a estratégia de sustentabilidade da Edenred**, fortalecendo argumentos que incentivem clientes a adotarem **soluções digitais**.
 
