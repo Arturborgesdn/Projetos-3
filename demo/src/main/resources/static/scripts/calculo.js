@@ -66,36 +66,38 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
     secaoResultados.scrollIntoView({ behavior: "smooth" });
 
     // 6. Busca e exibe o histórico da última simulação com base na sessão do usuário
-    try {
-      const hist = await fetch("/impacto/historico");
+    if (emailEmpresa) {
+      try {
+        const hist = await fetch("/impacto/historico");
 
-      if (hist.ok) {
-        const ultima = await hist.json();
-        const secaoHistorico = document.getElementById("secaoHistorico");
+        if (hist.ok) {
+          const ultima = await hist.json();
+          const secaoHistorico = document.getElementById("secaoHistorico");
 
-        if (secaoHistorico) {
-          secaoHistorico.style.display = "block";
+          if (secaoHistorico) {
+            secaoHistorico.style.display = "block";
 
-          document.getElementById("histCo2").textContent =
-            ultima.emissaoCo2Kg?.toFixed(2) ?? "-";
-          document.getElementById("histAgua").textContent =
-            ultima.consumoAguaLitros?.toFixed(2) ?? "-";
-          document.getElementById("histPlastico").textContent =
-            ultima.residuosPlasticosKg?.toFixed(2) ?? "-";
-          document.getElementById("histEnergia").textContent =
-            ultima.energiaKwh?.toFixed(2) ?? "-";
-          document.getElementById("histEntregas").textContent =
-            ultima.dadosTangiveis?.entregasDelivery?.toFixed(0) ?? "-";
-          document.getElementById("histGarrafas").textContent =
-            ultima.dadosTangiveis?.garrafasPet?.toFixed(0) ?? "-";
-          document.getElementById("histBanhos").textContent =
-            ultima.dadosTangiveis?.banhosDeAgua?.toFixed(0) ?? "-";
-          document.getElementById("histTransacoes").textContent =
-            ultima.dadosTangiveis?.transacoesDigitais?.toFixed(0) ?? "-";
+            document.getElementById("histCo2").textContent =
+              ultima.emissaoCo2Kg?.toFixed(2) ?? "-";
+            document.getElementById("histAgua").textContent =
+              ultima.consumoAguaLitros?.toFixed(2) ?? "-";
+            document.getElementById("histPlastico").textContent =
+              ultima.residuosPlasticosKg?.toFixed(2) ?? "-";
+            document.getElementById("histEnergia").textContent =
+              ultima.energiaKwh?.toFixed(2) ?? "-";
+            document.getElementById("histEntregas").textContent =
+              ultima.dadosTangiveis?.entregasDelivery?.toFixed(0) ?? "-";
+            document.getElementById("histGarrafas").textContent =
+              ultima.dadosTangiveis?.garrafasPet?.toFixed(0) ?? "-";
+            document.getElementById("histBanhos").textContent =
+              ultima.dadosTangiveis?.banhosDeAgua?.toFixed(0) ?? "-";
+            document.getElementById("histTransacoes").textContent =
+              ultima.dadosTangiveis?.transacoesDigitais?.toFixed(0) ?? "-";
+          }
         }
+      } catch (historyError) {
+        console.warn("Não foi possível carregar o histórico:", historyError);
       }
-    } catch (historyError) {
-      console.warn("Não foi possível carregar o histórico:", historyError);
     }
   } catch (error) {
     console.error("Erro ao calcular:", error);

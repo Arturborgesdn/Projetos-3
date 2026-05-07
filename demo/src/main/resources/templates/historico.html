@@ -307,20 +307,26 @@
       let barChartInstance = null;
       let pieChartInstance = null;
 
-      fetch("/impacto/historico")
-        .then((res) => {
-          if (res.status === 401) {
-            window.location.href = "/login";
-            return null;
-          }
-          if (res.status === 204 || res.status === 404) {
-            document.getElementById("loadingState").style.display = "none";
-            document.getElementById("semSimulacaoState").style.display =
-              "block";
-            return null;
-          }
-          return res.json();
-        })
+      const emailSalvo = sessionStorage.getItem("emailEmpresa");
+
+      if (!emailSalvo) {
+        document.getElementById("loadingState").style.display = "none";
+        document.getElementById("semLoginState").style.display = "block";
+      } else {
+        fetch("/impacto/historico")
+          .then((res) => {
+            if (res.status === 401) {
+              window.location.href = "/login";
+              return null;
+            }
+            if (res.status === 204 || res.status === 404) {
+              document.getElementById("loadingState").style.display = "none";
+              document.getElementById("semSimulacaoState").style.display =
+                "block";
+              return null;
+            }
+            return res.json();
+          })
           .then((dados) => {
             if (!dados) return;
 
