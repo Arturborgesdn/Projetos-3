@@ -240,29 +240,49 @@
     <!-- ═══════════════════════════════════════
          SEÇÃO: SELO DE AUTORIDADE
     ═══════════════════════════════════════ -->
-    <section class="seal-section">
-      <div class="seal-inner">
-        <div class="seal-text">
-          <h2 class="seal-title">
-            Sua jornada sustentável merece<br/>
-            um selo de autoridade.
-          </h2>
-          <p class="seal-body">
-            Não guarde seus resultados apenas para você. O <a href="#" class="seal-link">Edenred EcoBalance</a>
-            valida seu progresso e gera automaticamente o selo digital 'Parceiro do
-            Meio Ambiente'. Com a chancela e verificação da Edenred, você
-            transforma dados operacionais em um diferencial competitivo pronto
-            para ser compartilhado no seu <a href="#" class="seal-link">LinkedIn.</a>
-          </p>
-          <div class="seal-btns">
-            <a href="#" class="btn-calcular" id="btnDownloadSelo" style="display:none">Fazer download do selo de sustentabilidade.</a>
-          </div>
-        </div>
-        <div class="seal-img-wrap">
-          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Selo Edenred EcoBalance" class="seal-img" />
-        </div>
+    <!-- ═══════════════════════════════════════
+     SEÇÃO: SELO DE AUTORIDADE
+═══════════════════════════════════════ -->
+<section id="containerSelo" class="seal-section" style="display:none">
+  <div class="seal-inner">
+    
+    <div class="seal-text">
+      
+      <h2 class="seal-title">
+        Sua jornada sustentável merece<br/>
+        um selo de autoridade.
+      </h2>
+
+      <p class="seal-body">
+        Não guarde seus resultados apenas para você. O 
+        <a href="#" class="seal-link">Edenred EcoBalance</a>
+        valida seu progresso e gera automaticamente o selo digital 
+        'Parceiro do Meio Ambiente'. Com a chancela e verificação da Edenred, você
+        transforma dados operacionais em um diferencial competitivo pronto
+        para ser compartilhado no seu 
+        <a href="#" class="seal-link">LinkedIn.</a>
+      </p>
+
+      <div class="seal-btns">
+        <a href="#"
+           class="btn-calcular"
+           id="btnDownloadSelo">
+           Fazer download do selo de sustentabilidade.
+        </a>
       </div>
-    </section>
+
+    </div>
+
+    <div class="seal-img-wrap">
+      <img
+        src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="Selo Edenred EcoBalance"
+        class="seal-img"
+      />
+    </div>
+
+  </div>
+</section>
 
     <!-- ═══════════════════════════════════════
          FOOTER
@@ -417,17 +437,22 @@
         });
       }, { threshold: 0.1 });
       cards.forEach(c => cardIO.observe(c));
-      /* ── Mostra banner se usuário estiver logado ── */
-      const emailSalvo = sessionStorage.getItem("emailEmpresa");
-      if (emailSalvo) {
-        document.getElementById("containerHistorico").style.display = "block";
-      }
+     /* ── Mostra banner se usuário estiver logado ── */
+const emailSalvo = sessionStorage.getItem("emailEmpresa");
 
-      /* ── Mostra botão de download do selo se simulação foi feita ── */
-      if (sessionStorage.getItem("simulacaoFeita") === "true") {
-        document.getElementById("btnDownloadSelo").style.display = "inline-block";
-      }
-    </script>
-    <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
-  </body>
+if (emailSalvo) {
+  document.getElementById("containerHistorico").style.display = "block";
+}
+
+/* ── Mostra seção do selo somente se usuário estiver logado E tiver feito simulação ── */
+const usuarioLogado = sessionStorage.getItem("emailEmpresa");
+const simulacaoFeita = sessionStorage.getItem("simulacaoFeita");
+
+if (usuarioLogado && simulacaoFeita === "true") {
+  document.getElementById("containerSelo").style.display = "block";
+}
+</script>
+
+<script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
+</body>
 </html>
