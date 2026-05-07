@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edenred – Calcule seu Impacto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/historico.css" th:href="@{/historico.css}" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/styles.css" th:href="@{/styles.css}" />
+  </head>
+  <body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="top-bar-content">
+        <span>BRASIL</span>
+        <div class="top-bar-links">
+          <i class="ph-fill ph-linkedin-logo"></i>
+          <i class="ph ph-magnifying-glass"></i>
+          <span class="divider">|</span>
+          <a href="#">CONTATO</a>
+          <span class="divider">|</span>
+          <a href="#">IMPRENSA</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="navbar-content">
+        <div class="logo-edenred"><img
+            class="red-circle"
+            th:src="@{/images/Edenred_Logo_(depuis_2017).png}"
+            src="/images/Edenred_Logo_(depuis_2017).png"
+            alt="logo-edenred"
+            style="height: 48px; width: auto; display: block;"
+          />
+        </div>
+        <div class="nav-links" id="navLinks">
+          <a href="#">Por Pessoas</a>
+          <a href="#">Para Pessoas</a>
+          <a href="/" class="active">Sustentabilidade</a>
+          <a href="#">Inovação</a>
+          <a href="#">Notícias</a>
+          <a href="#">Carreiras</a>
+          <a href="#">Compliance e Segurança</a>
+          <a href="/login" class="nav-btn-login">Login</a>
+          <a href="/cadastro" class="nav-btn-cadastro">Cadastro</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════ -->
+    <section class="hero">
+
+      <!-- Texto centralizado -->
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Calcule o seu impacto.<br/>
+          Compartilhe sua liderança
+        </h1>
+        <p class="hero-sub">
+          Utilize nossa calculadora inteligente para visualizar, em tempo real, o resultado das suas
+          escolhas e descobrir oportunidades reais de melhoria.
+        </p>
+      </div>
+
+      <!-- Faixa azul com tablet centralizado -->
+      <div class="hero-band">
+        <div class="band-side band-left"></div>
+
+        <!-- Tablet mockup -->
+        <div class="hero-device" id="heroDevice">
+          <div class="tablet-frame">
+            <div class="tablet-camera"></div>
+            <div class="tablet-screen">
+
+              <!-- Status bar -->
+              <div class="tablet-status">
+                <i class="ph ph-wifi-high"></i>
+                <span>100%</span>
+                <i class="ph ph-battery-full"></i>
+              </div>
+
+              <div class="dash-title-row">DASHBOARD ECONOMIA</div>
+
+              <div class="dash-metrics">
+                <!-- Emissões -->
+                <div class="dash-card">
+                  <span class="dash-label">Emissões</span>
+                  <svg class="spark-line" viewBox="0 0 110 44" preserveAspectRatio="none">
+                    <polyline
+                      points="0,38 18,30 38,34 62,16 85,22 110,6"
+                      fill="none"
+                      stroke="rgba(200,220,240,0.85)"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"/>
+                  </svg>
+                  <span class="dash-badge">-52,8%</span>
+                </div>
+
+                <!-- Impacto total -->
+                <div class="dash-card dash-card-center">
+                  <span class="dash-label">Impacto total</span>
+                  <span class="dash-big" id="bigNum">0.0k</span>
+                  <span class="dash-sub">toneladas compensadas</span>
+                  <div class="dash-pills">
+                    <span class="pill pill-on"></span>
+                    <span class="pill pill-on"></span>
+                    <span class="pill pill-on"></span>
+                    <span class="pill pill-off"></span>
+                    <span class="pill pill-off"></span>
+                    <span class="pill pill-off"></span>
+                    <span class="pill pill-off"></span>
+                  </div>
+                </div>
+
+                <!-- CO₂ Reduzido -->
+                <div class="dash-card dash-card-center">
+                  <span class="dash-label">CO₂ Reduzido</span>
+                  <div class="gauge-wrap">
+                    <svg class="gauge-svg" viewBox="0 0 110 72">
+                      <path d="M8,64 A47,47 0 0,1 102,64"
+                        fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="9" stroke-linecap="round"/>
+                      <path id="gaugeFill" d="M8,64 A47,47 0 0,1 102,64"
+                        fill="none" stroke="rgba(190,215,235,0.9)" stroke-width="9" stroke-linecap="round"
+                        stroke-dasharray="0 148"/>
+                      <circle id="gaugeDot" cx="8" cy="64" r="5" fill="white" opacity="0.9"/>
+                      <text id="gaugeText" x="55" y="58"
+                        text-anchor="middle" fill="white"
+                        font-size="20" font-weight="800"
+                        font-family="Inter,sans-serif">0%</text>
+                    </svg>
+                  </div>
+                  <span class="dash-sub">Eficiência</span>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <a href="/calculadora" th:href="@{/calculadora}" class="dash-cta-btn">CALCULE AGORA</a>
+
+              <!-- Home bar -->
+              <div class="tablet-home-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="band-side band-right"></div>
+      </div>
+
+    </section>
+
+    <!-- BANNER HISTÓRICO (aparece só após login + simulação) -->
+  <div id="containerHistorico" style="display:none" class="historico-banner">
+    <div class="historico-banner-inner">
+      <div class="historico-banner-left">
+        <div class="historico-banner-icon">
+          <i class="ph ph-clock-counter-clockwise"></i>
+        </div>
+        <div class="historico-banner-text">
+          <h3>Você já tem simulações registradas!</h3>
+          <p>Acesse o histórico da sua última simulação e compare sua evolução.</p>
+        </div>
+      </div>
+      <a href="/historico" class="btn-historico">
+        <i class="ph ph-chart-bar"></i>
+        Ver meu histórico
+      </a>
+    </div>
+  </div>
+    <!-- Por que digitalizar -->
+    <div class="why-divider">
+      <h2 class="why-title">Por que digitalizar?</h2>
+      <p class="why-sub">A inovação que sua empresa e o planeta precisam</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         SEÇÃO: DO CÁLCULO À CERTIFICAÇÃO
+    ═══════════════════════════════════════ -->
+    <section class="cert-section">
+      <!-- Imagem hero full-width -->
+      <div class="cert-hero-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Dashboard sustentável" />
+        <div class="cert-hero-overlay"></div>
+      </div>
+
+      <div class="cert-content">
+        <h2 class="cert-heading">Do cálculo à certificação em segundos</h2>
+        <p class="cert-body">
+          Transforme os dados da sua operação em um diferencial competitivo instantâneo. Ao inserir as
+          informações da sua frota, o sistema processa métricas complexas e entrega painéis visuais claros sobre a
+          sua redução de emissões de CO<sub>2</sub> e economia de recursos. Muito mais que uma calculadora, é o caminho
+          mais rápido para comprovar, certificar e compartilhar o seu compromisso ambiental com o mercado.
+        </p>
+
+        <!-- 3 cards de features -->
+        <div class="features-grid">
+          <div class="feature-card" style="--d:0s">
+            <div class="feature-card-top">
+              <h3>Visão Detalhada</h3>
+              <p>Meça suas emissões de CO<sub>2</sub> e entenda o tamanho real do seu impacto ambiental com dados precisos.</p>
+            </div>
+            <div class="feature-card-img">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Visão Detalhada" />
+            </div>
+          </div>
+
+          <div class="feature-card" style="--d:.1s">
+            <div class="feature-card-top">
+              <h3>Economia Verde</h3>
+              <p>Identifique oportunidades para reduzir o desperdício, otimizar recursos e diminuir custos operacionais.</p>
+            </div>
+            <div class="feature-card-img">
+              <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Economia Verde" />
+            </div>
+          </div>
+
+          <div class="feature-card" style="--d:.2s">
+            <div class="feature-card-top">
+              <h3>Liderança Sustentável</h3>
+              <p>Gere relatórios claros, comprove seus resultados e inspire o mercado com o seu compromisso.</p>
+            </div>
+            <div class="feature-card-img">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Liderança Sustentável" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SEÇÃO: SELO DE AUTORIDADE
+    ═══════════════════════════════════════ -->
+    <section class="seal-section">
+      <div class="seal-inner">
+        <div class="seal-text">
+          <h2 class="seal-title">
+            Sua jornada sustentável merece<br/>
+            um selo de autoridade.
+          </h2>
+          <p class="seal-body">
+            Não guarde seus resultados apenas para você. O <a href="#" class="seal-link">Edenred EcoBalance</a>
+            valida seu progresso e gera automaticamente o selo digital 'Parceiro do
+            Meio Ambiente'. Com a chancela e verificação da Edenred, você
+            transforma dados operacionais em um diferencial competitivo pronto
+            para ser compartilhado no seu <a href="#" class="seal-link">LinkedIn.</a>
+          </p>
+          <div class="seal-btns">
+            <a href="#" class="btn-calcular" id="btnDownloadSelo" style="display:none">Fazer download do selo de sustentabilidade.</a>
+          </div>
+        </div>
+        <div class="seal-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Selo Edenred EcoBalance" class="seal-img" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <!-- Logo + tagline -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg width="100" height="44" viewBox="0 0 140 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="22" r="22" fill="#E1000F"/>
+              <text x="22" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="9" fill="#fff">Eden</text>
+              <text x="22" y="30" text-anchor="middle" font-family="Inter,sans-serif" font-weight="300" font-size="7" fill="rgba(255,255,255,.8)">red</text>
+              <text x="52" y="28" font-family="Inter,sans-serif" font-weight="700" font-size="22" fill="#fff" letter-spacing="-1">Edenred</text>
+            </svg>
+          </div>
+          <p class="footer-tagline">
+            Construindo redes mais humanas e<br/>
+            confiáveis, a Edenred faz com que<br/>
+            todo mundo saia ganhando
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <span class="footer-col-title">POR PESSOAS</span>
+            <a href="#">Conheça a Edenred</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">PARA PESSOAS</span>
+            <a href="#">Conheça nossas soluções</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">SUSTENTABILIDADE</span>
+            <a href="#">Nosso compromisso</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">NOTÍCIAS</span>
+            <a href="#">Acompanhe a Edenred</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">CARREIRAS</span>
+            <a href="#">Faça parte do time</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">COMPLIANCE</span>
+            <a href="#">Nossa integridade</a>
+            <a href="#">Canal Seguro</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">CONTATO</span>
+            <a href="#">Fala com a gente</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">SITE GLOBAL</span>
+            <a href="#">Site Global da Edenred</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">RELATÓRIO TRANSPARÊNCIA SALARIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <a href="#" class="footer-privacy">POLÍTICA DE PRIVACIDADE</a>
+        <a href="#" class="footer-linkedin">
+          <i class="ph-fill ph-linkedin-logo"></i>
+        </a>
+        <p class="footer-copy">Copyright © Edenred 2018</p>
+      </div>
+    </footer>
+
+    <script>
+      /* ── Hamburger ── */
+      const hamburger = document.getElementById('hamburger');
+      const navLinks  = document.getElementById('navLinks');
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        const icon = hamburger.querySelector('i');
+        icon.classList.toggle('ph-list');
+        icon.classList.toggle('ph-x');
+      });
+
+      /* ── Sticky navbar shadow ── */
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', () => {
+        navbar.style.boxShadow = window.scrollY > 10
+          ? '0 4px 20px rgba(0,0,0,.12)'
+          : '0 2px 8px rgba(0,0,0,.04)';
+      }, { passive: true });
+
+      /* ── Gauge animation ── */
+      function animateGauge() {
+        const fill = document.getElementById('gaugeFill');
+        const dot  = document.getElementById('gaugeDot');
+        const txt  = document.getElementById('gaugeText');
+        if (!fill) return;
+
+        const totalLen = 148; // arc length for viewBox 110x72, r=47
+        const target = 0.78;
+        let p = 0;
+
+        const timer = setInterval(() => {
+          p = Math.min(p + 0.013, target);
+          fill.setAttribute('stroke-dasharray', `${p * totalLen} ${totalLen}`);
+          // move dot along semicircle: starts left (8,64), ends right (102,64), cx=55, cy=64, r=47
+          const angle = Math.PI - p * Math.PI;
+          const cx = 55 + 47 * Math.cos(angle);
+          const cy = 64 + 47 * Math.sin(angle);
+          dot.setAttribute('cx', cx.toFixed(1));
+          dot.setAttribute('cy', cy.toFixed(1));
+          txt.textContent = Math.round(p * 100) + '%';
+          if (p >= target) clearInterval(timer);
+        }, 16);
+      }
+
+      /* ── Counter ── */
+      function animateCounter(el, end, decimals, suffix) {
+        let val = 0;
+        const step = end / 60;
+        const timer = setInterval(() => {
+          val = Math.min(val + step, end);
+          el.textContent = val.toFixed(decimals) + suffix;
+          if (val >= end) clearInterval(timer);
+        }, 16);
+      }
+
+      /* ── IntersectionObserver ── */
+      const device = document.getElementById('heroDevice');
+      let animated = false;
+      const io = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !animated) {
+          animated = true;
+          animateGauge();
+          const bigNum = document.getElementById('bigNum');
+          if (bigNum) animateCounter(bigNum, 12.4, 1, 'k');
+          io.unobserve(device);
+        }
+      }, { threshold: 0.2 });
+      if (device) io.observe(device);
+
+      /* ── Feature cards scroll reveal ── */
+      const cards = document.querySelectorAll('.feature-card');
+      const cardIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            cardIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      cards.forEach(c => cardIO.observe(c));
+      /* ── Mostra banner se usuário estiver logado ── */
+      const emailSalvo = sessionStorage.getItem("emailEmpresa");
+      if (emailSalvo) {
+        document.getElementById("containerHistorico").style.display = "block";
+      }
+
+      /* ── Mostra botão de download do selo se simulação foi feita ── */
+      if (sessionStorage.getItem("simulacaoFeita") === "true") {
+        document.getElementById("btnDownloadSelo").style.display = "inline-block";
+      }
+    </script>
+    <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
+  </body>
+</html>

@@ -71,4 +71,9 @@ public class PageController {
     public String compliance() {
         return "index";
     }
+
+    @GetMapping("/")
+    public String home() {
+        return "index"; 
+    }
 }
