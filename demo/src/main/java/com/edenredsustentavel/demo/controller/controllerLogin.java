@@ -45,15 +45,20 @@ public class controllerLogin {
     @PostMapping("/cadastro")
     public ResponseEntity<?> cadastrar(@RequestBody modelEmpresa empresa) {
         try {
+            System.out.println("Recebendo tentativa de cadastro para o email: " + empresa.getEmail());
             modelEmpresa nova = serviceEdenred.cadastrar(empresa);
+            
+            System.out.println("Cadastro realizado com sucesso! ID gerado: " + nova.getId());
+            
             return ResponseEntity.ok(Map.of(
                 "mensagem", "Empresa cadastrada com sucesso",
                 "empresa", nova.getNome(),
                 "email", nova.getEmail()
             ));
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(400).body(Map.of(
-                "mensagem", e.getMessage()
+                "mensagem", "Erro ao cadastrar: " + (e.getMessage() != null ? e.getMessage() : "Erro interno no servidor")
             ));
         }
     }

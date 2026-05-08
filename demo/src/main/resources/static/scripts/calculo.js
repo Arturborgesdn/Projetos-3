@@ -101,7 +101,7 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
     }
   } catch (error) {
     console.error("Erro ao calcular:", error);
-    alert("Erro ao processar cálculo. Verifique se o backend está rodando.");
+    alert("Erro ao processar cálculo: " + error.message);
   }
 });
 

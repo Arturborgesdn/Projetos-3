@@ -10,10 +10,12 @@ import com.edenredsustentavel.demo.repository.repositoryDadosTangiveis;
 import com.edenredsustentavel.demo.repository.repositoryEmpresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
+@Transactional
 public class serviceEdenred {
 
     @Autowired
@@ -34,27 +36,33 @@ public class serviceEdenred {
         return null;
     }
 
-// ── Cadastro ───────────────────────────────────────────
+    // ── Cadastro ───────────────────────────────────────────
     public modelEmpresa cadastrar(modelEmpresa empresa) {
         if (repositoryEmpresa.findByEmail(empresa.getEmail()).isPresent()) {
             throw new RuntimeException("Email já cadastrado");
         }
+        System.out.println("Salvando nova empresa no MySQL: " + empresa.getEmail());
         return repositoryEmpresa.save(empresa);
     }
 
     // ── Cálculo + Persistência ─────────────────────────────
     public SimulacaoResponseDTO calcularImpacto(SimulacaoRequestDTO req) {
+        if (req == null) throw new RuntimeException("Dados da simulação ausentes");
+
         SimulacaoResponseDTO response = new SimulacaoResponseDTO();
 
         // 1. Base de cartões
-        int cartoesTotais   = req.qtd_cartoes * req.multiplicidade_cartoes;
+        int cartoesTotais   = req.qtd_cartoes * Math.max(1, req.multiplicidade_cartoes);
         double reemissao    = cartoesTotais * (req.taxa_reemissao / 100.0);
         double totalCartoes = cartoesTotais + reemissao;
 
         // 2. Fatores
-        double fatorMaterial  = req.material.equals("pvc_reciclado") ? 0.7 : 1.0;
+        String mat = req.material != null ? req.material : "pvc_virgem";
+        double fatorMaterial  = mat.equals("pvc_reciclado") ? 0.7 : 1.0;
+        
         double fatorEmbalagem;
-        String tipoEmbalagem = req.tipo_embalagem != null ? req.tipo_embalagem : "kit_padrao";
+        String tipoEmbalagem = req.tipo_embalagem != null && !req.tipo_embalagem.isEmpty() 
+                               ? req.tipo_embalagem : "kit_padrao";
         switch (tipoEmbalagem) {
             case "kit_premium": fatorEmbalagem = 1.5; break;
             case "kit_padrao":  fatorEmbalagem = 1.0; break;
@@ -64,7 +72,9 @@ public class serviceEdenred {
         // 3. Cálculos ambientais
         double baseCarbono  = (totalCartoes * 0.011 * fatorMaterial)
                             + (totalCartoes * 0.005 * fatorEmbalagem);
-        String destinoFinal = req.destino != null ? req.destino : "descarte_comum";
+        
+        String destinoFinal = req.destino != null && !req.destino.isEmpty() 
+                              ? req.destino : "descarte_comum";
         double fatorDestino = destinoFinal.equals("reciclagem")     ? 0.7
                             : destinoFinal.equals("descarte_comum") ? 1.2 : 1.0;
 
