@@ -596,7 +596,7 @@ function OptanonWrapper() { }
 															Investimento Social																																																											</a>
 																											</li>
 																									<li class="MegaMenu-submenuItem selectionShareable">
-														<a class="MegaMenu-submenuLink" href="/page">
+														<a class="MegaMenu-submenuLink" href="/landing">
 															Calculadora de impacto ambiental																																																											</a>
 																											</li>
 						
@@ -836,335 +836,195 @@ conectar ideias criativas
 
 				</div>
 				</div>
-				<div class="elementor-element elementor-element-0fb9f58 elementor-widget elementor-widget-focus-blocks-carousel" data-id="0fb9f58" data-element_type="widget" data-widget_type="focus-blocks-carousel.default">
-				<div class="elementor-widget-container">
-					<div class="focus-blocks-carousel slick-initialized slick-slider"><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 3708px; transform: translate3d(-824px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
 
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
+
+<div class="elementor-element elementor-element-0fb9f58 elementor-widget elementor-widget-focus-blocks-carousel">
+    <div class="elementor-widget-container">
+        <!-- CUSTOM CAROUSEL -->
+        <style>
+            .custom-home-carousel {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+                background: #ffffff;
+            }
+            .carousel-track {
+                display: flex;
+                transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+                height: 557px;
+            }
+            .carousel-slide {
+                min-width: 100%;
+                height: 100%;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0.4;
+                transition: opacity 0.8s ease;
+                background-color: #ffffff;
+            }
+            .slide-bg {
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-size: auto 100%;
+                background-position: left center;
+                background-repeat: no-repeat;
+            }
+            .slide-inner {
+                position: relative;
+                z-index: 1;
+                width: 100%;
+                max-width: 1400px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+            .carousel-slide.active {
+                opacity: 1;
+            }
+            .slide-content {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                padding: 40px 10%;
+                box-sizing: border-box;
+                background: #ffffff;
+            }
+            .slide-text-wrapper {
+                max-width: 500px;
+                transform: translateY(20px);
+                opacity: 0;
+                transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.4s;
+            }
+            .carousel-slide.active .slide-text-wrapper {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            .slide-date {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #162056;
+                font-weight: 700;
+                margin-bottom: 20px;
+                display: block;
+                font-family: 'Montserrat', sans-serif;
+            }
+            .slide-text-wrapper h3 {
+                font-size: 46px;
+                line-height: 1.1;
+                color: #162056;
+                margin-bottom: 25px;
+                font-weight: 700;
+                font-family: 'Montserrat', sans-serif;
+            }
+            .slide-text-wrapper p {
+                font-size: 18px;
+                line-height: 1.6;
+                color: #555555;
+                margin-bottom: 35px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 300;
+            }
+            .btn-primary {
+                display: inline-block;
+                padding: 12px 24px;
+                border: 1px solid #162056;
+                border-radius: 30px;
+                color: #162056;
+                font-weight: 500;
+                text-transform: uppercase;
+                font-size: 13px;
+                letter-spacing: 0.5px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                background: transparent;
+                font-family: 'Montserrat', sans-serif;
+            }
+            .btn-primary:hover {
+                background: #162056;
+                color: #ffffff;
+            }
+            @media (max-width: 992px) {
+                .carousel-track {
+                    height: auto;
+                }
+                .carousel-slide {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+                .slide-bg {
+                    position: relative;
+                    width: 100%;
+                    height: 220px;
+                    background-size: cover;
+                    background-position: center;
+                }
+                .slide-inner {
+                    flex-direction: column;
+                }
+                .slide-content {
+                    width: 100%;
+                    padding: 40px 20px 60px 20px;
+                    background: #ffffff;
+                }
+                .slide-text-wrapper h3 {
+                    font-size: 32px;
+                }
+                .slide-text-wrapper p {
+                    font-size: 16px;
+                }
+            }
+        </style>
+        
+        <div class="custom-home-carousel">
+            <div class="carousel-track" id="carousel-track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <div class="slide-bg" style="background-image: url('https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png'); background-color: #f4f9fd;"></div>
+                    <div class="slide-inner">
+                        <div class="slide-content">
+                            <div class="slide-text-wrapper">
+                                <span class="slide-date">07 DE MAIO DE 2026</span>
+                                <h3>Faça parte do nosso Dream Team!</h3>
+                                <p>Junte-se a um time apaixonado por inovação, que vai além das entregas e acredita no poder de enriquecer conexões para o bem.</p>
+                                <a href="https://www.edenred.com.br/carreiras/" class="btn-primary" tabindex="-1">TRABALHE NA EDENRED</a>
+                            </div>
                         </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                    <p class="t5 selectionShareable">06 de maio de 2026</p>                    <h3 class="h3 selectionShareable"><strong>La Fabrique&nbsp;</strong></h3>                    <div class="t3"><p class="t3 selectionShareable">Em uma iniciativa inédita, BNP Paribas, Edenred e Ingenico se uniram para criar e fomentar o LA FABRIQUE, centro de inovação que tem como missão acelerar empresas, startups e projetos de desenvolvimento e tecnologia no Brasil.</p></div>                    <a class="Button Button--standard" href="/la-fabrique/" tabindex="-1">Conheça o nosso hub de inovação</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
-            </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div><div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 412px;" tabindex="-1"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
-
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png&quot;); background-size: 412px;"></div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="slide-bg" style="background-image: url('https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png');"></div>
+                    <div class="slide-inner">
+                        <div class="slide-content">
+                            <div class="slide-text-wrapper">
+                                <h3>Junte-se à Edenred na luta contra a fome!</h3>
+                                <p>A Edenred, em parceria com o ShareTheMeal e o Programa Mundial de Alimentos da ONU, está arrecadando doações para oferecer 100 mil refeições a pessoas em situação de vulnerabilidade. Com apenas R$4,50 e alguns cliques, é possível contribuir e ajudar quem mais precisa.</p>
+                                <a href="https://sharethemeal.org/pt-br/challenges/40d1d5f1-4a53-5820-bab9-e55366e178e4?adjust_t=1lyyub01" class="btn-primary" tabindex="0">DOE AGORA!</a>
+                            </div>
                         </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                                        <h3 class="h3 selectionShareable"><strong>Uma década de inovação!</strong></h3>                    <div class="t3"><div id="copilot-message-rsj" class="fai-CopilotMessage__content r1izxv8h ___7qar2c0 fcthzvy" dir="auto">
-<div dir="auto">
-<div class="___1vve6yh f22iagw f1vx9l62 f122n59 f3bhgqh f1mnxvew fly5x3f">
-<div class="___j4vmuw0 f22iagw f1vx9l62 f1869bpl fly5x3f fbc6vix">
-<div tabindex="-1" data-testid="loading-message" data-fui-focus-visible="">
-<div id="chatMessageResponsersh" class="___1yop6mf f336tjw f9ijwd5 fz7g6wx fod5ikn f1s184ao" aria-live="assertive" data-testid="lastChatMessage">
-<div class="___1j4t0a1 f1lmfglv f1abmfm4" aria-hidden="false" data-testid="markdown-reply" data-message-type="Chat">
-<div class="___stpibi0 f22iagw f1vx9l62 fk15e71 f1k953kz f137keqj f1rncccw f1stllg3 f1w4kmmc f1tric3v f10dk5ic fx8cdsv f16nlwsl f1eookvz fhjrts3 fqugt2f f10km5jb f18d18k8 f1v1vhmp f1hdmul3 f198vjnp f2dshw1 fjpjndq fnmj2pj ffrrb40 f1mon110 fhajzam fimndk6 fxv4dng fb1rn9k f59wlhv f1xmfh30 f18yf5o5 fmr6chf fw8qy2q ff161sd f1qr7t77 f1yyogn1 foogchg fp5872b f1tpb8gf f1hdgrc8 f1vatr43 frkxccd f9pdzkb f158oiaz ft5kggy f5l4ui7 f13j03li f18xdoka f8off4e f1go6zfc f128n2ra f1jpxw2j f1lwd9n0 fy0b8hm f1g2633v fx4kvgi fkvolse f1gxrt3a f1os76ua f1js9cnw f1g87ej0 freluf8 f1yggaq6 f2i3chp f1151osp florpoh f35kzfz ftp9m57 f1e288vi fz62hnz fixvuys f1nmofwh fc1c6mv f18a2er7 fhvkrdl fhxnn68 f1oce4bo fvhlfan f7tc0t0 f1ngf1n2 ffrzq6x f1yjiq2m f1aqdgql f1huvaf f10ij78l f1k94sa4 fkmfumq f1jvzkyl f1eu24ob f1xbfc1f fmf0lwf f107dsy8 f3w566c f4648sl f13zpkng f7unjfp f8p1rz fzu6h1w f1i1bi6h f1smo7hi f1sk1xod f1kgogdq f1gjktkp ft608jz f19dd9cz fg3xr24 fhd155k f1b8gl2e fg4b9ou flb4lo fdicbfk fgwcyh1 f1jbds0d f1fb9uea f1stuka4 fcrtu6g fwqh0xn f11w66yg f6e0e65 f1vvgu0 f1607507 f1m9bycv f1ntoah8 f1b694rt faql4r2 fpjuhzh fmavl6h">
-<p class="t3 selectionShareable">Em 2025, a Edenred Brasil celebra dez anos da EVA, uma das primeiras assistentes virtuais com IA do país. Com mais de 17 milhões de atendimentos e 93% de assertividade, ela acelera processos em até 70% e está presente em todas as linhas de negócio da companhia.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div>                    <a class="Button Button--standard" href="/edenred-brasil-celebra-dez-anos-de-sua-assistente-de-inteligencia-artificial-com-ganhos-de-ate-70-em-agilidade/" tabindex="-1">Saiba mais</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
-            </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 412px;"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
-
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png&quot;); background-size: 412px;"></div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="slide-bg" style="background-image: url('https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png');"></div>
+                    <div class="slide-inner">
+                        <div class="slide-content">
+                            <div class="slide-text-wrapper">
+                                <h3>Uma década de inovação!</h3>
+                                <p>Em 2025, a Edenred Brasil celebra dez anos da EVA, uma das primeiras assistentes virtuais com IA do país. Com mais de 17 milhões de atendimentos e 93% de assertividade, ela acelera processos em até 70% e está presente em todas as linhas de negócio da companhia.</p>
+                                <a href="/edenred-brasil-celebra-dez-anos-de-sua-assistente-de-inteligencia-artificial-com-ganhos-de-ate-70-em-agilidade/" class="btn-primary" tabindex="-1">SAIBA MAIS</a>
+                            </div>
                         </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                                        <h3 class="h3 selectionShareable"><strong>Junte-se à Edenred na luta contra a fome!</strong></h3>                    <div class="t3"><div id="copilot-message-r13h" class="fai-CopilotMessage__content r1izxv8h ___7qar2c0 fcthzvy" dir="auto">
-<div dir="auto">
-<div class="___1vve6yh f22iagw f1vx9l62 f122n59 f3bhgqh f1mnxvew fly5x3f">
-<div class="___j4vmuw0 f22iagw f1vx9l62 f1869bpl fly5x3f fbc6vix">
-<div tabindex="-1" data-testid="loading-message" data-fui-focus-visible="">
-<div>
-<div id="chatMessageResponser13f" class="___1yop6mf f336tjw f9ijwd5 fz7g6wx fod5ikn f1s184ao" aria-live="assertive" data-testid="lastChatMessage">
-<div class="___1j4t0a1 f1lmfglv f1abmfm4" aria-hidden="false" data-testid="markdown-reply" data-message-type="Chat">
-<div class="___stpibi0 f22iagw f1vx9l62 fk15e71 f1k953kz f137keqj f1rncccw f1stllg3 f1w4kmmc f1tric3v f10dk5ic fx8cdsv f16nlwsl f1eookvz fhjrts3 fqugt2f f10km5jb f18d18k8 f1v1vhmp f1hdmul3 f198vjnp f2dshw1 fjpjndq fnmj2pj ffrrb40 f1mon110 fhajzam fimndk6 fxv4dng fb1rn9k f59wlhv f1xmfh30 f18yf5o5 fmr6chf fw8qy2q ff161sd f1qr7t77 f1yyogn1 foogchg fp5872b f1tpb8gf f1hdgrc8 f1vatr43 frkxccd f9pdzkb f158oiaz ft5kggy f5l4ui7 f13j03li f18xdoka f8off4e f1go6zfc f128n2ra f1jpxw2j f1lwd9n0 fy0b8hm f1g2633v fx4kvgi fkvolse f1gxrt3a f1os76ua f1js9cnw f1g87ej0 freluf8 f1yggaq6 f2i3chp f1151osp florpoh f35kzfz ftp9m57 f1e288vi fz62hnz fixvuys f1nmofwh fc1c6mv f18a2er7 fhvkrdl fhxnn68 f1oce4bo fvhlfan f7tc0t0 f1ngf1n2 ffrzq6x f1yjiq2m f1aqdgql f1huvaf f10ij78l f1k94sa4 fkmfumq f1jvzkyl f1eu24ob f1xbfc1f fmf0lwf f107dsy8 f3w566c f4648sl f13zpkng f7unjfp f8p1rz fzu6h1w f1i1bi6h f1smo7hi f1sk1xod f1kgogdq f1gjktkp ft608jz f19dd9cz fg3xr24 fhd155k f1b8gl2e fg4b9ou flb4lo fdicbfk fgwcyh1 f1jbds0d f1fb9uea f1stuka4 fcrtu6g fwqh0xn f11w66yg f6e0e65 f1vvgu0 f1607507 f1m9bycv f1ntoah8 f1b694rt faql4r2 fpjuhzh fmavl6h">
-<p class="t3 selectionShareable">A Edenred, em parceria com o ShareTheMeal e o Programa Mundial de Alimentos da ONU, está arrecadando doações para oferecer 100 mil refeições a pessoas em situação de vulnerabilidade. Com apenas R$4,50 e alguns cliques, é possível contribuir e ajudar quem mais precisa.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div>                    <a class="Button Button--standard" href="https://sharethemeal.org/pt-br/challenges/40d1d5f1-4a53-5820-bab9-e55366e178e4?adjust_t=1lyyub01" tabindex="0">Doe agora!</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
+                    </div>
+                </div>
             </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div><div class="slick-slide" data-slick-index="2" aria-hidden="true" style="width: 412px;" tabindex="-1"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
-
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png&quot;); background-size: 412px;"></div>
-                        </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                    <p class="t5 selectionShareable">06 de maio de 2026</p>                    <h3 class="h3 selectionShareable"><strong>Faça parte do nosso Dream Team!</strong></h3>                    <div class="t3"><p class="t3 selectionShareable">Junte-se a um time apaixonado por inovação, que vai além das entregas e acredita no poder de enriquecer conexões para o bem.</p></div>                    <a class="Button Button--standard" href="https://www.edenred.com.br/carreiras/" tabindex="-1">Trabalhe na Edenred</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
-            </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" style="width: 412px;" tabindex="-1"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
-
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                        </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                    <p class="t5 selectionShareable">06 de maio de 2026</p>                    <h3 class="h3 selectionShareable"><strong>La Fabrique&nbsp;</strong></h3>                    <div class="t3"><p class="t3 selectionShareable">Em uma iniciativa inédita, BNP Paribas, Edenred e Ingenico se uniram para criar e fomentar o LA FABRIQUE, centro de inovação que tem como missão acelerar empresas, startups e projetos de desenvolvimento e tecnologia no Brasil.</p></div>                    <a class="Button Button--standard" href="/la-fabrique/" tabindex="-1">Conheça o nosso hub de inovação</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
-            </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="4" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
-
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/06/Banner_Home-Page_EVA_1400x557_v4-1.png&quot;); background-size: 412px;"></div>
-                        </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                                        <h3 class="h3 selectionShareable"><strong>Uma década de inovação!</strong></h3>                    <div class="t3"><div id="" class="fai-CopilotMessage__content r1izxv8h ___7qar2c0 fcthzvy" dir="auto">
-<div dir="auto">
-<div class="___1vve6yh f22iagw f1vx9l62 f122n59 f3bhgqh f1mnxvew fly5x3f">
-<div class="___j4vmuw0 f22iagw f1vx9l62 f1869bpl fly5x3f fbc6vix">
-<div tabindex="-1" data-testid="loading-message" data-fui-focus-visible="">
-<div id="" class="___1yop6mf f336tjw f9ijwd5 fz7g6wx fod5ikn f1s184ao" aria-live="assertive" data-testid="lastChatMessage">
-<div class="___1j4t0a1 f1lmfglv f1abmfm4" aria-hidden="false" data-testid="markdown-reply" data-message-type="Chat">
-<div class="___stpibi0 f22iagw f1vx9l62 fk15e71 f1k953kz f137keqj f1rncccw f1stllg3 f1w4kmmc f1tric3v f10dk5ic fx8cdsv f16nlwsl f1eookvz fhjrts3 fqugt2f f10km5jb f18d18k8 f1v1vhmp f1hdmul3 f198vjnp f2dshw1 fjpjndq fnmj2pj ffrrb40 f1mon110 fhajzam fimndk6 fxv4dng fb1rn9k f59wlhv f1xmfh30 f18yf5o5 fmr6chf fw8qy2q ff161sd f1qr7t77 f1yyogn1 foogchg fp5872b f1tpb8gf f1hdgrc8 f1vatr43 frkxccd f9pdzkb f158oiaz ft5kggy f5l4ui7 f13j03li f18xdoka f8off4e f1go6zfc f128n2ra f1jpxw2j f1lwd9n0 fy0b8hm f1g2633v fx4kvgi fkvolse f1gxrt3a f1os76ua f1js9cnw f1g87ej0 freluf8 f1yggaq6 f2i3chp f1151osp florpoh f35kzfz ftp9m57 f1e288vi fz62hnz fixvuys f1nmofwh fc1c6mv f18a2er7 fhvkrdl fhxnn68 f1oce4bo fvhlfan f7tc0t0 f1ngf1n2 ffrzq6x f1yjiq2m f1aqdgql f1huvaf f10ij78l f1k94sa4 fkmfumq f1jvzkyl f1eu24ob f1xbfc1f fmf0lwf f107dsy8 f3w566c f4648sl f13zpkng f7unjfp f8p1rz fzu6h1w f1i1bi6h f1smo7hi f1sk1xod f1kgogdq f1gjktkp ft608jz f19dd9cz fg3xr24 fhd155k f1b8gl2e fg4b9ou flb4lo fdicbfk fgwcyh1 f1jbds0d f1fb9uea f1stuka4 fcrtu6g fwqh0xn f11w66yg f6e0e65 f1vvgu0 f1607507 f1m9bycv f1ntoah8 f1b694rt faql4r2 fpjuhzh fmavl6h">
-<p class="t3 selectionShareable">Em 2025, a Edenred Brasil celebra dez anos da EVA, uma das primeiras assistentes virtuais com IA do país. Com mais de 17 milhões de atendimentos e 93% de assertividade, ela acelera processos em até 70% e está presente em todas as linhas de negócio da companhia.</p>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div>                    <a class="Button Button--standard" href="/edenred-brasil-celebra-dez-anos-de-sua-assistente-de-inteligencia-artificial-com-ganhos-de-ate-70-em-agilidade/" tabindex="-1">Saiba mais</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
-            </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
-
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2025/04/Banner_Home-Page_1400x557_v3.png&quot;); background-size: 412px;"></div>
-                        </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                                        <h3 class="h3 selectionShareable"><strong>Junte-se à Edenred na luta contra a fome!</strong></h3>                    <div class="t3"><div id="" class="fai-CopilotMessage__content r1izxv8h ___7qar2c0 fcthzvy" dir="auto">
-<div dir="auto">
-<div class="___1vve6yh f22iagw f1vx9l62 f122n59 f3bhgqh f1mnxvew fly5x3f">
-<div class="___j4vmuw0 f22iagw f1vx9l62 f1869bpl fly5x3f fbc6vix">
-<div tabindex="-1" data-testid="loading-message" data-fui-focus-visible="">
-<div>
-<div id="" class="___1yop6mf f336tjw f9ijwd5 fz7g6wx fod5ikn f1s184ao" aria-live="assertive" data-testid="lastChatMessage">
-<div class="___1j4t0a1 f1lmfglv f1abmfm4" aria-hidden="false" data-testid="markdown-reply" data-message-type="Chat">
-<div class="___stpibi0 f22iagw f1vx9l62 fk15e71 f1k953kz f137keqj f1rncccw f1stllg3 f1w4kmmc f1tric3v f10dk5ic fx8cdsv f16nlwsl f1eookvz fhjrts3 fqugt2f f10km5jb f18d18k8 f1v1vhmp f1hdmul3 f198vjnp f2dshw1 fjpjndq fnmj2pj ffrrb40 f1mon110 fhajzam fimndk6 fxv4dng fb1rn9k f59wlhv f1xmfh30 f18yf5o5 fmr6chf fw8qy2q ff161sd f1qr7t77 f1yyogn1 foogchg fp5872b f1tpb8gf f1hdgrc8 f1vatr43 frkxccd f9pdzkb f158oiaz ft5kggy f5l4ui7 f13j03li f18xdoka f8off4e f1go6zfc f128n2ra f1jpxw2j f1lwd9n0 fy0b8hm f1g2633v fx4kvgi fkvolse f1gxrt3a f1os76ua f1js9cnw f1g87ej0 freluf8 f1yggaq6 f2i3chp f1151osp florpoh f35kzfz ftp9m57 f1e288vi fz62hnz fixvuys f1nmofwh fc1c6mv f18a2er7 fhvkrdl fhxnn68 f1oce4bo fvhlfan f7tc0t0 f1ngf1n2 ffrzq6x f1yjiq2m f1aqdgql f1huvaf f10ij78l f1k94sa4 fkmfumq f1jvzkyl f1eu24ob f1xbfc1f fmf0lwf f107dsy8 f3w566c f4648sl f13zpkng f7unjfp f8p1rz fzu6h1w f1i1bi6h f1smo7hi f1sk1xod f1kgogdq f1gjktkp ft608jz f19dd9cz fg3xr24 fhd155k f1b8gl2e fg4b9ou flb4lo fdicbfk fgwcyh1 f1jbds0d f1fb9uea f1stuka4 fcrtu6g fwqh0xn f11w66yg f6e0e65 f1vvgu0 f1607507 f1m9bycv f1ntoah8 f1b694rt faql4r2 fpjuhzh fmavl6h">
-<p class="t3 selectionShareable">A Edenred, em parceria com o ShareTheMeal e o Programa Mundial de Alimentos da ONU, está arrecadando doações para oferecer 100 mil refeições a pessoas em situação de vulnerabilidade. Com apenas R$4,50 e alguns cliques, é possível contribuir e ajudar quem mais precisa.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div>                    <a class="Button Button--standard" href="https://sharethemeal.org/pt-br/challenges/40d1d5f1-4a53-5820-bab9-e55366e178e4?adjust_t=1lyyub01" tabindex="-1">Doe agora!</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
-            </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
-
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2023/02/2023-02-06_BannerVibe-ribbons-1.png&quot;); background-size: 412px;"></div>
-                        </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                    <p class="t5 selectionShareable">06 de maio de 2026</p>                    <h3 class="h3 selectionShareable"><strong>Faça parte do nosso Dream Team!</strong></h3>                    <div class="t3"><p class="t3 selectionShareable">Junte-se a um time apaixonado por inovação, que vai além das entregas e acredita no poder de enriquecer conexões para o bem.</p></div>                    <a class="Button Button--standard" href="https://www.edenred.com.br/carreiras/" tabindex="-1">Trabalhe na Edenred</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
-            </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="focus-blocks-carousel-item" style="width: 100%; display: inline-block;">
-                        <!-- FOCUS 1 With image/ribbon / Full Height-->
-            <div class="Focus1 js-ribbonBlock bottom match-min-height">
-                
-                <!-- img -->
-                                <!-- /img -->
-
-                <!-- ribbon -->
-                
-                                            <div class="Focus1-imgContainer js-ribbonContainer">
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                            <div class="Focus1-ribbon js-ribbon" style="background-image: url(&quot;https://www.edenred.com.br/wp-content/uploads/2021/12/VISTA-LA-FABRIQUE-7.jpg&quot;); background-size: 412px;"></div>
-                        </div>
-                    
-                                <!-- /ribbon -->
-
-                <!-- content -->
-                <div class="Focus1-text match-min-height">
-                    <p class="t5 selectionShareable">06 de maio de 2026</p>                    <h3 class="h3 selectionShareable"><strong>La Fabrique&nbsp;</strong></h3>                    <div class="t3"><p class="t3 selectionShareable">Em uma iniciativa inédita, BNP Paribas, Edenred e Ingenico se uniram para criar e fomentar o LA FABRIQUE, centro de inovação que tem como missão acelerar empresas, startups e projetos de desenvolvimento e tecnologia no Brasil.</p></div>                    <a class="Button Button--standard" href="/la-fabrique/" tabindex="-1">Conheça o nosso hub de inovação</a>                </div>
-                <!-- /content -->
-
-                <!-- scroll-icon -->
-                                <!-- /scroll-icon -->
-
-            </div>
-            <!-- /FOCUS 1 With image/ribbon -->
-        </div></div></div></div></div></div>
-				</div>
-				</div>
-					</div>
-		</div>
-					</div>
-		</section>
 				<section class="elementor-section elementor-top-section elementor-element elementor-element-cae2249 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="cae2249" data-element_type="section">
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ec81d05" data-id="ec81d05" data-element_type="column">
@@ -1181,15 +1041,15 @@ conectar ideias criativas
 				<div class="elementor-widget-container">
 					
     <!--Featured1-->
-    <div class="Featured1 Featured1-750878905 ">
+    <div class="Featured1 Featured1-406564397 ">
         <div class="Featured1-imgContainer" style="background-image: url(https://www.edenred.com.br/wp-content/uploads/2018/05/como-comecou.jpg);"></div>
         <div class="Featured1-text">
-            <h3 class="h1 selectionShareable">Tudo começou com a ideia de <strong>fazer do mundo um lugar melhor</strong></h3>
-            <p class="t3 selectionShareable" style="color: #6ec1e4;">Desde então, a inovação, a paixão por pessoas e o desejo de trazê-las juntas deu forma à nova Edenred. Uma rede que conecta empregados, comerciantes e empresas convergindo seus interesses e trazendo confiança e oportunidades em 44 países.</p>
-            <a class="Button Button--white" href="https://www.edenred.com.br/por-pessoas/nossa-historia">Conheça nossa história</a>        </div>
+            <h3 class="h1">Tudo começou com a ideia de <strong>fazer do mundo um lugar melhor</strong></h3>
+            <p class="t3" style="color: #6ec1e4;">Desde então, a inovação, a paixão por pessoas e o desejo de trazê-las juntas deu forma à nova Edenred. Uma rede que conecta empregados, comerciantes e empresas convergindo seus interesses e trazendo confiança e oportunidades em 44 países.</p>
+            <a class="Button Button--white" href="https://www.edenred.com.br/por-pessoas/nossa-historia" >Conheça nossa história</a>        </div>
     </div>
 	<!--/Featured1-->
-			<style>.Featured1-750878905 .Button--white:hover{color:#4054b2; border-color:#4054b2;}</style>
+			<style>.Featured1-406564397 .Button--white:hover{color:#4054b2; border-color:#4054b2;}</style>
 					</div>
 				</div>
 				<div class="elementor-element elementor-element-3770782 elementor-widget elementor-widget-keyfigures-1" data-id="3770782" data-element_type="widget" data-widget_type="keyfigures-1.default">
@@ -1197,132 +1057,77 @@ conectar ideias criativas
 					
 		<!-- KEYFIGURE 1 -->
 		<div class="Keyfigure1 secondColor--yellow">
-			<h5 class="h5 selectionShareable"><strong>Edenred</strong><br>em números</h5>
-			<div class="Keyfigure1-carou Keyfigure1-carou-1838232310 slick-initialized slick-slider"><button class="slick-prev slick-arrow" aria-label="Previous" type="button">Previous</button><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 4532px; transform: translate3d(-412px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
+			<h5 class="h5"><strong>Edenred</strong><br />em números</h5>
+			<div class="Keyfigure1-carou Keyfigure1-carou-1464468003">
+									<div class="Keyfigure1-item">
+						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
 						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
+							C17.1,157.1,13.3,161,8.6,161z"/>
 						</svg>
 						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">~ ‎€49 bilhões</h4>
-							<p class="t1 selectionShareable">em volume de negócios</p>
+							<h4 class="h4">44 países</h4>
+							<p class="t1">Presença no mundo</p>
 						</div>
-					</div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" data-id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
+					</div>
+									<div class="Keyfigure1-item">
+						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
 						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
+							C17.1,157.1,13.3,161,8.6,161z"/>
 						</svg>
 						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">44 países</h4>
-							<p class="t1 selectionShareable">Presença no mundo</p>
+							<h4 class="h4">+1 milhão</h4>
+							<p class="t1">empresas-clientes</p>
 						</div>
-					</div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" data-id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
+					</div>
+									<div class="Keyfigure1-item">
+						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
 						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
+							C17.1,157.1,13.3,161,8.6,161z"/>
 						</svg>
 						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">+1 milhão</h4>
-							<p class="t1 selectionShareable">empresas-clientes</p>
+							<h4 class="h4">+2 milhões</h4>
+							<p class="t1">de estabelecimentos parceiros</p>
 						</div>
-					</div></div></div><div class="slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" data-id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
+					</div>
+									<div class="Keyfigure1-item">
+						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
 						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
+							C17.1,157.1,13.3,161,8.6,161z"/>
 						</svg>
 						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">+2 milhões</h4>
-							<p class="t1 selectionShareable">de estabelecimentos parceiros</p>
+							<h4 class="h4">+60 milhões</h4>
+							<p class="t1">de empregados beneficiados</p>
 						</div>
-					</div></div></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" data-id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
+					</div>
+									<div class="Keyfigure1-item">
+						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
 						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
 							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
+							C17.1,157.1,13.3,161,8.6,161z"/>
 						</svg>
 						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">+60 milhões</h4>
-							<p class="t1 selectionShareable">de empregados beneficiados</p>
+							<h4 class="h4">~ ‎€49 bilhões</h4>
+							<p class="t1">em volume de negócios</p>
 						</div>
-					</div></div></div><div class="slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" data-id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
-						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
-						</svg>
-						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">~ ‎€49 bilhões</h4>
-							<p class="t1 selectionShareable">em volume de negócios</p>
-						</div>
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
-						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
-						</svg>
-						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">44 países</h4>
-							<p class="t1 selectionShareable">Presença no mundo</p>
-						</div>
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
-						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
-						</svg>
-						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">+1 milhão</h4>
-							<p class="t1 selectionShareable">empresas-clientes</p>
-						</div>
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
-						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
-						</svg>
-						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">+2 milhões</h4>
-							<p class="t1 selectionShareable">de estabelecimentos parceiros</p>
-						</div>
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
-						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
-						</svg>
-						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">+60 milhões</h4>
-							<p class="t1 selectionShareable">de empregados beneficiados</p>
-						</div>
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" tabindex="-1" style="width: 412px;"><div><div class="Keyfigure1-item" style="width: 100%; display: inline-block;">
-						<svg width="72" height="191" class="Keyfigure1-bkg" version="1.1" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 191" style="enable-background:new 0 0 72 191;" xml:space="preserve">
-						<path fill="" opacity="0.5" class="st0" d="M62.6,171c-4.7,0-8.6-3.8-8.6-8.6V18.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C71.1,167.2,67.3,171,62.6,171z M35.6,191c-4.7,0-8.6-3.8-8.6-8.6V38.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C44.1,187.2,40.3,191,35.6,191z M8.6,161c-4.7,0-8.6-3.8-8.6-8.6V8.6C0,3.8,3.8,0,8.6,0c4.7,0,8.6,3.8,8.6,8.6v143.8
-							C17.1,157.1,13.3,161,8.6,161z"></path>
-						</svg>
-						<div class="Keyfigure1-text">
-							<h4 class="h4 selectionShareable">~ ‎€49 bilhões</h4>
-							<p class="t1 selectionShareable">em volume de negócios</p>
-						</div>
-					</div></div></div></div></div><button class="slick-next slick-arrow" aria-label="Next" type="button">Next</button></div>
+					</div>
+							</div>
 		</div>
 		<!-- /KEYFIGURE 1 -->
-		<style>		.Keyfigure1-carou-1838232310 .slick-arrow{background-color: transparent !important;}				</style>		
+
 				</div>
 				</div>
 					</div>
@@ -1335,7 +1140,7 @@ conectar ideias criativas
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-8d79086 elementor-widget elementor-widget-text-edenred" data-id="8d79086" data-element_type="widget" data-widget_type="text-edenred.default">
 				<div class="elementor-widget-container">
-							<div class="elementor-text-editor elementor-clearfix"><h3 class="p1 selectionShareable" style="text-align: center;"><span class="s1">Nossas marcas </span><span class="s2"><b>no Brasil</b></span></h3></div>
+							<div class="elementor-text-editor elementor-clearfix"><h3 class="p1" style="text-align: center;"><span class="s1">Nossas marcas </span><span class="s2"><b>no Brasil</b></span></h3></div>
 						</div>
 				</div>
 					</div>
@@ -1348,7 +1153,7 @@ conectar ideias criativas
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-0e32451 elementor-widget elementor-widget-image" data-id="0e32451" data-element_type="widget" data-widget_type="image.default">
 																<a href="https://www.edenred.com.br/para-pessoas/ticket/">
-							<img fetchpriority="high" decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2023/06/ticket_v3.jpg" class="optanon-category-C0002 attachment-full size-full wp-image-9419" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2023/06/ticket_v3.jpg 654w, https://www.edenred.com.br/wp-content/uploads/2023/06/ticket_v3-300x300.jpg 300w, https://www.edenred.com.br/wp-content/uploads/2023/06/ticket_v3-150x150.jpg 150w" sizes="(max-width: 654px) 100vw, 654px">								</a>
+							<img fetchpriority="high" fetchpriority="high" decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2023/06/ticket_v3.jpg" class="attachment-full size-full wp-image-9419" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2023/06/ticket_v3.jpg 654w, https://www.edenred.com.br/wp-content/uploads/2023/06/ticket_v3-300x300.jpg 300w, https://www.edenred.com.br/wp-content/uploads/2023/06/ticket_v3-150x150.jpg 150w" sizes="(max-width: 654px) 100vw, 654px" />								</a>
 															</div>
 					</div>
 		</div>
@@ -1356,7 +1161,7 @@ conectar ideias criativas
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-d7b631d elementor-widget elementor-widget-image" data-id="d7b631d" data-element_type="widget" data-widget_type="image.default">
 																<a href="https://www.edenred.com.br/para-pessoas/ticket-log/">
-							<img decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2023/02/banner-home-log.png" class="optanon-category-C0002 attachment-full size-full wp-image-8713" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2023/02/banner-home-log.png 654w, https://www.edenred.com.br/wp-content/uploads/2023/02/banner-home-log-300x300.png 300w, https://www.edenred.com.br/wp-content/uploads/2023/02/banner-home-log-150x150.png 150w" sizes="(max-width: 654px) 100vw, 654px">								</a>
+							<img decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2023/02/banner-home-log.png" class="attachment-full size-full wp-image-8713" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2023/02/banner-home-log.png 654w, https://www.edenred.com.br/wp-content/uploads/2023/02/banner-home-log-300x300.png 300w, https://www.edenred.com.br/wp-content/uploads/2023/02/banner-home-log-150x150.png 150w" sizes="(max-width: 654px) 100vw, 654px" />								</a>
 															</div>
 					</div>
 		</div>
@@ -1364,7 +1169,7 @@ conectar ideias criativas
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-07cf0a6 elementor-widget elementor-widget-image" data-id="07cf0a6" data-element_type="widget" data-widget_type="image.default">
 																<a href="https://www.edenredmobilidade.com.br/gestao-frete/">
-							<img decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2025/10/banner-home-edenredfrete.png" class="attachment-full size-full wp-image-23133" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2025/10/banner-home-edenredfrete.png 654w, https://www.edenred.com.br/wp-content/uploads/2025/10/banner-home-edenredfrete-300x300.png 300w, https://www.edenred.com.br/wp-content/uploads/2025/10/banner-home-edenredfrete-150x150.png 150w" sizes="(max-width: 654px) 100vw, 654px">								</a>
+							<img decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2025/10/banner-home-edenredfrete.png" class="attachment-full size-full wp-image-23133" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2025/10/banner-home-edenredfrete.png 654w, https://www.edenred.com.br/wp-content/uploads/2025/10/banner-home-edenredfrete-300x300.png 300w, https://www.edenred.com.br/wp-content/uploads/2025/10/banner-home-edenredfrete-150x150.png 150w" sizes="(max-width: 654px) 100vw, 654px" />								</a>
 															</div>
 					</div>
 		</div>
@@ -1372,7 +1177,7 @@ conectar ideias criativas
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-8c1ba16 elementor-widget elementor-widget-image" data-id="8c1ba16" data-element_type="widget" data-widget_type="image.default">
 																<a href="https://taggy.com.br/">
-							<img loading="lazy" decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2025/02/taggy-home.png" class="attachment-full size-full wp-image-19372" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2025/02/taggy-home.png 654w, https://www.edenred.com.br/wp-content/uploads/2025/02/taggy-home-300x300.png 300w, https://www.edenred.com.br/wp-content/uploads/2025/02/taggy-home-150x150.png 150w" sizes="(max-width: 654px) 100vw, 654px">								</a>
+							<img loading="lazy" loading="lazy" decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2025/02/taggy-home.png" class="attachment-full size-full wp-image-19372" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2025/02/taggy-home.png 654w, https://www.edenred.com.br/wp-content/uploads/2025/02/taggy-home-300x300.png 300w, https://www.edenred.com.br/wp-content/uploads/2025/02/taggy-home-150x150.png 150w" sizes="(max-width: 654px) 100vw, 654px" />								</a>
 															</div>
 					</div>
 		</div>
@@ -1380,7 +1185,7 @@ conectar ideias criativas
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-95be70d elementor-widget elementor-widget-image" data-id="95be70d" data-element_type="widget" data-widget_type="image.default">
 																<a href="https://www.edenred.com.br/para-pessoas/edenred-pay/">
-							<img loading="lazy" decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2022/02/edenred_pay-1.jpg" class="optanon-category-C0002 attachment-full size-full wp-image-8083" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2022/02/edenred_pay-1.jpg 654w, https://www.edenred.com.br/wp-content/uploads/2022/02/edenred_pay-1-150x150.jpg 150w, https://www.edenred.com.br/wp-content/uploads/2022/02/edenred_pay-1-300x300.jpg 300w" sizes="(max-width: 654px) 100vw, 654px">								</a>
+							<img loading="lazy" loading="lazy" decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2022/02/edenred_pay-1.jpg" class="attachment-full size-full wp-image-8083" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2022/02/edenred_pay-1.jpg 654w, https://www.edenred.com.br/wp-content/uploads/2022/02/edenred_pay-1-150x150.jpg 150w, https://www.edenred.com.br/wp-content/uploads/2022/02/edenred_pay-1-300x300.jpg 300w" sizes="(max-width: 654px) 100vw, 654px" />								</a>
 															</div>
 					</div>
 		</div>
@@ -1388,7 +1193,7 @@ conectar ideias criativas
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-2b0485e elementor-widget elementor-widget-image" data-id="2b0485e" data-element_type="widget" data-widget_type="image.default">
 																<a href="https://www.edenred.com.br/para-pessoas/punto/">
-							<img loading="lazy" decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2023/08/banner-home-punto-edenred.png" class="optanon-category-C0002 attachment-full size-full wp-image-10980" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2023/08/banner-home-punto-edenred.png 654w, https://www.edenred.com.br/wp-content/uploads/2023/08/banner-home-punto-edenred-300x300.png 300w, https://www.edenred.com.br/wp-content/uploads/2023/08/banner-home-punto-edenred-150x150.png 150w" sizes="(max-width: 654px) 100vw, 654px">								</a>
+							<img loading="lazy" loading="lazy" decoding="async" width="654" height="657" src="https://www.edenred.com.br/wp-content/uploads/2023/08/banner-home-punto-edenred.png" class="attachment-full size-full wp-image-10980" alt="" srcset="https://www.edenred.com.br/wp-content/uploads/2023/08/banner-home-punto-edenred.png 654w, https://www.edenred.com.br/wp-content/uploads/2023/08/banner-home-punto-edenred-300x300.png 300w, https://www.edenred.com.br/wp-content/uploads/2023/08/banner-home-punto-edenred-150x150.png 150w" sizes="(max-width: 654px) 100vw, 654px" />								</a>
 															</div>
 					</div>
 		</div>
@@ -1403,27 +1208,27 @@ conectar ideias criativas
 					 
 
 	<!-- FOCUS 2 (CONTENT BLOCK) -->
-	<div class="Focus2 Focus2-tipo-content" style="background-image:url('https://www.edenred.com.br/wp-content/uploads/2018/05/vibrante.jpg'); ">
+	<div class="Focus2 Focus2-tipo-content" style="background-image:url('https://www.edenred.com.br/wp-content/uploads/2018/05/vibrante.jpg');">
 		<div class="Focus2-bg" style="background-image:url('https://www.edenred.com.br/wp-content/uploads/2018/05/vibrante.jpg'); background-size: cover;"></div>
 		<div class="Focus2-text">
-			<h1 class="h3 selectionShareable">Vibrante, confiável<br>e conectada.<br><strong>Esta é a Edenred.</strong></h1>
+			<h1 class="h3">Vibrante, confiável<br />e conectada.<br /><strong>Esta é a Edenred.</strong></h1>
 			<div class="t3">
-				<br>
-				<svg class="Focus2-bar" version="1.1" data-id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 356 10" style="enable-background:new 0 0 356 10;" xml:space="preserve">
-				<path class="st0" fill="#FFE282" d="M5,0h346c2.8,0,5,2.2,5,5s-2.2,5-5,5H5c-2.8,0-5-2.2-5-5S2.2,0,5,0z"></path>
+				<br/>
+				<svg  class="Focus2-bar" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 356 10" style="enable-background:new 0 0 356 10;" xml:space="preserve">
+				<path class="st0" fill="#FFE282" d="M5,0h346c2.8,0,5,2.2,5,5s-2.2,5-5,5H5c-2.8,0-5-2.2-5-5S2.2,0,5,0z"/>
 				</svg>					
 				
 				<!-- facebook share -->
 				<a class="Focus2-rs" href="https://facebook.com/sharer.php?u=https://www.edenred.com.br/" target="_blank" rel="noopener noreferrer">
 					<svg width="30px" height="30px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						<defs></defs>
-						<g data-id="01_governanca" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-329.000000, -592.000000)">
-							<g data-id="Group" transform="translate(111.000000, 592.000000)">
-								<g data-id="Group-34" transform="translate(218.000000, 0.000000)">
+						<g id="01_governanca" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-329.000000, -592.000000)">
+							<g id="Group" transform="translate(111.000000, 592.000000)">
+								<g id="Group-34" transform="translate(218.000000, 0.000000)">
 									<g id="ico/social/facebook">
 										<g id="Group-5">
-											<path d="M23.9354667,11.969211 C23.9354667,18.5793604 18.5770667,23.938422 11.9677333,23.938422 C5.3584,23.938422 0,18.5793604 0,11.969211 C0,5.35906161 5.3584,0 11.9677333,0 C18.5770667,0 23.9354667,5.35906161 23.9354667,11.969211 Z" data-id="Fill-1" fill="#162056"></path>
-											<path d="M14.9093333,12.6487616 L12.7738667,12.6487616 L12.7738667,20.4726608 L9.53866667,20.4726608 L9.53866667,12.6487616 L8,12.6487616 L8,9.89828868 L9.53866667,9.89828868 L9.53866667,8.1191357 C9.53866667,6.84697864 10.1426667,4.85393258 12.8032,4.85393258 L15.1989333,4.86433387 L15.1989333,7.53346339 L13.4605333,7.53346339 C13.1749333,7.53346339 12.7738667,7.67614767 12.7738667,8.28262255 L12.7738667,9.90148907 L15.1928,9.90148907 L14.9093333,12.6487616 Z" data-id="Fill-2" fill="#FFFFFF"></path>
+											<path d="M23.9354667,11.969211 C23.9354667,18.5793604 18.5770667,23.938422 11.9677333,23.938422 C5.3584,23.938422 0,18.5793604 0,11.969211 C0,5.35906161 5.3584,0 11.9677333,0 C18.5770667,0 23.9354667,5.35906161 23.9354667,11.969211 Z" id="Fill-1" fill="#162056"></path>
+											<path d="M14.9093333,12.6487616 L12.7738667,12.6487616 L12.7738667,20.4726608 L9.53866667,20.4726608 L9.53866667,12.6487616 L8,12.6487616 L8,9.89828868 L9.53866667,9.89828868 L9.53866667,8.1191357 C9.53866667,6.84697864 10.1426667,4.85393258 12.8032,4.85393258 L15.1989333,4.86433387 L15.1989333,7.53346339 L13.4605333,7.53346339 C13.1749333,7.53346339 12.7738667,7.67614767 12.7738667,8.28262255 L12.7738667,9.90148907 L15.1928,9.90148907 L14.9093333,12.6487616 Z" id="Fill-2" fill="#FFFFFF"></path>
 										</g>
 									</g>
 								</g>
@@ -1434,16 +1239,16 @@ conectar ideias criativas
 				<!-- /facebook share -->
 				
 				<!-- linkedin share -->
-				<a class="Focus2-rs" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.edenred.com.br/&amp;title=Home" target="_blank" rel="noopener noreferrer">
+				<a class="Focus2-rs" href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.edenred.com.br/&title=Home" target="_blank" rel="noopener noreferrer">
 					<svg width="30px" height="30px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						<defs></defs>
-						<g data-id="01_governanca" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-361.000000, -592.000000)">
-							<g data-id="Group" transform="translate(111.000000, 592.000000)">
-								<g data-id="Group-34" transform="translate(218.000000, 0.000000)">
+						<g id="01_governanca" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-361.000000, -592.000000)">
+							<g id="Group" transform="translate(111.000000, 592.000000)">
+								<g id="Group-34" transform="translate(218.000000, 0.000000)">
 									<g id="ico/social/facebook-copy" transform="translate(32.000000, 0.000000)">
 										<g id="linkedin">
-											<path d="M23.9354667,11.9003077 C23.9354667,18.437011 18.5770667,23.7365275 11.9677333,23.7365275 C5.3584,23.7365275 0,18.437011 0,11.9003077 C0,5.3636044 5.3584,0.0640879121 11.9677333,0.0640879121 C18.5770667,0.0640879121 23.9354667,5.3636044 23.9354667,11.9003077 Z" data-id="Fill-1" fill="#162056"></path>
-											<path d="M19.1176,12.8521319 L19.1176,17.7323077 L16.2573333,17.7323077 L16.2573333,13.179956 C16.2573333,12.0363956 15.8448,11.2554725 14.8082667,11.2554725 C14.0186667,11.2554725 13.5490667,11.7818901 13.3416,12.2909011 C13.2656,12.4720879 13.2469333,12.7244835 13.2469333,12.980044 L13.2469333,17.7323077 L10.3853333,17.7323077 C10.3853333,17.7323077 10.424,10.0211868 10.3853333,9.22285714 L13.2469333,9.22285714 L13.2469333,10.4291868 C13.2416,10.4384176 13.2333333,10.4476484 13.228,10.4568791 L13.2469333,10.4568791 L13.2469333,10.4291868 C13.6272,9.85028571 14.3053333,9.02294505 15.8250667,9.02294505 C17.7072,9.02294505 19.1176,10.2395604 19.1176,12.8521319 Z M7.39386667,5.12149451 C6.41466667,5.12149451 5.77493333,5.7570989 5.77493333,6.59156044 C5.77493333,7.40861538 6.39573333,8.06162637 7.35626667,8.06162637 L7.37386667,8.06162637 C8.372,8.06162637 8.9928,7.40861538 8.9928,6.59156044 C8.97386667,5.7570989 8.372,5.12149451 7.39386667,5.12149451 Z M5.9448,17.7323077 L8.80426667,17.7323077 L8.80426667,9.22285714 L5.9448,9.22285714 L5.9448,17.7323077 Z" data-id="Fill-2" fill="#F1F2F2"></path>
+											<path d="M23.9354667,11.9003077 C23.9354667,18.437011 18.5770667,23.7365275 11.9677333,23.7365275 C5.3584,23.7365275 0,18.437011 0,11.9003077 C0,5.3636044 5.3584,0.0640879121 11.9677333,0.0640879121 C18.5770667,0.0640879121 23.9354667,5.3636044 23.9354667,11.9003077 Z" id="Fill-1" fill="#162056"></path>
+											<path d="M19.1176,12.8521319 L19.1176,17.7323077 L16.2573333,17.7323077 L16.2573333,13.179956 C16.2573333,12.0363956 15.8448,11.2554725 14.8082667,11.2554725 C14.0186667,11.2554725 13.5490667,11.7818901 13.3416,12.2909011 C13.2656,12.4720879 13.2469333,12.7244835 13.2469333,12.980044 L13.2469333,17.7323077 L10.3853333,17.7323077 C10.3853333,17.7323077 10.424,10.0211868 10.3853333,9.22285714 L13.2469333,9.22285714 L13.2469333,10.4291868 C13.2416,10.4384176 13.2333333,10.4476484 13.228,10.4568791 L13.2469333,10.4568791 L13.2469333,10.4291868 C13.6272,9.85028571 14.3053333,9.02294505 15.8250667,9.02294505 C17.7072,9.02294505 19.1176,10.2395604 19.1176,12.8521319 Z M7.39386667,5.12149451 C6.41466667,5.12149451 5.77493333,5.7570989 5.77493333,6.59156044 C5.77493333,7.40861538 6.39573333,8.06162637 7.35626667,8.06162637 L7.37386667,8.06162637 C8.372,8.06162637 8.9928,7.40861538 8.9928,6.59156044 C8.97386667,5.7570989 8.372,5.12149451 7.39386667,5.12149451 Z M5.9448,17.7323077 L8.80426667,17.7323077 L8.80426667,9.22285714 L5.9448,9.22285714 L5.9448,17.7323077 Z" id="Fill-2" fill="#F1F2F2"></path>
 										</g>
 									</g>
 								</g>
@@ -1454,14 +1259,14 @@ conectar ideias criativas
 				<!-- /linkedin share -->
 				
 				<!-- twitter share -->
-				<a class="Focus2-rs" href="https://twitter.com/intent/tweet?url=https://www.edenred.com.br/&amp;text=Home" target="_blank" rel="noopener noreferrer">
+				<a class="Focus2-rs" href="https://twitter.com/intent/tweet?url=https://www.edenred.com.br/&text=Home" target="_blank" rel="noopener noreferrer">
 					<svg width="30px" height="30px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						<defs>
 							<path d="M11.2908594,23.7662092 L4.72851979,17.3766828 L6.79987127,17.5585066 L8.60120461,16.6257673 L7.04537825,15.0994524 L7.55505232,14.3590524 L6.09450323,12.9483294 L6.60931674,12.1303188 L10.4428628,11.9217355 L13.1552207,9.17028809 L16.6520941,7.35001046 L17.1429499,7.81912667 L17.4927479,7.96948242 L18.984608,6.91761998 L23.9658525,11.8559096 C23.9658902,11.868221 23.9659091,11.8805369 23.9659091,11.8928571 C23.9659091,18.4611008 18.6009576,23.7857143 11.9829545,23.7857143 C11.750653,23.7857143 11.5198953,23.7791538 11.2908594,23.7662092 Z" id="path-1"></path>
 						</defs>
-						<g data-id="01_governanca" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-394.000000, -592.000000)">
-							<g data-id="Group" transform="translate(111.000000, 592.000000)">
-								<g data-id="Group-34" transform="translate(218.000000, 0.000000)">
+						<g id="01_governanca" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-394.000000, -592.000000)">
+							<g id="Group" transform="translate(111.000000, 592.000000)">
+								<g id="Group-34" transform="translate(218.000000, 0.000000)">
 									<g id="ico/social/twitter" transform="translate(65.000000, 0.000000)">
 										<g id="twitter">
 											<circle id="Oval-2" fill="#162056" cx="12" cy="12" r="12"></circle>
@@ -1495,7 +1300,7 @@ conectar ideias criativas
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-438e591 elementor-widget elementor-widget-text-edenred" data-id="438e591" data-element_type="widget" data-widget_type="text-edenred.default">
 				<div class="elementor-widget-container">
-							<div class="elementor-text-editor elementor-clearfix"><h4 style="text-align: center; margin-bottom: 0;" class="selectionShareable"><strong>Nossos prêmios</strong> e reconhecimentos</h4></div>
+							<div class="elementor-text-editor elementor-clearfix"><h4 style="text-align: center; margin-bottom: 0;"><strong>Nossos prêmios</strong> e reconhecimentos</h4></div>
 						</div>
 				</div>
 					</div>
@@ -1521,61 +1326,44 @@ conectar ideias criativas
 	<div class="modal-wrapper">
 		<div class="Carousel4 secondColor--yellow">
 
-			<h3 class="h4 selectionShareable"></h3>
-			<p class="t4 selectionShareable"></p>
+			<h3 class="h4"></h3>
+			<p class="t4"></p>
 
-			<div class="Carousel4-carou Carousel4-carou-1189892108 slick-initialized slick-slider"><button class="slick-prev slick-arrow" aria-label="Previous" type="button">Previous</button><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 5899px; transform: translate3d(-347px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-valorinovacao2022.png" alt="premios-logo-valorinovação2022" title="premios-logo-valorinovação2022" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Valor Inovação</p>
+			<div class="Carousel4-carou Carousel4-carou-2125042299">
+				
+									<div class="Carousel4-item">
+												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-gptw-mulher.png" alt="premios-logo-gptw-mulher" title="premios-logo-gptw-mulher" class="Carousel4-img">						<p class="t5">Melhores Empresas Para Trabalhar no Brasil</p>
 											
-					</div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-gptw-mulher.png" alt="premios-logo-gptw-mulher" title="premios-logo-gptw-mulher" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Melhores Empresas Para Trabalhar no Brasil</p>
+					</div>
+									<div class="Carousel4-item">
+												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-16.png" alt="Selo 100+ Inovadoras" title="Selo 100+ Inovadoras" class="Carousel4-img">						<p class="t5">100+ Inovadoras no Uso de TI</p>
 											
-					</div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-16.png" alt="Selo 100+ Inovadoras" title="Selo 100+ Inovadoras" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">100+ Inovadoras no Uso de TI</p>
+					</div>
+									<div class="Carousel4-item">
+												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-51.png" alt="Selo Dow Jones Sustaunability Indexes" title="Selo Dow Jones Sustaunability Indexes" class="Carousel4-img">						<p class="t5">Dow Jones Sustainability Indexes </p>
 											
-					</div></div></div><div class="slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-51.png" alt="Selo Dow Jones Sustaunability Indexes" title="Selo Dow Jones Sustaunability Indexes" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Dow Jones Sustainability Indexes </p>
+					</div>
+									<div class="Carousel4-item">
+												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2020/01/Selo_MelhoresdaDinheiro2019.png" alt="Selo_MelhoresdaDinheiro2019" title="Selo_MelhoresdaDinheiro2019" class="Carousel4-img">						<p class="t5">As Melhores da Dinheiro </p>
 											
-					</div></div></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2020/01/Selo_MelhoresdaDinheiro2019.png" alt="Selo_MelhoresdaDinheiro2019" title="Selo_MelhoresdaDinheiro2019" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">As Melhores da Dinheiro </p>
+					</div>
+									<div class="Carousel4-item">
+												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-22.png" alt="Selo Fornecedores de Confiança 2017" title="Selo Fornecedores de Confiança 2017" class="Carousel4-img">						<p class="t5">Prêmio Fornecedores de Confiança</p>
 											
-					</div></div></div><div class="slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-22.png" alt="Selo Fornecedores de Confiança 2017" title="Selo Fornecedores de Confiança 2017" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Prêmio Fornecedores de Confiança</p>
+					</div>
+									<div class="Carousel4-item">
+												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-24.png" alt="Selo ABEMD" title="Selo ABEMD" class="Carousel4-img">						<p class="t5">Prêmio ABEMD </p>
 											
-					</div></div></div><div class="slick-slide" data-slick-index="5" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-24.png" alt="Selo ABEMD" title="Selo ABEMD" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Prêmio ABEMD </p>
+					</div>
+									<div class="Carousel4-item">
+												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-valor1000-2022.png" alt="premios-logo-valor1000-2022" title="premios-logo-valor1000-2022" class="Carousel4-img">						<p class="t5">Valor 1000</p>
 											
-					</div></div></div><div class="slick-slide" data-slick-index="6" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-valor1000-2022.png" alt="premios-logo-valor1000-2022" title="premios-logo-valor1000-2022" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Valor 1000</p>
+					</div>
+									<div class="Carousel4-item">
+												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-valorinovacao2022.png" alt="premios-logo-valorinovação2022" title="premios-logo-valorinovação2022" class="Carousel4-img">						<p class="t5">Valor Inovação</p>
 											
-					</div></div></div><div class="slick-slide" data-slick-index="7" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-valorinovacao2022.png" alt="premios-logo-valorinovação2022" title="premios-logo-valorinovação2022" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Valor Inovação</p>
-											
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-gptw-mulher.png" alt="premios-logo-gptw-mulher" title="premios-logo-gptw-mulher" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Melhores Empresas Para Trabalhar no Brasil</p>
-											
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-16.png" alt="Selo 100+ Inovadoras" title="Selo 100+ Inovadoras" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">100+ Inovadoras no Uso de TI</p>
-											
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-51.png" alt="Selo Dow Jones Sustaunability Indexes" title="Selo Dow Jones Sustaunability Indexes" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Dow Jones Sustainability Indexes </p>
-											
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2020/01/Selo_MelhoresdaDinheiro2019.png" alt="Selo_MelhoresdaDinheiro2019" title="Selo_MelhoresdaDinheiro2019" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">As Melhores da Dinheiro </p>
-											
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="12" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-22.png" alt="Selo Fornecedores de Confiança 2017" title="Selo Fornecedores de Confiança 2017" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Prêmio Fornecedores de Confiança</p>
-											
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="13" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2018/06/box-copy-24.png" alt="Selo ABEMD" title="Selo ABEMD" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Prêmio ABEMD </p>
-											
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="14" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-valor1000-2022.png" alt="premios-logo-valor1000-2022" title="premios-logo-valor1000-2022" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Valor 1000</p>
-											
-					</div></div></div><div class="slick-slide slick-cloned" data-slick-index="15" id="" aria-hidden="true" tabindex="-1" style="width: 347px;"><div><div class="Carousel4-item" style="width: 100%; display: inline-block;">
-												<img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/premios-logo-valorinovacao2022.png" alt="premios-logo-valorinovação2022" title="premios-logo-valorinovação2022" class="optanon-category-C0002 Carousel4-img">						<p class="t5 selectionShareable">Valor Inovação</p>
-											
-					</div></div></div></div></div><button class="slick-next slick-arrow" aria-label="Next" type="button">Next</button></div>
+					</div>
+							</div>
 		</div>
 		
 
@@ -1589,7 +1377,7 @@ conectar ideias criativas
 
     <!-- /CAROUSEL 4-->
 		
-	<style>.Carousel4-carou-1189892108 .slick-arrow{background-color: transparent !important;}</style>
+
 				</div>
 				</div>
 					</div>
@@ -1617,7 +1405,7 @@ conectar ideias criativas
 	
     <div class="Pushs" style="background: none;">
 		
-				<h4 class="h4 selectionShareable"><b>Tá na mídia</b></h4>
+				<h4 class="h4"><b>Tá na mídia</b></h4>
 		
 		
 		
@@ -1630,7 +1418,7 @@ conectar ideias criativas
 
             <div class="noticias-content">
 
-                <h2 class="h6 selectionShareable">Edenred Mobilidade estreia solução de recarga e gestão para veículos elétricos</h2><p class="t6 selectionShareable"> Edenred Mobilidade estreia solução de recarga e gestão para veículos elétricos Nova funcionalidade inaugura jornada 100% digital para frotas eletrificadas e reforça o avanço da marca na mobilidade sus... <small class="Push-date">5 de março de 2026</small></p>
+                <h2 class="h6">Edenred Mobilidade estreia solução de recarga e gestão para veículos elétricos</h2><p class="t6"> Edenred Mobilidade estreia solução de recarga e gestão para veículos elétricos Nova funcionalidade inaugura jornada 100% digital para frotas eletrificadas e reforça o avanço da marca na mobilidade sus... <small class="Push-date">5 de março de 2026</small></p>
             </div>
 
         </div>
@@ -1639,7 +1427,7 @@ conectar ideias criativas
 
     <div class="noticias-footer">
 
-        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-edenred_v2_categoria.png" class="optanon-category-C0002 Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/edenred-mobilidade-estreia-solucao-de-recarga-e-gestao-para-veiculos-eletricos/">SAIBA MAIS</a>        
+        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-edenred_v2_categoria.png" class="Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/edenred-mobilidade-estreia-solucao-de-recarga-e-gestao-para-veiculos-eletricos/">SAIBA MAIS</a>        
     </div>
 
 </div><div class="Pushs-item">
@@ -1650,7 +1438,7 @@ conectar ideias criativas
 
             <div class="noticias-content">
 
-                <h2 class="h6 selectionShareable">Edenred Brasil anuncia mudanças em sua Diretoria Executiva</h2><p class="t6 selectionShareable"> Edenred Brasil anuncia mudanças em sua Diretoria Executiva Tatiana Romero assume a Diretoria de RH e Responsabilidade Social, enquanto João Amaral passa a liderar a área financeira do grupo A Edenred ... <small class="Push-date">3 de março de 2026</small></p>
+                <h2 class="h6">Edenred Brasil anuncia mudanças em sua Diretoria Executiva</h2><p class="t6"> Edenred Brasil anuncia mudanças em sua Diretoria Executiva Tatiana Romero assume a Diretoria de RH e Responsabilidade Social, enquanto João Amaral passa a liderar a área financeira do grupo A Edenred ... <small class="Push-date">3 de março de 2026</small></p>
             </div>
 
         </div>
@@ -1659,7 +1447,7 @@ conectar ideias criativas
 
     <div class="noticias-footer">
 
-        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-edenred_v2_categoria.png" class="optanon-category-C0002 Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/edenred-brasil-anuncia-mudancas-em-sua-diretoria-executiva/">SAIBA MAIS</a>        
+        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-edenred_v2_categoria.png" class="Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/edenred-brasil-anuncia-mudancas-em-sua-diretoria-executiva/">SAIBA MAIS</a>        
     </div>
 
 </div><div class="Pushs-item">
@@ -1670,7 +1458,7 @@ conectar ideias criativas
 
             <div class="noticias-content">
 
-                <h2 class="h6 selectionShareable">Ticket e TotalPass firmam parceria para disponibilizar plano de bem-estar para trabalhadores</h2><p class="t6 selectionShareable"> Ticket e TotalPass firmam parceria para disponibilizar plano de bem-estar para trabalhadores Iniciativa permite que usuários da marca de benefícios contratem plano de academias de forma individual, se... <small class="Push-date">2 de março de 2026</small></p>
+                <h2 class="h6">Ticket e TotalPass firmam parceria para disponibilizar plano de bem-estar para trabalhadores</h2><p class="t6"> Ticket e TotalPass firmam parceria para disponibilizar plano de bem-estar para trabalhadores Iniciativa permite que usuários da marca de benefícios contratem plano de academias de forma individual, se... <small class="Push-date">2 de março de 2026</small></p>
             </div>
 
         </div>
@@ -1679,7 +1467,7 @@ conectar ideias criativas
 
     <div class="noticias-footer">
 
-        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/logo-ticket-edenred_v4_3minutos.png" class="optanon-category-C0002 Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/ticket-e-totalpass-firmam-parceria-para-disponibilizar-plano-de-bem-estar-para-trabalhadores/">SAIBA MAIS</a>        
+        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/06/logo-ticket-edenred_v4_3minutos.png" class="Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/ticket-e-totalpass-firmam-parceria-para-disponibilizar-plano-de-bem-estar-para-trabalhadores/">SAIBA MAIS</a>        
     </div>
 
 </div><div class="Pushs-item">
@@ -1690,7 +1478,7 @@ conectar ideias criativas
 
             <div class="noticias-content">
 
-                <h2 class="h6 selectionShareable">Edenred lança SuperTag e amplia pagamentos integrados para abastecimento, pedágio e estacionamento</h2><p class="t6 selectionShareable"> Edenred lança SuperTag e amplia pagamentos integrados para abastecimento, pedágio e estacionamento O dispositivo conecta múltiplos serviços de mobilidade em uma experiência única de pagamento A Edenre... <small class="Push-date">8 de fevereiro de 2026</small></p>
+                <h2 class="h6">Edenred lança SuperTag e amplia pagamentos integrados para abastecimento, pedágio e estacionamento</h2><p class="t6"> Edenred lança SuperTag e amplia pagamentos integrados para abastecimento, pedágio e estacionamento O dispositivo conecta múltiplos serviços de mobilidade em uma experiência única de pagamento A Edenre... <small class="Push-date">8 de fevereiro de 2026</small></p>
             </div>
 
         </div>
@@ -1699,7 +1487,7 @@ conectar ideias criativas
 
     <div class="noticias-footer">
 
-        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-edenred_v2_categoria.png" class="optanon-category-C0002 Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/edenred-lanca-supertag-e-amplia-pagamentos-integrados-para-abastecimento-pedagio-e-estacionamento/">SAIBA MAIS</a>        
+        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-edenred_v2_categoria.png" class="Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/edenred-lanca-supertag-e-amplia-pagamentos-integrados-para-abastecimento-pedagio-e-estacionamento/">SAIBA MAIS</a>        
     </div>
 
 </div><div class="Pushs-item">
@@ -1710,7 +1498,7 @@ conectar ideias criativas
 
             <div class="noticias-content">
 
-                <h2 class="h6 selectionShareable">Tendências de tecnologia que devem ganhar força em 2026</h2><p class="t6 selectionShareable"> Tendências de tecnologia que devem ganhar força em 2026 Por Romain Dayan* Entramos 2026 com uma tendência (ou certeza) universal: a tecnologia deixa de ser apenas um suporte de operação e passa a infl... <small class="Push-date">24 de janeiro de 2026</small></p>
+                <h2 class="h6">Tendências de tecnologia que devem ganhar força em 2026</h2><p class="t6"> Tendências de tecnologia que devem ganhar força em 2026 Por Romain Dayan* Entramos 2026 com uma tendência (ou certeza) universal: a tecnologia deixa de ser apenas um suporte de operação e passa a infl... <small class="Push-date">24 de janeiro de 2026</small></p>
             </div>
 
         </div>
@@ -1719,7 +1507,7 @@ conectar ideias criativas
 
     <div class="noticias-footer">
 
-        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-edenred_v2_categoria.png" class="optanon-category-C0002 Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/tendencias-de-tecnologia-que-devem-ganhar-forca-em-2026/">SAIBA MAIS</a>        
+        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-edenred_v2_categoria.png" class="Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/tendencias-de-tecnologia-que-devem-ganhar-forca-em-2026/">SAIBA MAIS</a>        
     </div>
 
 </div><div class="Pushs-item">
@@ -1730,7 +1518,7 @@ conectar ideias criativas
 
             <div class="noticias-content">
 
-                <h2 class="h6 selectionShareable">80% das empresas possuem ou planejam instalar carregadores para veículos elétricos em suas bases, revela Edenred Ticket Log</h2><p class="t6 selectionShareable"> 80% das empresas possuem ou planejam instalar carregadores para veículos elétricos em suas bases, revela Edenred Ticket Log A instalação de carregadores nas bases das empresas é uma realidade e um obj... <small class="Push-date">18 de dezembro de 2025</small></p>
+                <h2 class="h6">80% das empresas possuem ou planejam instalar carregadores para veículos elétricos em suas bases, revela Edenred Ticket Log</h2><p class="t6"> 80% das empresas possuem ou planejam instalar carregadores para veículos elétricos em suas bases, revela Edenred Ticket Log A instalação de carregadores nas bases das empresas é uma realidade e um obj... <small class="Push-date">18 de dezembro de 2025</small></p>
             </div>
 
         </div>
@@ -1739,7 +1527,7 @@ conectar ideias criativas
 
     <div class="noticias-footer">
 
-        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-ticket-log-edenred_v2_categoria.png" class="optanon-category-C0002 Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/80-das-empresas-possuem-ou-planejam-instalar-carregadores-para-veiculos-eletricos-em-suas-bases-revela-edenred-ticket-log/">SAIBA MAIS</a>        
+        <img decoding="async" src="https://www.edenred.com.br/wp-content/uploads/2023/02/logo-ticket-log-edenred_v2_categoria.png" class="Push-Marca"><a class="Button Button--right" href="https://www.edenred.com.br/80-das-empresas-possuem-ou-planejam-instalar-carregadores-para-veiculos-eletricos-em-suas-bases-revela-edenred-ticket-log/">SAIBA MAIS</a>        
     </div>
 
 </div>			
@@ -1778,10 +1566,11 @@ conectar ideias criativas
 
 			<!-- Footer / Logo -->
 			<div class="Footer-logo">
-				<svg class="Footer-logoSvg" width="161" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 391.3 239.9" style="enable-background:new 0 0 391.3 239.9;" xml:space="preserve">
-					<path d="M149.5,104.5c-6.8,0-11.1,4.4-12.4,10.3h24.2C160.4,108.3,155.8,104.5,149.5,104.5z"></path>
+				<svg class="Footer-logoSvg" width="161" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 391.3 239.9" style="enable-background:new 0 0 391.3 239.9;" xml:space="preserve">
+					<path d="M149.5,104.5c-6.8,0-11.1,4.4-12.4,10.3h24.2C160.4,108.3,155.8,104.5,149.5,104.5z"/>
 					<path d="M84.9,107.1c-8.6,0-14.1,6-14.1,14.3c0,8.2,5.6,14.4,14.1,14.4s14.3-5.9,14.3-14.4
-						C99.2,112.9,93.4,107.1,84.9,107.1z"></path>
+						C99.2,112.9,93.4,107.1,84.9,107.1z"/>
 					<path d="M259.3,93.4c-13,0-23.1,5.2-24.7,18.6c-0.1,0,0.1,0,0,0c-4.1-61-52.2-109.1-114.1-109.1
 						C71.4,2.9,29.5,33,12,75.8h41.5l-2.2,14H18.8v14.8h29.5L46,118H18.8v8.6c0,5.2,2.3,7.7,6.6,7.7h27.9l-2.3,14H20.1
 						c-1.5,0-2.9-0.1-4.3-0.4v0c0,0-5.3-0.6-8.6-4.9c-0.1-0.1-1.4-1.7-2.1-4.3c-0.2-0.7-0.2-0.7-0.3-1.3c0.2,1.7,0.6,4.1,0.8,4.9
@@ -1790,126 +1579,126 @@ conectar ideias criativas
 						c0-7.7,2.1-12.6,9.6-12.6c2.4,0,5.2,0.7,6.3,1.2l3-13.8C267.1,94.4,262.7,93.4,259.3,93.4z M115,118.2c0,19.6-11.6,31.2-30.8,31.2
 						c-17.8,0-29.8-11.9-29.8-28c0-16.8,11.4-28,28.5-28c7.8,0,13.6,3.1,16.5,6.2V75.8H115V118.2z M154.7,137.5c4.6,0,8.9-1.3,12.9-3.2
 						l-1.3,12.4c-4.5,1.9-10,2.6-15.4,2.6c-18.1,0-30.8-10.6-30.8-28.6c0-15.6,11.4-27.3,28.9-27.3c19.7,0,29.6,12.5,29.2,31.9h-40.7
-						C139,134.2,147.4,137.5,154.7,137.5z"></path>
+						C139,134.2,147.4,137.5,154.7,137.5z"/>
 					<path d="M294.9,93.4c-17.5,0-28.9,11.7-28.9,27.3c0,18,12.7,28.6,30.8,28.6c5.4,0,10.9-0.7,15.4-2.6l1.3-12.4
 						c-4,1.9-8.3,3.2-12.9,3.2c-7.3,0-15.7-3.4-17.3-12.2h40.7C324.6,106,314.7,93.4,294.9,93.4z M283,114.8
-						c1.3-5.9,5.7-10.3,12.4-10.3c6.4,0,10.9,3.8,11.7,10.3H283z"></path>
+						c1.3-5.9,5.7-10.3,12.4-10.3c6.4,0,10.9,3.8,11.7,10.3H283z"/>
 					<path d="M370.8,75.8v23.9c-2.9-3.1-8.6-6.2-16.5-6.2c-17.1,0-28.5,11.2-28.5,28c0,16,12,28,29.8,28
 						c19.2,0,30.8-11.5,30.8-31.2V75.8H370.8z M356.4,135.8c-8.5,0-14.1-6.2-14.1-14.4c0-8.3,5.4-14.3,14.1-14.3
-						c8.5,0,14.3,5.8,14.3,14.3C370.7,129.9,365,135.8,356.4,135.8z"></path>
+						c8.5,0,14.3,5.8,14.3,14.3C370.7,129.9,365,135.8,356.4,135.8z"/>
 				</svg>
 			</div>
 
 			<div class="Footer-dd">
 
-				<p class="Footer-navLink selectionShareable">
-					Construindo redes mais humanas e confiáveis, a Edenred faz com que todo mundo saia ganhando.&nbsp;				</p>
+				<p class="Footer-navLink">
+					Construindo redes mais humanas e confiáveis, a Edenred faz com que todo mundo saia ganhando. 				</p>
 
 			</div>
 
 				<!-- Footer / nav -->
 			<div class="Footer-nav">
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/por-pessoas/">Por Pessoas</a>
 					</p>
 					<ul class="Footer-navList">
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://www.edenred.com.br/por-pessoas/">
 									Conheça a Edenred								</a>
 							</li>
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/para-pessoas/">Para pessoas</a>
 					</p>
 					<ul class="Footer-navList">
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://www.edenred.com.br/para-pessoas/">
 									Conheça nossas soluções								</a>
 							</li>
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/sustentabilidade">Sustentabilidade</a>
 					</p>
 					<ul class="Footer-navList">
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://www.edenred.com.br/sustentabilidade">
 									Nosso compromisso								</a>
 							</li>
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/noticias/">Notícias</a>
 					</p>
 					<ul class="Footer-navList">
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://www.edenred.com.br/noticias/">
 									Acompanhe a Edenred								</a>
 							</li>
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/carreiras/">Carreiras</a>
 					</p>
 					<ul class="Footer-navList">
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://www.edenred.com.br/carreiras/">
 									Faça parte do time								</a>
 							</li>
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/compliance/">Compliance</a>
 					</p>
 					<ul class="Footer-navList">
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://www.edenred.com.br/compliance/">
 									Nossa Integridade								</a>
 							</li>
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://edenred.integrityline.app/">
 									Canal Seguro								</a>
 							</li>
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/contato">Contato</a>
 					</p>
 					<ul class="Footer-navList">
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://www.edenred.com.br/contato">
 									Fale com a gente								</a>
 							</li>
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com/">Site Global</a>
 					</p>
 					<ul class="Footer-navList">
-													<li class="selectionShareable">
+													<li>
 								<a class="Footer-navLink" href="https://www.edenred.com/">
 									Site Global da Edenred								</a>
 							</li>
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/wp-content/uploads/2026/04/Relatorio-de-Transparencia-e-Igualdade-Salarial_1semestre_2026.pdf">Relatório Transparência Salarial</a>
 					</p>
 					<ul class="Footer-navList">
 											</ul>
 				</div>
 								<div class="Footer-navColumn" data-mh="footer">
-					<p class="Footer-navTitle selectionShareable">
+					<p class="Footer-navTitle">
 						<a class="Footer-navLink" href="https://www.edenred.com.br/wp-content/uploads/2026/04/Aviso-Edenred_Design-V12_20260407.pdf">Aviso de Privacidade</a>
 					</p>
 					<ul class="Footer-navList">
@@ -1920,14 +1709,15 @@ conectar ideias criativas
 			<!-- Footer / Social media -->
 			<div class="Footer-social">
 				<ul class="Footer-socialList">
-					<li class="Footer-socialItem selectionShareable">
+					<li class="Footer-socialItem">
 						<a href="https://www.linkedin.com/company/22311673/" class="Footer-socialLink" target="_blank" rel="noopener noreferrer">
-							<svg width="43" height="43" version="1.1" data-id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
-								<circle class="Footer-socialSvg" cx="20" cy="20" r="20"></circle>
-								<polygon data-id="XMLID_3_" class="Footer-socialSvgIcon" points="11.2,20.2 11.2,28.8 15.3,28.8 15.3,19.5 15.3,17.1 11.2,17.1 	"></polygon>
-								<circle data-id="XMLID_2_" class="Footer-socialSvgIcon" cx="13.2" cy="13.2" r="2.1"></circle>
-								<path data-id="XMLID_1_" class="Footer-socialSvgIcon" d="M28.7,20.7c-0.3-2.2-1.3-3.6-4.3-3.6c-1.8,0-3,0.7-3.5,1.6h-0.1v-1.6h-3.3v2.3v9.5h3.4V23
-									c0-1.5,0.3-3,2.2-3c1.9,0,2,1.8,2,3.1v5.7h3.5v-6.5h0C28.8,21.8,28.8,21.2,28.7,20.7z"></path>
+							<svg width="43" height="43" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
+								<circle class="Footer-socialSvg" cx="20" cy="20" r="20"/>
+								<polygon id="XMLID_3_" class="Footer-socialSvgIcon" points="11.2,20.2 11.2,28.8 15.3,28.8 15.3,19.5 15.3,17.1 11.2,17.1 	"/>
+								<circle id="XMLID_2_" class="Footer-socialSvgIcon" cx="13.2" cy="13.2" r="2.1"/>
+								<path id="XMLID_1_" class="Footer-socialSvgIcon" d="M28.7,20.7c-0.3-2.2-1.3-3.6-4.3-3.6c-1.8,0-3,0.7-3.5,1.6h-0.1v-1.6h-3.3v2.3v9.5h3.4V23
+									c0-1.5,0.3-3,2.2-3c1.9,0,2,1.8,2,3.1v5.7h3.5v-6.5h0C28.8,21.8,28.8,21.2,28.7,20.7z"/>
 							</svg>
 						</a>
 					</li>
@@ -1935,15 +1725,16 @@ conectar ideias criativas
 			</div>
 
 			<!-- Footer / Copyright -->
-			<p class="Footer-copyright selectionShareable">
+			<p class="Footer-copyright">
 				Copyright © Edenred 2018<br> 
 			</p>
 
 			<!-- Footer / Go Top -->
 			<div class="Footer-goTop">
 				<div class="Footer-goTopIcon">
-					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="20px">
-					<path fill-rule="evenodd" stroke="rgb(22, 32, 86)" stroke-width="4px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M2.853,13.147 L13.306,2.547 L23.759,13.147 "></path>
+					<svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="20px">
+					<path fill-rule="evenodd"  stroke="rgb(22, 32, 86)" stroke-width="4px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+					d="M2.853,13.147 L13.306,2.547 L23.759,13.147 "/>
 					</svg>
 				</div>
 				<span>Top</span>
@@ -1955,7 +1746,7 @@ conectar ideias criativas
 		<div class="modal--backstage"></div>
 		<button class="modal--close"></button>
 		<div class="modal--dialog">
-			<h6 class="selectionShareable">O que você procura?</h6>
+			<h6>O que você procura?</h6>
 			<form action="https://www.edenred.com.br">
 				<label>
 					<input type="text" name="s" placeholder="Digite um termo que deseja encontrar">
@@ -1994,87 +1785,19 @@ conectar ideias criativas
 					document.addEventListener( event, lazyloadRunObserver );
 				} );
 			</script>
-			<script type="text/javascript" src="https://www.edenred.com.br/wp-content/themes/edenred/_assets/js/modernizr.min.js" id="morenizr-js-js" class="optanon-category-C0002 "></script>
-<script type="text/javascript" src="https://www.edenred.com.br/wp-content/themes/edenred/_assets/js/app.min.js" id="main-js-js" class="optanon-category-C0002 "></script>
-<script type="text/javascript" src="https://www.edenred.com.br/wp-content/themes/edenred/_assets/js/inovacao.js" id="inovacao-js-js" class="optanon-category-C0002 "></script>
+			<script type="text/javascript" src="https://www.edenred.com.br/wp-content/themes/edenred/_assets/js/modernizr.min.js" id="morenizr-js-js"></script>
+<script type="text/javascript" src="https://www.edenred.com.br/wp-content/themes/edenred/_assets/js/app.min.js" id="main-js-js"></script>
+<script type="text/javascript" src="https://www.edenred.com.br/wp-content/themes/edenred/_assets/js/inovacao.js" id="inovacao-js-js"></script>
 <script type="text/javascript" src="https://www.edenred.com.br/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js" id="elementor-webpack-runtime-js"></script>
 <script type="text/javascript" src="https://www.edenred.com.br/wp-content/plugins/elementor/assets/js/frontend-modules.min.js" id="elementor-frontend-modules-js"></script>
-<script type="text/javascript" src="https://www.edenred.com.br/wp-includes/js/jquery/ui/core.min.js" id="jquery-ui-core-js" class="optanon-category-C0002 "></script>
+<script type="text/javascript" src="https://www.edenred.com.br/wp-includes/js/jquery/ui/core.min.js" id="jquery-ui-core-js"></script>
 <script type="text/javascript" id="elementor-frontend-js-before">
 /* <![CDATA[ */
-var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.32.4","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_optimized_markup":true,"e_pro_free_trial_popup":true,"nested-elements":true,"home_screen":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"cloud-library":true,"e_opt_in_v4_page":true,"import-export-customization":true},"urls":{"assets":"https:\/\/www.edenred.com.br\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/www.edenred.com.br\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/www.edenred.com.br\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"849e3f1a74"},"swiperClass":"swiper","settings":{"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":0,"title":"Home - Edenred","excerpt":""}};
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.32.4","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_optimized_markup":true,"e_pro_free_trial_popup":true,"nested-elements":true,"home_screen":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"cloud-library":true,"e_opt_in_v4_page":true,"import-export-customization":true},"urls":{"assets":"https:\/\/www.edenred.com.br\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/www.edenred.com.br\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/www.edenred.com.br\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"4bb26f34b0"},"swiperClass":"swiper","settings":{"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":0,"title":"Home - Edenred","excerpt":""}};
 /* ]]> */
 </script>
-<script type="text/javascript" src="https://www.edenred.com.br/wp-content/plugins/elementor/assets/js/frontend.min.js" id="elementor-frontend-js" class="optanon-category-C0002 "></script><span id="elementor-device-mode" class="elementor-screen-only"></span>
+<script type="text/javascript" src="https://www.edenred.com.br/wp-content/plugins/elementor/assets/js/frontend.min.js" id="elementor-frontend-js"></script>
 <script type="text/javascript" src="https://www.edenred.com.br/wp-includes/js/dist/vendor/moment.min.js" id="moment-js"></script>
-	
-<style>
-/* 1. Esconde toda a bagunça do carrossel original */
-.slick-initialized, .slick-slider {
-    display: none !important;
-}
-
-/* 2. Container para centralizar o nosso card único na tela */
-.destaque-unico-edenred {
-    display: flex !important;
-    justify-content: center !important; 
-    margin: 50px auto !important;
-    width: 100% !important;
-    padding: 0 20px;
-}
-
-/* 3. O TAMANHO EXATO DO CARD (Igual ao site oficial) */
-.card-unico {
-    width: 100% !important;
-    max-width: 370px !important; /* <--- Aqui está a mágica do tamanho! */
-    box-sizing: border-box !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important; /* Sombra suave original */
-    background-color: #ffffff !important;
-}
-
-/* Garante que a imagem e os textos fiquem contidos no card de 370px */
-.card-unico img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-}
-
-/* Evita que botões ou textos vazem para os lados */
-.card-unico * {
-    max-width: 100% !important;
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Procura as áreas onde o carrossel quebrou
-    const slidersQuebrados = document.querySelectorAll('.slick-initialized');
-    
-    slidersQuebrados.forEach(slider => {
-        // Pega os slides reais (ignora os clones malucos)
-        const slidesReais = Array.from(slider.querySelectorAll('.slick-slide:not(.slick-cloned)'));
-        
-        // Só continua se achar algum card
-        if(slidesReais.length > 0) {
-            const containerDestaque = document.createElement('div');
-            containerDestaque.className = 'destaque-unico-edenred';
-            
-            const cardLimpo = document.createElement('div');
-            cardLimpo.className = 'card-unico';
-            
-            // Pega EXATAMENTE APENAS O PRIMEIRO card [0] e descarta o resto
-            cardLimpo.innerHTML = slidesReais[0].innerHTML; 
-            
-            containerDestaque.appendChild(cardLimpo);
-            
-            // Coloca o card único na tela e o resto do carrossel continua invisível
-            slider.parentNode.insertBefore(containerDestaque, slider);
-        }
-    });
-});
-</script>        
-                            
+	<script src="home.js"></script>
 </body>
 </html>
