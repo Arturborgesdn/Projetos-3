@@ -1,10 +1,32 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# =========================================================================
+# MACOS / WINDOWS / LINUX
+# =========================================================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+*.swp
+*~
+*.log
 
-### STS ###
+# =========================================================================
+# MAVEN (Spring Boot)
+# =========================================================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# =========================================================================
+# IDEs
+# =========================================================================
+# Spring Tool Suite (STS)
 .apt_generated
 .classpath
 .factorypath
@@ -13,25 +35,33 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
+# IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
+# VS Code
 .vscode/
 
-### Application Properties ###
+# =========================================================================
+# DADOS SENSÍVEIS (A regra de ouro!)
+# =========================================================================
+# Esconde o arquivo principal de propriedades (senhas, portas, etc.)
 src/main/resources/application.properties
 
+# Se você usar arquivos extras para cada ambiente, esconde também
+src/main/resources/application-*.properties
+src/main/resources/application-*.yml
+
+# =========================================================================
+# BUILD FOLDERS
+# =========================================================================
+build/
