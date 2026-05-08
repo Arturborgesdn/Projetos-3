@@ -18,7 +18,6 @@ import com.edenredsustentavel.demo.repository.repositoryEmpresa;
 import com.edenredsustentavel.demo.service.serviceEdenred;
 
 import jakarta.servlet.http.HttpSession;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/impacto")
