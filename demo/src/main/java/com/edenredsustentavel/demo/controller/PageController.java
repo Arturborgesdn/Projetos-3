@@ -71,4 +71,9 @@ public class PageController {
     public String compliance() {
         return "index";
     }
+
+    @GetMapping("/landing")
+    public String landing() {
+        return "landing";
+    }
 }
