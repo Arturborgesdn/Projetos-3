@@ -70,6 +70,13 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
       try {
         const hist = await fetch("/impacto/historico");
 
+        if (hist.status === 401) {
+          // Se o servidor retornar 401, a sessão expirou
+          sessionStorage.removeItem("emailEmpresa");
+          console.warn("Sessão expirada. Faça login novamente para ver o histórico.");
+          return;
+        }
+
         if (hist.ok) {
           const ultima = await hist.json();
           const secaoHistorico = document.getElementById("secaoHistorico");

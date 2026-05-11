@@ -36,10 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 await fetch("/auth/logout", { method: "POST" });
             } catch (error) {
-                console.error("Erro ao fazer logout no servidor:", error);
+                console.warn("Sessão já expirada no servidor ou erro de conexão.");
             }
             sessionStorage.removeItem("emailEmpresa");
-            window.location.href = "/";
+            sessionStorage.removeItem("simulacaoFeita");
+            window.location.href = "/login";
         });
 
         navLinks.appendChild(logoutBtn);

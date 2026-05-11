@@ -43,10 +43,13 @@ public class controllerLogin {
     }
 
     @PostMapping("/cadastro")
-    public ResponseEntity<?> cadastrar(@RequestBody modelEmpresa empresa) {
+    public ResponseEntity<?> cadastrar(@RequestBody modelEmpresa empresa, jakarta.servlet.http.HttpSession session) {
         try {
             System.out.println("Recebendo tentativa de cadastro para o email: " + empresa.getEmail());
             modelEmpresa nova = serviceEdenred.cadastrar(empresa);
+            
+            // Log automático após cadastro para evitar 401
+            session.setAttribute("usuarioLogado", nova.getEmail());
             
             System.out.println("Cadastro realizado com sucesso! ID gerado: " + nova.getId());
             
