@@ -1,5 +1,6 @@
 package com.edenredsustentavel.demo.controller;
 
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edenredsustentavel.demo.dto.SimulacaoRequestDTO;
@@ -23,6 +25,19 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/impacto")
 @CrossOrigin
 public class SimulacaoController {
+   
+    @GetMapping("/check-selo")
+    public Map<String, Boolean> checkSelo(
+            @RequestParam String email
+    ) {
+
+        boolean autorizado = true;
+
+        return Map.of(
+            "autorizado",
+            autorizado
+        );
+}
 
     @Autowired
     private serviceEdenred service;

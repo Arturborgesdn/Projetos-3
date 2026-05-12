@@ -264,11 +264,15 @@
       </p>
 
       <div class="seal-btns">
-        <a href="#"
-           class="btn-calcular"
-           id="btnDownloadSelo">
-           Fazer download do selo de sustentabilidade.
-        </a>
+        <a
+        href="/pdf/selo-sustentabilidade.pdf"
+        download
+    >
+        <button id="btnDownloadSelo">
+            Baixar PDF
+        </button>
+      </a>
+
       </div>
 
     </div>
@@ -452,7 +456,6 @@ if (usuarioLogado && simulacaoFeita === "true") {
   document.getElementById("containerSelo").style.display = "block";
 }
 </script>
-
 <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
 </body>
 </html>
