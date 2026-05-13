@@ -68,42 +68,34 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
     // 6. Busca e exibe o histórico da última simulação com base na sessão do usuário
     if (emailEmpresa) {
       try {
-        const hist = await fetch("/impacto/historico");
-
-        if (hist.status === 401) {
-          // Se o servidor retornar 401, a sessão expirou
-          sessionStorage.removeItem("emailEmpresa");
-          console.warn("Sessão expirada. Faça login novamente para ver o histórico.");
-          return;
-        }
-
-        if (hist.ok) {
-          const ultima = await hist.json();
+        const responseHist = await fetch(`/impacto/historico/todos/${emailEmpresa}`);
+        
+        if (responseHist.ok) {
+          const lista = await responseHist.json();
           const secaoHistorico = document.getElementById("secaoHistorico");
+          const tbody = document.getElementById("tabelaHistoricoCalculadoraBody");
 
-          if (secaoHistorico) {
+          if (secaoHistorico && tbody) {
             secaoHistorico.style.display = "block";
 
-            document.getElementById("histCo2").textContent =
-              ultima.emissaoCo2Kg?.toFixed(2) ?? "-";
-            document.getElementById("histAgua").textContent =
-              ultima.consumoAguaLitros?.toFixed(2) ?? "-";
-            document.getElementById("histPlastico").textContent =
-              ultima.residuosPlasticosKg?.toFixed(2) ?? "-";
-            document.getElementById("histEnergia").textContent =
-              ultima.energiaKwh?.toFixed(2) ?? "-";
-            document.getElementById("histEntregas").textContent =
-              ultima.dadosTangiveis?.entregasDelivery?.toFixed(0) ?? "-";
-            document.getElementById("histGarrafas").textContent =
-              ultima.dadosTangiveis?.garrafasPet?.toFixed(0) ?? "-";
-            document.getElementById("histBanhos").textContent =
-              ultima.dadosTangiveis?.banhosDeAgua?.toFixed(0) ?? "-";
-            document.getElementById("histTransacoes").textContent =
-              ultima.dadosTangiveis?.transacoesDigitais?.toFixed(0) ?? "-";
+            if (!lista || lista.length === 0) {
+              tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 15px;">Nenhuma simulação anterior.</td></tr>`;
+            } else {
+              // Pega as últimas 5 simulações para a tabela não ficar gigante
+              const ultimas = lista.slice(0, 5);
+              
+              tbody.innerHTML = ultimas.map(sim => `
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 12px;">${new Date(sim.dataCriacao).toLocaleDateString('pt-BR')}</td>
+                  <td style="padding: 12px;">${sim.qtdCartoes}</td>
+                  <td style="padding: 12px; color: #16a34a; font-weight: bold;">${sim.reducaoCarbono.toFixed(2)} kg</td>
+                </tr>
+              `).join('');
+            }
           }
         }
       } catch (historyError) {
-        console.warn("Não foi possível carregar o histórico:", historyError);
+        console.warn("Não foi possível carregar a tabela de histórico:", historyError);
       }
     }
   } catch (error) {

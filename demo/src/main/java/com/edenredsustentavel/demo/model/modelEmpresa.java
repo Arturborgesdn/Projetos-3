@@ -3,6 +3,7 @@ package com.edenredsustentavel.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "empresa_sustentavel")
@@ -24,6 +25,7 @@ public class modelEmpresa {
     private LocalDateTime dataCadastro;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<modelDadosSimulacao> simulacoes;
 
     @PrePersist

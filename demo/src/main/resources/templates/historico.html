@@ -268,6 +268,26 @@
           </div>
         </div>
 
+        <div class="results-header" style="margin-top: 3rem">
+          <h2>Todas as Simulações</h2>
+          <p>Acompanhe o histórico completo de cálculos que você já realizou.</p>
+        </div>
+
+        <div style="overflow-x: auto; margin-bottom: 40px; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 20px;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+            <thead>
+              <tr style="border-bottom: 2px solid #f1f5f9; color: #64748b;">
+                <th style="padding: 12px;">Data</th>
+                <th style="padding: 12px;">Qtd Cartões</th>
+                <th style="padding: 12px;">Emissão Físico</th>
+                <th style="padding: 12px;">Emissão Digital</th>
+                <th style="padding: 12px;">Redução CO₂</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaHistoricoBody">
+            </tbody>
+          </table>
+        </div>
         <!-- GRÁFICOS DE IMPACTO -->
         <div class="results-header" style="margin-top: 3rem">
           <h2>Visualização do Impacto Histórico</h2>
@@ -371,6 +391,62 @@
             document.getElementById("loadingState").style.display = "none";
             document.getElementById("semSimulacaoState").style.display =
               "block";
+          });
+          const tbody = document.getElementById("tabelaHistoricoBody");
+        
+        // 1. Força uma mensagem de carregamento para provar que o código rodou!
+        if(tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px;">Carregando o seu histórico... ⏳</td></tr>`;
+
+        fetch(`/impacto/historico/todos/${emailSalvo}`)
+          .then(async (res) => {
+            if (!res.ok) throw new Error("O Servidor retornou erro: " + res.status);
+            const text = await res.text();
+            if (!text) return [];
+            return JSON.parse(text); // Transforma em objeto JS
+          })
+          .then((lista) => {
+            if (!tbody) return;
+            
+            // 2. Proteção caso o Spring devolva um formato encapsulado
+            if (!Array.isArray(lista)) {
+                lista = lista.content || [];
+            }
+
+            // 3. Se a lista for vazia
+            if (!lista || lista.length === 0) {
+              tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: #64748b;">Nenhuma simulação encontrada no seu histórico.</td></tr>`;
+              return;
+            }
+
+            let htmlTabela = "";
+            lista.forEach((sim) => {
+              // Proteção contra datas zoadas
+              const dataObj = sim.dataCriacao ? new Date(sim.dataCriacao) : new Date();
+              const dataFormatada = dataObj.toLocaleDateString("pt-BR") + " " + dataObj.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+              // 4. Proteção pesada: Força tudo a virar número (evita o erro 'toFixed is not a function')
+              const qtd = sim.qtdCartoes || 0;
+              const fisico = parseFloat(sim.emissaoCo2kg || sim.emissaoCo2Kg || 0);
+              const digital = parseFloat(sim.carbonoDigital || 0);
+              const reducao = parseFloat(sim.reducaoCarbono || 0);
+
+              htmlTabela += `
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 12px;">${dataFormatada}</td>
+                  <td style="padding: 12px;">${qtd}</td>
+                  <td style="padding: 12px;">${fisico.toFixed(2)} kg</td>
+                  <td style="padding: 12px;">${digital.toFixed(2)} kg</td>
+                  <td style="padding: 12px; color: #16a34a; font-weight: bold;">${reducao.toFixed(2)} kg</td>
+                </tr>
+              `;
+            });
+            
+            tbody.innerHTML = htmlTabela;
+          })
+          .catch((err) => {
+            console.error("Erro ao carregar tabela:", err);
+            // 5. Se quebrar, ele cospe o erro no meio da tabela para a gente ver!
+            if(tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: red;"><b>🚨 Erro ao carregar os dados.</b><br>Aperte F12 e olhe a aba "Console".</td></tr>`;
           });
       }
 

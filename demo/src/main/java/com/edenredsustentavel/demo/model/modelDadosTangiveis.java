@@ -1,6 +1,7 @@
 package com.edenredsustentavel.demo.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "dados_tangiveis")
@@ -12,6 +13,7 @@ public class modelDadosTangiveis {
 
     @OneToOne
     @JoinColumn(name = "simulacao_id", nullable = false, unique = true)
+    @JsonIgnore
     private modelDadosSimulacao simulacao;
 
     private Double entregasDelivery;

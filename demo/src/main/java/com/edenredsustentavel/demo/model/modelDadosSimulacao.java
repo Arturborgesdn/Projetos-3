@@ -2,6 +2,7 @@ package com.edenredsustentavel.demo.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "dados_simulacao")
@@ -13,6 +14,7 @@ public class modelDadosSimulacao {
 
     @ManyToOne
     @JoinColumn(name = "empresa_id")  // ✅ removido nullable = false
+    @JsonIgnore
     private modelEmpresa empresa;
 
     private Integer qtdCartoes;

@@ -365,86 +365,33 @@
       </div>
 
       <!-- HISTÓRICO DE SIMULAÇÕES -->
-      <div class="results-section" id="secaoHistorico" style="display: none">
+            <section id="secaoHistorico" style="display: none; margin-top: 3rem; border-top: 1px solid #f1f5f9; padding-top: 2rem;">
         <div class="results-header">
-          <h2>📋 Histórico de Simulações</h2>
-          <p>Sua última simulação registrada no sistema.</p>
+          <h2>Seu Histórico de Evolução</h2>
+          <p>Confira como suas simulações estão progredindo ao longo do tempo.</p>
         </div>
 
-        <div class="cards-grid">
-          <div class="result-card bg-red">
-            <div class="card-header">
-              <i class="ph ph-cloud card-icon"></i>
-              <h3>CO₂</h3>
-            </div>
-            <div class="card-number-wrapper">
-              <span class="card-number" id="histCo2">-</span
-              ><span class="card-unit">kg</span>
-            </div>
-          </div>
-          <div class="result-card bg-blue">
-            <div class="card-header">
-              <i class="ph ph-drop card-icon"></i>
-              <h3>Água</h3>
-            </div>
-            <div class="card-number-wrapper">
-              <span class="card-number" id="histAgua">-</span
-              ><span class="card-unit">litros</span>
-            </div>
-          </div>
-          <div class="result-card bg-yellow">
-            <div class="card-header">
-              <i class="ph ph-trash card-icon"></i>
-              <h3>Plástico</h3>
-            </div>
-            <div class="card-number-wrapper">
-              <span class="card-number" id="histPlastico">-</span
-              ><span class="card-unit">kg</span>
-            </div>
-          </div>
-          <div class="result-card bg-green">
-            <div class="card-header">
-              <i class="ph ph-lightning card-icon"></i>
-              <h3>Energia</h3>
-            </div>
-            <div class="card-number-wrapper">
-              <span class="card-number" id="histEnergia">-</span
-              ><span class="card-unit">kWh</span>
-            </div>
-          </div>
+        <div style="overflow-x: auto; margin-bottom: 30px; background: white; border-radius: 12px; padding: 20px; border: 1px solid #f1f5f9;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+            <thead>
+              <tr style="border-bottom: 2px solid #f1f5f9; color: #64748b;">
+                <th style="padding: 12px;">Data</th>
+                <th style="padding: 12px;">Qtd Cartões</th>
+                <th style="padding: 12px;">Redução CO₂</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaHistoricoCalculadoraBody">
+              </tbody>
+          </table>
         </div>
 
-        <div class="results-header" style="margin-top: 2rem">
-          <h2>Dados Tangíveis Registrados</h2>
+        <div class="btn-container" style="display: flex; gap: 1rem; justify-content: center; margin-top: 20px;">
+          <a href="/landing" class="btn-primary" style="text-decoration: none">Voltar para landing page</a>
+          <a href="/historico" class="btn-primary" style="text-decoration: none; background-color: var(--text-main);">
+            Ver Histórico Detalhado
+          </a>
         </div>
-
-        <div class="cards-grid tangivel-grid">
-          <div class="result-card tangivel-card tc-laranja">
-            <div class="tangivel-icon">🛵</div>
-            <div class="tangivel-numero"><span id="histEntregas">-</span></div>
-            <h4 class="tangivel-label">Entregas de delivery</h4>
-          </div>
-          <div class="result-card tangivel-card tc-roxo">
-            <div class="tangivel-icon">📱</div>
-            <div class="tangivel-numero">
-              <span id="histTransacoes">-</span>
-            </div>
-            <h4 class="tangivel-label">Transações digitais</h4>
-          </div>
-          <div class="result-card tangivel-card tc-verde">
-            <div class="tangivel-icon">🧴</div>
-            <div class="tangivel-numero"><span id="histGarrafas">-</span></div>
-            <h4 class="tangivel-label">Garrafas PET</h4>
-          </div>
-          <div class="result-card tangivel-card tc-azul">
-            <div class="tangivel-icon">🚿</div>
-            <div class="tangivel-numero"><span id="histBanhos">-</span></div>
-            <h4 class="tangivel-label">Banhos de 10 min</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-
+      </section>
     <script src="/scripts/main.js" th:src="@{/scripts/main.js}"></script>
     <script src="/scripts/calculo.js" th:src="@{/scripts/calculo.js}"></script>
     <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>
