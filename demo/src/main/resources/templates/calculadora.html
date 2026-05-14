@@ -348,55 +348,16 @@
           </div>
         </div>
 
-        <!-- Botão voltar dentro dos resultados -->
-        <div style="text-align: center; margin: 40px 0">
-          <a
-            href="/landing"
-            style="
-              display: inline-block;
-              background-color: #e1261c;
-              color: white;
-              padding: 12px 24px;
-              border-radius: 8px;
-              text-decoration: none;
-              font-weight: 600;
-            "
-            onmouseover="this.style.backgroundColor = '#b71c14'"
-            onmouseout="this.style.backgroundColor = '#e1261c'"
-          >
-            Voltar para Landing Page
-          </a>
-        </div>
-      </div>
-
-      <!-- HISTÓRICO DE SIMULAÇÕES -->
-            <section id="secaoHistorico" style="display: none; margin-top: 3rem; border-top: 1px solid #f1f5f9; padding-top: 2rem;">
-        <div class="results-header">
-          <h2>Seu Histórico de Evolução</h2>
-          <p>Confira como suas simulações estão progredindo ao longo do tempo.</p>
-        </div>
-
-        <div style="overflow-x: auto; margin-bottom: 30px; background: white; border-radius: 12px; padding: 20px; border: 1px solid #f1f5f9;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
-            <thead>
-              <tr style="border-bottom: 2px solid #f1f5f9; color: #64748b;">
-                <th style="padding: 12px;">Data</th>
-                <th style="padding: 12px;">Qtd Cartões</th>
-                <th style="padding: 12px;">Redução CO₂</th>
-              </tr>
-            </thead>
-            <tbody id="tabelaHistoricoCalculadoraBody">
-              </tbody>
-          </table>
-        </div>
-
-        <div class="btn-container" style="display: flex; gap: 1rem; justify-content: center; margin-top: 20px;">
+        <div class="btn-container" style="display: flex; gap: 24px; justify-content: center; width: 100%; margin-top: 40px; margin-bottom: 20px;">
           <a href="/landing" class="btn-primary" style="text-decoration: none">Voltar para landing page</a>
           <a href="/historico" class="btn-primary" style="text-decoration: none; background-color: var(--text-main);">
-            Ver Histórico Detalhado
+            Ver Histórico 
           </a>
         </div>
-      </section>
+        
+      </div>
+
+      
     <script src="/scripts/main.js" th:src="@{/scripts/main.js}"></script>
     <script src="/scripts/calculo.js" th:src="@{/scripts/calculo.js}"></script>
     <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>

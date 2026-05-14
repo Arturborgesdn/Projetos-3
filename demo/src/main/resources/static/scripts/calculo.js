@@ -65,39 +65,6 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
     // 5. Rola até os resultados
     secaoResultados.scrollIntoView({ behavior: "smooth" });
 
-    // 6. Busca e exibe o histórico da última simulação com base na sessão do usuário
-    if (emailEmpresa) {
-      try {
-        const responseHist = await fetch(`/impacto/historico/todos/${emailEmpresa}`);
-        
-        if (responseHist.ok) {
-          const lista = await responseHist.json();
-          const secaoHistorico = document.getElementById("secaoHistorico");
-          const tbody = document.getElementById("tabelaHistoricoCalculadoraBody");
-
-          if (secaoHistorico && tbody) {
-            secaoHistorico.style.display = "block";
-
-            if (!lista || lista.length === 0) {
-              tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 15px;">Nenhuma simulação anterior.</td></tr>`;
-            } else {
-              // Pega as últimas 5 simulações para a tabela não ficar gigante
-              const ultimas = lista.slice(0, 5);
-              
-              tbody.innerHTML = ultimas.map(sim => `
-                <tr style="border-bottom: 1px solid #f1f5f9;">
-                  <td style="padding: 12px;">${new Date(sim.dataCriacao).toLocaleDateString('pt-BR')}</td>
-                  <td style="padding: 12px;">${sim.qtdCartoes}</td>
-                  <td style="padding: 12px; color: #16a34a; font-weight: bold;">${sim.reducaoCarbono.toFixed(2)} kg</td>
-                </tr>
-              `).join('');
-            }
-          }
-        }
-      } catch (historyError) {
-        console.warn("Não foi possível carregar a tabela de histórico:", historyError);
-      }
-    }
   } catch (error) {
     console.error("Erro ao calcular:", error);
     alert("Erro ao processar cálculo: " + error.message);
