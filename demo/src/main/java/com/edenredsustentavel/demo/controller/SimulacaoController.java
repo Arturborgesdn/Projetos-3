@@ -49,13 +49,20 @@ public class SimulacaoController {
     private repositoryDadosSimulacao repoDadosSimulacao;
 
     @PostMapping
-    public SimulacaoResponseDTO calcular(@RequestBody SimulacaoRequestDTO request, HttpSession session) {
+    public ResponseEntity<?> calcular(@RequestBody SimulacaoRequestDTO request, HttpSession session) {
+    try {
         if ((request.emailEmpresa == null || request.emailEmpresa.isBlank())
                 && session.getAttribute("usuarioLogado") != null) {
             request.emailEmpresa = session.getAttribute("usuarioLogado").toString();
         }
-        return service.calcularImpacto(request);
+        SimulacaoResponseDTO resultado = service.calcularImpacto(request);
+        return ResponseEntity.ok(resultado);
+    } catch (Exception e) {
+        e.printStackTrace(); // aparece no terminal do servidor
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Erro interno: " + e.getMessage());
     }
+}
 
     @GetMapping("/historico")
     public ResponseEntity<?> ultimaSimulacao(HttpSession session) {

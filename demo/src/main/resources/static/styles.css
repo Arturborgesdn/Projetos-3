@@ -621,56 +621,41 @@ body {
 
 /* ════════════════════════════════════════════════════
    CARDS TANGÍVEIS (equivalências)
+   Diferença sutil: Borda tracejada e cores pasteis
 ════════════════════════════════════════════════════ */
 .tangivel-grid {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
-.tangivel-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2rem 1.5rem;
-  border-radius: var(--radius-md);
-  color: #fff;
-  border: none;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.tangivel-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,.18);
-}
-.tc-laranja { background: linear-gradient(135deg, #f97316, #ea580c); }
-.tc-roxo    { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-.tc-verde   { background: linear-gradient(135deg, #22c55e, #15803d); }
-.tc-azul    { background: linear-gradient(135deg, #38bdf8, #0284c7); }
 
-.tangivel-icon {
-  font-size: 2.8rem;
-  margin-bottom: .75rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
+/* Base idêntica ao .result-card, mas com borda tracejada */
+.tc-laranja, .tc-roxo, .tc-verde, .tc-azul {
+  border: 1px dashed var(--border-light);
+  background: #fff;
 }
-.tangivel-numero {
-  font-size: 2.4rem;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: .5rem;
-  letter-spacing: -1px;
-}
-.card-tangivel { font-size: inherit; font-weight: inherit; }
-.tangivel-label {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: .4rem 0 .6rem;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-}
-.tangivel-desc {
-  font-size: .82rem;
-  opacity: .88;
-  line-height: 1.5;
-  margin: 0;
-}
+
+.tc-laranja::before { background: #f97316; }
+.tc-laranja .card-icon, 
+.tc-laranja .card-header h3, 
+.tc-laranja .card-number { color: #ea580c; }
+.tc-laranja:hover { border-color: #f97316; background: #fff7ed; }
+
+.tc-roxo::before { background: #8b5cf6; }
+.tc-roxo .card-icon, 
+.tc-roxo .card-header h3, 
+.tc-roxo .card-number { color: #6d28d9; }
+.tc-roxo:hover { border-color: #8b5cf6; background: #f5f3ff; }
+
+.tc-verde::before { background: #22c55e; }
+.tc-verde .card-icon, 
+.tc-verde .card-header h3, 
+.tc-verde .card-number { color: #15803d; }
+.tc-verde:hover { border-color: #22c55e; background: #f0fdf4; }
+
+.tc-azul::before { background: #0ea5e9; }
+.tc-azul .card-icon, 
+.tc-azul .card-header h3, 
+.tc-azul .card-number { color: #0369a1; }
+.tc-azul:hover { border-color: #0ea5e9; background: #f0f9ff; }
 
 /* Divisor da seção "Isso equivale a..." */
 .results-section .results-header + .cards-grid {
