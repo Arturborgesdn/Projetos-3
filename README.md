@@ -20,7 +20,7 @@
 
 ---
 
-## Entrega 4 -
+## Entrega 4 - Concluída
 
 - [x] Issue/bug tracker atualizado: <img width="1360" height="634" alt="Captura de tela 2026-05-17 151724" src="https://github.com/user-attachments/assets/db8c80d8-0720-4227-a47f-119cd3e811a6" />
 - [x] Screencast — O fim da jornada de usuário — [ver vídeo](https://youtu.be/9mhxXaHFAXw)
