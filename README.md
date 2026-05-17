@@ -24,9 +24,8 @@
 
 - [x] Issue/bug tracker atualizado: <img width="1360" height="634" alt="Captura de tela 2026-05-17 151724" src="https://github.com/user-attachments/assets/db8c80d8-0720-4227-a47f-119cd3e811a6" />
 - [x] Screencast — O fim da jornada de usuário — [ver vídeo](https://youtu.be/9mhxXaHFAXw)
-- [x] Montagem correta do ambiente para execução do projeto:
       
-## Pré-requisitos
+# Montagem correta do ambiente para execução do projeto:
 
 - Java 17 ou superior instalado
 - MySQL 8.0 instalado e rodando
@@ -115,8 +114,6 @@ Devem aparecer:
 
 ---
 
-
----
 
 ## SR1 - 
 
