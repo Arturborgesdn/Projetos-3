@@ -1,6 +1,7 @@
 /* Variáveis de Cor */
 :root {
     --edenred-red: #E1000F;
+    --edenred-red-dark: #b8000c;
     --top-blue: #A5C8D8;
     --dark-blue: #1A2A47;
     --text-dark: #111;
@@ -116,12 +117,13 @@
 .btn-calcule-agora {
     margin-top: 50px;
     padding: 15px 40px;
-    background: rgba(80, 90, 60, 0.8);
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white; border-radius: 30px; font-weight: bold; letter-spacing: 1px;
+    background: var(--edenred-red);
+    border: none;
+    color: white; border-radius: 50px; font-weight: bold; letter-spacing: 1px;
     cursor: pointer; transition: 0.3s;
+    text-transform: uppercase;
 }
-.btn-calcule-agora:hover { background: rgba(100, 110, 80, 1); transform: scale(1.05); }
+.btn-calcule-agora:hover { background: var(--edenred-red-dark); transform: scale(1.05); }
 
 .home-indicator {
     position: absolute; bottom: 10px; width: 150px; height: 4px;

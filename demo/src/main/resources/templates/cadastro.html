@@ -113,10 +113,10 @@
               <p class="success-title">Cadastro realizado!</p>
               <p class="success-desc">Sua conta foi criada com sucesso.<br/>Você já pode começar a calcular seu impacto.</p>
             </div>
-            <a href="/login">
+            <a href="/calculadora">
               <button class="btn-primary" style="max-width: 260px">
                 <i class="ph ph-arrow-right"></i>
-                IR PARA O LOGIN
+                IR PARA A CALCULADORA
               </button>
             </a>
           </div>
@@ -128,7 +128,26 @@
       </div>
     </div>
 
+    <div id="toastContainer" class="toast-container"></div>
+
     <script>
+      function showToast(message) {
+        const container = document.getElementById("toastContainer");
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = `
+          <div class="toast-icon"><i class="ph ph-warning-circle"></i></div>
+          <div class="toast-message">${message}</div>
+        `;
+        container.appendChild(toast);
+
+        // Remove após 4 segundos
+        setTimeout(() => {
+          toast.classList.add("hiding");
+          setTimeout(() => toast.remove(), 300);
+        }, 4000);
+      }
+
       document.getElementById("toggleSenha").addEventListener("click", function () {
         const input = document.getElementById("senha");
         const icon = document.getElementById("eyeIcon");
@@ -169,15 +188,15 @@
         const senha = document.getElementById("senha").value.trim();
 
         if (!nome || !email || !senha) {
-          alert("Por favor, preencha todos os campos.");
+          showToast("Por favor, preencha todos os campos.");
           return;
         }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          alert("Digite um email válido.");
+          showToast("Digite um email válido.");
           return;
         }
         if (senha.length < 6) {
-          alert("A senha deve ter pelo menos 6 caracteres.");
+          showToast("A senha deve ter pelo menos 6 caracteres.");
           return;
         }
 
@@ -191,16 +210,18 @@
           const data = await response.json();
 
           if (!response.ok) {
-            alert(data.mensagem || "Erro ao cadastrar. Tente novamente.");
+            showToast(data.mensagem || "Erro ao cadastrar. Tente novamente.");
             return;
           }
 
-          document.getElementById("formContent").style.display = "none";
-          document.getElementById("loginPrompt").style.display = "none";
-          document.getElementById("successOverlay").style.display = "flex";
+          // Salva o email na sessão para usar na calculadora
+          sessionStorage.setItem("emailEmpresa", email);
+
+          // Redireciona direto para a calculadora
+          window.location.href = "/calculadora";
         } catch (error) {
           console.error(error);
-          alert("Não foi possível conectar ao servidor. Tente novamente mais tarde.");
+          showToast("Não foi possível conectar ao servidor. Tente novamente.");
         }
       });
     </script>

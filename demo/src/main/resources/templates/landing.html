@@ -159,6 +159,25 @@
 
     </section>
 
+    <!-- BANNER INFORMATIVO (aparece quando NÃO há simulação) -->
+  <div id="containerInfoSimulacao" style="display:none" class="historico-banner">
+    <div class="historico-banner-inner">
+      <div class="historico-banner-left">
+        <div class="historico-banner-icon" style="background: var(--card-green-bg);">
+          <i class="ph ph-info" style="color: var(--card-green-text);"></i>
+        </div>
+        <div class="historico-banner-text">
+          <h3>Descubra seu impacto ambiental!</h3>
+          <p>Ao realizar uma simulação, você terá acesso ao seu histórico detalhado e poderá conquistar o <strong>Selo de Sustentabilidade Edenred</strong>.</p>
+        </div>
+      </div>
+      <a href="/calculadora" class="btn-historico">
+        <i class="ph ph-rocket-launch"></i>
+        Começar agora
+      </a>
+    </div>
+  </div>
+
     <!-- BANNER HISTÓRICO (aparece só após login + simulação) -->
   <div id="containerHistorico" style="display:none" class="historico-banner">
     <div class="historico-banner-inner">
@@ -238,6 +257,77 @@
     </section>
 
     <!-- ═══════════════════════════════════════
+         SEÇÃO: COMO FUNCIONA
+    ═══════════════════════════════════════ -->
+    <section class="how-it-works-section">
+      <div class="cert-content">
+        <h2 class="why-title" style="text-align: left; margin-bottom: 40px;">Como nossa tecnologia transforma dados em impacto</h2>
+        
+        <div class="features-grid">
+          <div class="feature-card" style="--d:0s">
+            <div class="feature-card-top">
+              <div class="step-number">01</div>
+              <h3>Insira seus Dados</h3>
+              <p>Informe a quantidade de cartões, materiais utilizados e a logística atual da sua operação de benefícios.</p>
+            </div>
+          </div>
+
+          <div class="feature-card" style="--d:.1s">
+            <div class="feature-card-top">
+              <div class="step-number">02</div>
+              <h3>Algoritmo</h3>
+              <p>Nosso sistema processa as informações baseando-se em índices globais de emissão e consumo de recursos naturais.</p>
+            </div>
+          </div>
+
+          <div class="feature-card" style="--d:.2s">
+            <div class="feature-card-top">
+              <div class="step-number">03</div>
+              <h3>Resultado Instantâneo</h3>
+              <p>Receba um dashboard completo com sua pegada ambiental e as economias geradas pela transição digital.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SEÇÃO: ECOSSISTEMA DIGITAL
+    ═══════════════════════════════════════ -->
+    <section class="digital-ecosystem-section">
+      <div class="seal-inner">
+        <div class="seal-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Edenred Digital Ecosystem"
+            class="seal-img"
+          />
+        </div>
+        <div class="seal-text">
+          <h2 class="seal-title">Um ecossistema completo para a sua jornada digital</h2>
+          <p class="seal-body">
+            A Edenred já tem um completo ecossistema digital que promove o pagamento via aproximação. Nossos cartões virtuais e pagamentos por aproximação eliminam a necessidade de plástico, reduzem a pegada de carbono logística e oferecem uma experiência fluida para seus colaboradores.
+          </p>
+          <ul class="eco-list" style="list-style: none; margin-bottom: 32px;">
+            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-muted); font-size: 14px;">
+              <i class="ph ph-check-circle" style="color: var(--card-green-text); font-size: 20px;"></i>
+              Emissão instantânea de cartões virtuais
+            </li>
+            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-muted); font-size: 14px;">
+              <i class="ph ph-check-circle" style="color: var(--card-green-text); font-size: 20px;"></i>
+              Pagamentos via Apple Pay e Google Pay
+            </li>
+            <li style="display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-size: 14px;">
+              <i class="ph ph-check-circle" style="color: var(--card-green-text); font-size: 20px;"></i>
+              Gestão simplificada e sustentável pelo app
+            </li>
+          </ul>
+          <a href="/calculadora" class="btn-calcular">Explore o Digital</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
          SEÇÃO: SELO DE AUTORIDADE
     ═══════════════════════════════════════ -->
     <!-- ═══════════════════════════════════════
@@ -268,18 +358,7 @@
    href="/images/selosustentabilidade.jpeg"
    download="selosustentabilidade.jpeg"
 >
-   <button style="
-            display: inline-block;
-            background-color: #e1261c;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.2s;
-          "
-          onmouseover="this.style.backgroundColor = '#b71c14'"
-          onmouseout="this.style.backgroundColor = '#e1261c'" id="btnDownloadSelo">
+   <button class="btn-calcular" id="btnDownloadSelo">
       Baixar Selo de Sustentabilidade!
    </button>
         </a>
@@ -452,19 +531,24 @@
         });
       }, { threshold: 0.1 });
       cards.forEach(c => cardIO.observe(c));
-     /* ── Mostra banner se usuário estiver logado ── */
-const emailSalvo = sessionStorage.getItem("emailEmpresa");
-
-if (emailSalvo) {
-  document.getElementById("containerHistorico").style.display = "block";
-}
-
-/* ── Mostra seção do selo somente se usuário estiver logado E tiver feito simulação ── */
+     /* ── Controle de visibilidade dos banners ── */
 const usuarioLogado = sessionStorage.getItem("emailEmpresa");
 const simulacaoFeita = sessionStorage.getItem("simulacaoFeita");
 
-if (usuarioLogado && simulacaoFeita === "true") {
-  document.getElementById("containerSelo").style.display = "block";
+const containerHistorico = document.getElementById("containerHistorico");
+const containerInfoSimulacao = document.getElementById("containerInfoSimulacao");
+const containerSelo = document.getElementById("containerSelo");
+
+if (simulacaoFeita === "true") {
+  // Se já fez simulação, mostra o banner de histórico e o selo (se logado)
+  if (containerHistorico) containerHistorico.style.display = "block";
+  if (containerInfoSimulacao) containerInfoSimulacao.style.display = "none";
+  if (usuarioLogado && containerSelo) containerSelo.style.display = "block";
+} else {
+  // Se não fez simulação, mostra o banner informativo
+  if (containerHistorico) containerHistorico.style.display = "none";
+  if (containerInfoSimulacao) containerInfoSimulacao.style.display = "block";
+  if (containerSelo) containerSelo.style.display = "none";
 }
 </script>
 <script src="/scripts/session.js" th:src="@{/scripts/session.js}"></script>

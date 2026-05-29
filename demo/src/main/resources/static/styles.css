@@ -1408,6 +1408,30 @@ body {
 .feature-card:hover .feature-card-img img { transform: scale(1.04); }
 
 /* ════════════════════════════════════════════════════
+   MARKETING SECTIONS
+════════════════════════════════════════════════════ */
+.how-it-works-section {
+  background: var(--white);
+  padding: 80px 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.step-number {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--card-blue-bg);
+  -webkit-text-stroke: 1.5px var(--card-blue-border);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.digital-ecosystem-section {
+  background: #f8fafc;
+  padding: 80px 0;
+  border-top: 1px solid var(--border-light);
+}
+
+/* ════════════════════════════════════════════════════
    LANDING PAGE — SELO
 ════════════════════════════════════════════════════ */
 .seal-section {
@@ -1450,29 +1474,29 @@ body {
   align-items: center;
 }
 .btn-calcular {
-  background: var(--text-main);
+  background: var(--edenred-red);
   color: var(--white);
   font-size: 14px;
   font-weight: 700;
   padding: 12px 28px;
-  border-radius: 8px;
+  border-radius: 50px;
   text-decoration: none;
   transition: background .2s, transform .2s;
 }
-.btn-calcular:hover { background: #2d3f50; transform: translateY(-1px); }
+.btn-calcular:hover { background: var(--edenred-red-dark); transform: translateY(-1px); }
 
 .btn-saiba {
-  background: transparent;
-  border: 2px solid var(--text-main);
-  color: var(--text-main);
+  background: var(--edenred-red);
+  color: var(--white);
   font-size: 14px;
   font-weight: 700;
   padding: 10px 26px;
-  border-radius: 8px;
+  border-radius: 50px;
   text-decoration: none;
   transition: all .2s;
+  border: none;
 }
-.btn-saiba:hover { background: var(--text-main); color: var(--white); }
+.btn-saiba:hover { background: var(--edenred-red-dark); }
 
 .seal-img-wrap {
   border-radius: 16px;
@@ -1487,19 +1511,20 @@ body {
   border: 2px solid var(--edenred-red) !important;
   color: var(--edenred-red) !important;
   padding: 7px 20px !important;
-  border-radius: 30px;
+  border-radius: 50px;
   font-weight: 700 !important;
   transition: all .2s !important;
 }
 .nav-btn-login:hover {
-  background: var(--edenred-red) !important;
+  background: var(--edenred-red-dark) !important;
+  border-color: var(--edenred-red-dark) !important;
   color: #fff !important;
 }
 .nav-btn-cadastro {
   background: var(--edenred-red) !important;
   color: #fff !important;
   padding: 9px 22px !important;
-  border-radius: 30px;
+  border-radius: 50px;
   font-weight: 700 !important;
   transition: background .2s !important;
 }
@@ -1536,7 +1561,67 @@ body {
   .band-side { display: none; }
 }
 
+/* ════════════════════════════════════════════════════
+   TOAST NOTIFICATIONS
+════════════════════════════════════════════════════ */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  background: var(--white);
+  border-left: 4px solid var(--edenred-red);
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 450px;
+  animation: slideInRight 0.3s ease forwards;
+  transition: all 0.3s ease;
+}
+
+.toast.hiding {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+.toast-icon {
+  font-size: 20px;
+  color: var(--edenred-red);
+}
+
+.toast-message {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.95); }
+}
+
 @media (max-width: 480px) {
-  .seal-btns { flex-direction: column; align-items: flex-start; }
-  .seal-title { font-size: 1.5rem; }
+  .toast-container {
+    top: 12px;
+    right: 12px;
+    left: 12px;
+  }
+  .toast {
+    min-width: 0;
+  }
 }
