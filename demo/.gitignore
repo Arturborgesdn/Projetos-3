@@ -55,7 +55,7 @@ buildNumber.properties
 # DADOS SENSÍVEIS (A regra de ouro!)
 # =========================================================================
 # Esconde o arquivo principal de propriedades (senhas, portas, etc.)
-src/main/resources/application.properties
+#src/main/resources/application.properties
 
 # Se você usar arquivos extras para cada ambiente, esconde também
 src/main/resources/application-*.properties
